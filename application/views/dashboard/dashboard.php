@@ -56,7 +56,7 @@
                 <td>No</td>
                 <td>Username</td>
                 <td>Sebagai</td>
-                <td>Tangal</td>
+                <td>Tanggal</td>
               </tr>
             </thead>
             <tbody>

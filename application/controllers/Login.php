@@ -8,7 +8,7 @@ class Login extends CI_Controller{
     $data['title'] = 'LOGIN';
     $this->load->view('login.php',$data);
   }  
-  function auth(){ 
+  function auth(){  
     $email = $this->input->post('email'); 
     $pass = md5($this->input->post('password'));
 
@@ -78,6 +78,7 @@ class Login extends CI_Controller{
             //cek email
             if ($cek == 0) {
               
+              // save user
               $x = $this->db->query("SELECT * FROM t_user")->num_rows();
               $count = $x+1;
 
@@ -93,6 +94,15 @@ class Login extends CI_Controller{
               $this->db->set($set);
               $this->db->insert('t_user');
 
+              //save detail
+              $detail = array(
+                          'detail_id_user' => $count, 
+                        );
+
+              $this->db->set($detail);
+              $this->db->insert('t_detail_user');
+
+              //save sesuai level
               if ($level == 1) {
                 //BUMN
 

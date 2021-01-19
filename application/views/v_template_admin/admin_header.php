@@ -40,8 +40,12 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="<?php echo base_url() ?>adminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('adminLTE/datatable/datatables.min.css') ?>">
+
   <!-- jQuery 3 -->
   <script src="<?php echo base_url() ?>adminLTE/bower_components/jquery/dist/jquery.min.js"></script>
+  
+  <script type="text/javascript" src="<?php echo base_url('adminLTE/datatable/datatables.min.js') ?>"></script>
 
 
 <style type="text/css">

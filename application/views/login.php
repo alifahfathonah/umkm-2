@@ -63,7 +63,7 @@
                         <select name="level" class="form-control" required="">
                             <option value="" hidden="">Login Sebagai</option>
                             <option value="2">UMKM</option>
-                            <option value="1">BUMN</option>
+                            <option value="1">RUMAH BUMN</option>
                             <option value="0">Admin</option>
                         </select>
                     </div>

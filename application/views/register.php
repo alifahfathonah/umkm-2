@@ -70,9 +70,9 @@
                     </div>
                     <div class="form-group">
                         <select name="user_level" class="form-control" required="">
-                            <option value="" hidden="">Daftar sebagai Sebagai</option>
+                            <option value="" hidden="">Daftar Sebagai</option>
                             <option value="2">UMKM</option>
-                            <option value="1">BUMN</option>
+                            <option value="1">Rumah BUMN</option>
                         </select>
                     </div>
 

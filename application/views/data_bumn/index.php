@@ -16,7 +16,7 @@
         <i class="icon fa fa-check"></i>
         <?php echo $this->session->flashdata('success'); ?>
       </div>
-    <?php endif ?>
+    <?php endif ?> 
  
       <!-- Default box --> 
       <div class="box">
@@ -31,13 +31,18 @@
         </div>
         <div class="box-body">
          
-          <table id="example1" class="table table-bordered table-hover">
+          <table id="example" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>Nama</th>
-                  <th>Email</th>
-                  <th>Level</th>
-                  <th>Action</th>
+                  <th>Nama Rumah BUMN</th>
+                  <th>Berdiri sejak </th>
+                  <th>Status Gedung Rumah BUMN</th>
+                  <th>Foto gedung Rumah BUMN</th>
+                  <th>Nama pengelolah Rumah BUMN</th>
+                  <th>No Telepon/HP</th>
+                  <th>Kantor Cabang pengelolah</th>
+                  <th>Nama PIC Kantor Cabang</th>
+                  <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -45,9 +50,14 @@
                 <?php foreach ($data as $key): ?>
                                   
                   <tr>
-                    <td><?php echo $key['user_name'] ?></td>
-                    <td><?php echo $key['user_email'] ?></td>
-                    <td>BUMN/Admin</td>
+                    <td><?php echo $key['bumn_rumah'] ?></td>
+                    <td><?php echo $key['bumn_berdiri'] ?></td>
+                    <td><?php echo $key['bumn_status'] ?></td>
+                    <td><a target="_BLANK" href="<?php echo base_url('asset/gambar/bumn/'.$key['bumn_foto']) ?>"><img width="50" src="<?php echo base_url('asset/gambar/bumn/'.$key['bumn_foto']) ?>"></a></td>
+                    <td><?php echo $key['bumn_pengelola'] ?></td>
+                    <td><?php echo $key['bumn_no'] ?></td>
+                    <td><?php echo $key['bumn_cabang'] ?></td>
+                    <td><?php echo $key['bumn_pic'] ?></td>
                     <td style="width: 50px;">
                       <div>
 
@@ -86,11 +96,20 @@
         
       </div>
       <!-- /.box -->
-
-
-  
-
-       
+<script type="text/javascript">
+  $(document).ready(function (){
+    var table = $('#example').DataTable({
+        'responsive': true,
+        dom: 'Blfrtip',
+       lengthMenu: [[10, 25, 50,100,200,300,400], [10, 25, 50,100,200,300,400]],
+       buttons: [
+           'copy', 'excel', 'pdf', 'print'
+       ],
+       'lengthChange': false,
+       'autoWidth'   : false,
+    });
+})
+</script>
 
   
 

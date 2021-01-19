@@ -7,10 +7,10 @@ class Profile extends CI_Controller{
 	function index(){
 		if ( $this->session->userdata('login') == 1) {
 			$data['title'] = 'Profile';
-			$id = $this->session->userdata('id');
-			$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_detail_user AS b ON a.user_id = b.detail_id_user WHERE a.user_id = '$id'")->result_array();
+			$id = $this->session->userdata('foreign');
+			$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_detail_user AS b ON a.user_foreignkey = b.detail_id_user WHERE a.user_foreignkey = '$id'")->result_array();
 
-			$data['profile'] = 'class="active"';
+			$data['profile'] = 'class="active"'; 
 			$this->load->view('v_template_admin/admin_header',$data);
 			$this->load->view('profile/index');
 			$this->load->view('v_template_admin/admin_footer');

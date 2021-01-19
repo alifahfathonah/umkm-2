@@ -101,6 +101,8 @@ $(function () {
            'copy', 'excel', 'pdf', 'print'
        ],
        'lengthChange': false,
+       'autoWidth'   : false,
+       'scrollX'     : true
     })
   })
 
