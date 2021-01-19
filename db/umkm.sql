@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 18 Jan 2021 pada 07.16
+-- Generation Time: 19 Jan 2021 pada 04.55
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -67,7 +67,9 @@ CREATE TABLE `t_detail_user` (
 --
 
 INSERT INTO `t_detail_user` (`detail_id`, `detail_id_user`, `detail_jabatan`, `detail_pendidikan`, `detail_alamat`, `detail_biodata`) VALUES
-(2, 1, 'administrator', 'SMK', 'alamat', 'biodata');
+(2, 1, 'administrator', 'SMK', 'alamat', 'biodata'),
+(3, 2, '', '', '', ''),
+(4, 3, '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -147,9 +149,9 @@ CREATE TABLE `t_user` (
 --
 
 INSERT INTO `t_user` (`user_id`, `user_foreignkey`, `user_name`, `user_email`, `user_password`, `user_level`, `user_foto`, `user_hapus`, `user_tanggal`) VALUES
-(1, '', 'Admin', 'admin@admin.com', '21232f297a57a5a743894a0e4a801fc3', '0', NULL, 0, '2021-01-18'),
+(1, '1', 'Admin', 'admin@admin.com', '21232f297a57a5a743894a0e4a801fc3', '0', 'dessert_donut.png', 0, '2021-01-18'),
 (7, '2', 'Dayana', 'dayana@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '1', NULL, 0, '2021-01-18'),
-(8, '3', 'Fiki Naki', 'fiki@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '2', NULL, 0, '2021-01-18');
+(8, '3', 'Fiki Naki', 'fiki@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '2', 'dessert_froyo.png', 0, '2021-01-18');
 
 --
 -- Indexes for dumped tables
@@ -192,12 +194,12 @@ ALTER TABLE `t_bumn`
 -- AUTO_INCREMENT for table `t_detail_user`
 --
 ALTER TABLE `t_detail_user`
-  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `t_umkm`
 --
 ALTER TABLE `t_umkm`
-  MODIFY `umkm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `umkm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `t_user`
 --
