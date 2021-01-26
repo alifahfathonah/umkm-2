@@ -15,7 +15,7 @@
         <?php echo $this->session->flashdata('success'); ?>
       </div>
     <?php endif ?>
-
+ 
 	 <div class="box">
 	    <div class="box-header with-border">
 	      <h3 class="box-title"><?php echo $title ?></h3>
@@ -331,6 +331,9 @@ $('#umkm_jenis').on('change', function (e) {
     if ($('#umkm_jenis').val() == 'Lain-lain') {
     	$('#lain').attr('type','text');
     	$('#lain').attr('required',true);
+    }else{
+    	$('#lain').attr('type','hidden');
+    	$('#lain').val('');
     }
 });
 
