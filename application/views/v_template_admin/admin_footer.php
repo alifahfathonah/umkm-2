@@ -2,7 +2,7 @@
 <!-- /.content-wrapper -->
   <footer class="main-footer">
    
-    <strong>Copyright &copy; 2020-<?php echo date('Y'); ?> Kang Lintang.</strong> All rights
+    <strong>Copyright &copy; 2020-<?php echo date('Y'); ?> <?php echo $this->session->userdata('footer'); ?>.</strong> All rights
     reserved.
   </footer>
 
@@ -67,12 +67,17 @@
 <!--button datatable-->
 <script type="text/javascript" src="<?php echo base_url() ?>adminLTE/bower_components/button/dataTables.buttons.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>adminLTE/bower_components/button/jszip.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url() ?>adminLTE/bower_components/button/pdfmake.min.js"></script>
+
 <script type="text/javascript" language="javascript" src="<?php echo base_url() ?>adminLTE/bower_components/button/vfs_fonts.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>adminLTE/bower_components/button/buttons.html5.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url() ?>adminLTE/bower_components/button/buttons.print.min.js"></script>
 
 <script>
+
+//Date picker
+$('#datepicker').datepicker({
+  autoclose: true
+})
 
 $(function () {
     // Replace the <textarea id="editor1"> with a CKEditor

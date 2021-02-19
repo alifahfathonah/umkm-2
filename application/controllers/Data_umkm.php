@@ -8,7 +8,7 @@ class Data_umkm extends CI_Controller{
 		if ( $this->session->userdata('login') == 1) {
 			$data['data_umkm'] = 'class="active"';
 		    $data['title'] = 'Data UMKM';
-		    $data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_umkm AS b ON a.user_foreignkey = b.umkm_user WHERE a.user_level = '2' AND a.user_hapus = 0")->result_array(); 
+		    $data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_umkm AS b ON a.user_foreignkey = b.umkm_user WHERE a.user_level = '2' AND a.user_hapus = 0 AND a.user_status = 1")->result_array(); 
 
 		    $this->load->view('v_template_admin/admin_header',$data);
 		    $this->load->view('data_umkm/index');

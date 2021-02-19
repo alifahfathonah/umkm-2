@@ -4,7 +4,7 @@ class Bumn extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 	} 
-	function index(){
+	function index(){ 
 		if ( $this->session->userdata('login') == 1) {
 
 			$data['bumn'] = 'class="active"';
@@ -25,44 +25,62 @@ class Bumn extends CI_Controller{
 	function save(){
 		$user = $this->session->userdata('foreign');
 
-		if (@$_FILES['bumn_foto']['name']) {
+		$cek = $this->db->query("SELECT * FROM t_bumn WHERE bumn_user = '$user'")->row_array();
 
-			//config uplod foto
-			  $config = array(
-			  'upload_path' 	=> './asset/gambar/bumn',
-			  'allowed_types' 	=> "gif|jpg|png|jpeg",
-			  'overwrite' 		=> TRUE,
-			  // 'max_size' 		=> "2048000",
-			  // 'max_height' 		=> "10000",
-			  // 'max_width' 		=> "20000"
-			  );
+		$count = count(array_filter($_FILES['bumn_foto']['name'], 'strlen'));
 
-			//upload foto
-			$this->load->library('upload', $config);
+		if ($count > 0) {
 
-			if ($this->upload->do_upload('bumn_foto')) {
-				//replace Karakter name foto
-				$name_foto = $_FILES['bumn_foto']['name'];
-				$char = array('!', '&', '?', '/', '/\/', ':', ';', '#', '<', '>', '=', '^', '@', '~', '`', '{', '}', ' ');
-		        $foto = str_replace($char, '_', $name_foto);
-		        $char1 = array('[',']');
-		        $foto1 = str_replace($char1, '', $foto);
+			//replace Karakter name foto
+		    $name_foto = $_FILES['bumn_foto']['name'];
+			$char = array('!', '&', '?', '/', '/\/', ':', ';', '#', '<', '>', '=', '^', '@', '~', '`', '{', '}', ' ');
+		    $v = str_replace($char, '_', array_filter($name_foto, 'strlen'));
+		    $foto = substr_replace($v, $user.'_', 0, $v);
+		    $a = json_decode($cek['bumn_foto'],true);
+	     	$c = array_merge($a,$foto);
+	     	$foto1 = json_encode($c);
 
-		        $this->db->set('bumn_foto',$foto1);
+	     	//simpan foto kurang dari 5
+	     	if (count(json_decode($foto1,true)) < 5) {
+	     		
+	     		$this->db->set('bumn_foto',$foto1);
 		        $this->db->where('bumn_user',$user);
 		        $this->db->update('t_bumn');
-			} 
-		}
 
+		        // Looping all files
+		      	for($i=0; $i <  $count + 1; $i++){
+		 
+			          // Define new $_FILES array
+			          $_FILES['file']['name'] = $user.'_'.$_FILES['bumn_foto']['name'][$i];
+			          $_FILES['file']['type'] = $_FILES['bumn_foto']['type'][$i];
+			          $_FILES['file']['tmp_name'] = $_FILES['bumn_foto']['tmp_name'][$i];
+			          $_FILES['file']['error'] = $_FILES['bumn_foto']['error'][$i];
+			          $_FILES['file']['size'] = $_FILES['bumn_foto']['size'][$i];
+
+			          // Set preference
+			          $config['upload_path'] = './asset/gambar/bumn'; 
+			          $config['allowed_types'] = 'jpg|jpeg|png|gif';
+			          $config['max_size'] = '2000'; // max_size in kb
+			          $config['overwrite'] = true;
+			 
+			          //Load upload library
+			          $this->load->library('upload',$config); 
+			          $this->upload->do_upload('file');
+			 
+		      	}
+	     	}
+
+	    }
+		
 		// save data ////////////////////////////////////////////////
 
 		$set = array(
 						'bumn_rumah' => @$_POST['bumn_rumah'],
+						'bumn_kantor_cabang' => @$_POST['bumn_kantor_cabang'],
 						'bumn_berdiri' => @$_POST['bumn_berdiri'],
 						'bumn_status' => @$_POST['bumn_status'],
 						'bumn_pengelola' => @$_POST['bumn_pengelola'],
 						'bumn_no' => @$_POST['bumn_no'],
-						'bumn_cabang' => @$_POST['bumn_cabang'],
 						'bumn_pic' => @$_POST['bumn_pic'],
 						'bumn_tanggal' => date('Y-m-d'), 
 					);
@@ -76,5 +94,33 @@ class Bumn extends CI_Controller{
 		}
 
 		redirect(base_url('bumn'));
+	}
+
+	function delete($val){
+		$user = $this->session->userdata('foreign');
+		$cek = $this->db->query("SELECT * FROM t_bumn WHERE bumn_user = '$user'")->row_array();
+
+		$array = json_decode($cek['bumn_foto'],true);
+
+		$key = array_search($val, $array);
+		if (false !== $key) {
+		   unset($array[$key]);
+		}
+
+		$set = json_encode($array);
+
+		$this->db->set('bumn_foto',$set);
+	    $this->db->where('bumn_user',$user);
+	    
+	    if ($this->db->update('t_bumn')) {
+	    	$this->session->set_flashdata('success','Data berhasil di simpan');
+
+	    	//delete file
+	    	unlink('./asset/gambar/bumn/'.$val);
+	    } else {
+	    	$this->session->set_flashdata('gagal','Data gagal di simpan');
+	    }
+
+	    redirect(base_url('bumn'));
 	}
 }

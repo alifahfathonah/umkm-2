@@ -5,16 +5,20 @@ class Login extends CI_Controller{
     parent::__construct();
   }
   function index(){ 
+    $data['setting'] = $this->db->query("SELECT * FROM t_setting")->row_array();
+
     $data['title'] = 'LOGIN';
     $this->load->view('login.php',$data);
-  }  
+  }   
   function auth(){  
     $email = $this->input->post('email'); 
     $pass = md5($this->input->post('password'));
 
-    $cek = $this->query_builder->login('t_user',$email,$pass);
+    $cek = $this->db->query("SELECT * FROM t_user WHERE user_email = '$email' AND user_password = '$pass' AND user_status = 1")->result_array();
    
         if (count($cek[0]['user_email']) > 0) {
+
+              $setting = $this->db->query("SELECT * FROM t_setting")->row_array();
           
               //ciptakan sesi
               $this->session->set_userdata('name',$cek[0]['user_name']);
@@ -26,6 +30,7 @@ class Login extends CI_Controller{
               $this->session->set_userdata('level',$cek[0]['user_level']);
               $this->session->set_userdata('foreign',$cek[0]['user_foreignkey']);
 
+              $this->session->set_userdata('footer',$setting['setting_footer']);
 
               switch ($cek[0]['user_level']) {
                 case '0':
@@ -40,7 +45,13 @@ class Login extends CI_Controller{
               }
       }
       else{
-         $this->session->set_flashdata('gagal','Email / Password salah');
+
+          if ($cek[0]['user_status'] == 0) {
+            $this->session->set_flashdata('gagal','Akun anda belum di validasi "Admin"');
+          } else {
+            $this->session->set_flashdata('gagal','Email / Password salah');
+          }
+          
          redirect(base_url('login'));
       }
   }
@@ -49,6 +60,7 @@ class Login extends CI_Controller{
     redirect(base_url('login')); 
   }
   function register(){
+    $data['setting'] = $this->db->query("SELECT * FROM t_setting")->row_array();
     $data['title'] = 'REGISTER';
     $this->load->view('register.php',$data);
   }
@@ -79,8 +91,8 @@ class Login extends CI_Controller{
             if ($cek == 0) {
               
               // save user
-              $x = $this->db->query("SELECT * FROM t_user")->num_rows();
-              $count = $x+1;
+              $x = $this->db->query("SELECT * FROM t_user order by user_id desc limit 1")->row_array();
+              $count = $x['user_foreignkey']+1;
 
               $set = array(
                             'user_foreignkey' => $count,
@@ -150,5 +162,40 @@ class Login extends CI_Controller{
       }
     }
 
+  }
+  function forgot(){
+    $data['setting'] = $this->db->query("SELECT * FROM t_setting")->row_array();
+
+    $data['title'] = 'Forgot Password';
+    $this->load->view('forgot.php',$data);
+  }
+  function forgot_save(){
+    $email = $_POST['email'];
+    $password = md5($_POST['password']);
+    $cek = $this->db->query("SELECT * FROM t_user WHERE user_email = '$email'")->num_rows(); 
+
+    if ($cek > 0) {
+
+      if ($_POST['password'] == $_POST['con_password']) {
+        
+         $this->db->set('user_password',$password);
+         $this->db->where('user_email',$email);
+         $this->db->update('t_user');
+
+         $this->session->set_flashdata('sukses','Password berhasil di ganti, silahkan login kembali');
+         redirect(base_url('login'));
+
+      } else {
+        
+         $this->session->set_flashdata('gagal','Periksa kembali password');
+         redirect(base_url('login/forgot'));
+      }
+      
+    } else {
+      
+      $this->session->set_flashdata('gagal','Email belum terdaftar');
+      redirect(base_url('login/forgot'));
+    }
+    
   }
 }

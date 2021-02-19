@@ -3,7 +3,7 @@
 ==========================================================
 
 Bootstrap 4 Admin Template
-
+ 
 https://bootstrapious.com/p/admin-template
 
 ==========================================================
@@ -1850,7 +1850,7 @@ input.input-material:focus {
 input.input-material ~ label {
   color: #aaa;
   position: absolute;
-  top: 14px;
+ /* top: 14px;*/
   left: 0;
   cursor: text;
   -webkit-transition: all 0.2s;
@@ -1973,7 +1973,7 @@ input.input-material.is-invalid ~ label {
 
 .login-page .form-holder .form form {
   width: 100%;
-  max-width: 400px;
+  /*max-width: 400px;*/
 }
 
 .login-page .form-holder .form #login, .login-page .form-holder .form #register {

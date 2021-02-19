@@ -100,8 +100,6 @@ class Profile extends CI_Controller{
 
 			$this->session->set_flashdata('success','Data berhasil di perbaharui');
 			redirect(base_url('profile'));
-
-			print_r($data);
 		}
 		
 	}

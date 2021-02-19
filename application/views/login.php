@@ -1,5 +1,5 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
   <head>
     <meta charset="utf-8">
@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="<?php echo base_url() ?>asset/gambar/icon.png" />
     <link rel="stylesheet" href="<?php echo base_url('asset/theme') ?>/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="<?php echo base_url('asset/theme') ?>/vendor/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('asset/theme') ?>/vendor/font-awesome/css/all.min.css"> 
     <!-- Fontastic Custom icon font-->
     <link rel="stylesheet" href="<?php echo base_url('asset/theme') ?>/css/fontastic.css">
     <!-- Google fonts - Poppins -->
@@ -39,7 +39,7 @@
 
                     <br/>
                     <br/>
-                    <img style="width: 90%;" src="<?php echo base_url() ?>asset/gambar/umkm.png">
+                    <img style="width: 90%;" src="<?php echo base_url('asset/gambar/setting/').@$setting['setting_logo'] ?>">
 
                   </div>
                 </div>
@@ -71,8 +71,16 @@
                   </form>
 
                   <br/><br/>
-                  <p class="text-muted text-center"><small>Do not have an account?</small>
-                  <a href="<?php echo base_url('login/register') ?>">Sign up</a></p>
+
+                  <div class="row" style="margin-right: 0; margin-left: 0;">
+                    <div class="col-md-6">
+                      <a href="<?php echo base_url('login/forgot') ?>">Forgot password ( <i class="fa fa-key"></i> )</a>
+                    </div>
+                    <div class="col-md-6">
+                      <span class="text-muted text-center"><small>Do not have an account?</small>
+                      <a href="<?php echo base_url('login/register') ?>">Sign up</a></span>
+                    </div>
+                  </div>
 
                 </div>
               </div>
@@ -81,6 +89,10 @@
         </div>
       </div>
     </div>
+
+  <footer style="bottom: 0; width: 100%; padding: 20px 10px; text-align: center;">
+   <span>Copyright &copy; 2020-<?php echo date('Y'); ?> <?php echo @$setting['setting_footer'] ?>.</span>
+  </footer>
 
         <!-- JavaScript files-->
     <script src="<?php echo base_url('asset/theme') ?>/vendor/jquery/jquery.min.js"></script>

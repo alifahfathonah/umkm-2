@@ -1,5 +1,5 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
   <head>
     <meta charset="utf-8">
@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="<?php echo base_url() ?>asset/gambar/icon.png" />
     <link rel="stylesheet" href="<?php echo base_url('asset/theme') ?>/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="<?php echo base_url('asset/theme') ?>/vendor/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="<?php echo base_url('asset/theme') ?>/vendor/font-awesome/css/all.min.css"> 
     <!-- Fontastic Custom icon font-->
     <link rel="stylesheet" href="<?php echo base_url('asset/theme') ?>/css/fontastic.css">
     <!-- Google fonts - Poppins -->
@@ -23,7 +23,6 @@
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="<?php echo base_url('asset/theme') ?>/css/custom.css">
 
-    <script src="https://www.google.com/recaptcha/api.js"></script>
     
   </head>
   <body>
@@ -51,42 +50,24 @@
               <div class="form d-flex align-items-center">
                 <div class="content">
 
-                  <form action="<?php echo base_url() ?>login/save" method="POST">
-                    <div class="form-group">
-                      <input type="text" name="user_name" required="" class="input-material">
-                      <label class="label-material">User Name</label>
-                    </div>
-                    <div class="form-group">
-                      <input type="email" name="user_email" required="" class="input-material">
-                      <label class="label-material">Email</label>
-                    </div>
-                    <div class="form-group">
-                      <input id="pass1" type="password" name="user_password" required="" class="input-material">
-                      <label class="label-material">Password</label>
-                    </div>
-                    <div class="form-group">
-                      <input id="pass2" type="password" required="" name="re_password" class="input-material">
-                      <label for="login-password" class="label-material">Masukan Password Lagi</label>
-                    </div>
-                    <div class="form-group">
-                        <select name="user_level" class="form-control" required="">
-                            <option value="" hidden="">Daftar Sebagai</option>
-                            <option value="2">UMKM</option>
-                            <option value="1">Rumah BUMN</option>
-                        </select>
-                    </div>
+                  <h1>Forgot Password ( <i class="fa fa-key"></i> )</h1>
+                  <br/>
 
+                  <form id="form" action="<?php echo base_url() ?>login/forgot_save" method="POST">
                     <div class="form-group">
-                      <div class="g-recaptcha" data-sitekey="6LcDajAaAAAAAB1rqVtQgd2prSVncJElnMTiPPam"></div> 
+                      <input type="text" name="email" required="" class="input-material">
+                      <label for="login-username" class="label-material">Enter Email</label>
                     </div>
-
-                    <button type="submit" class="btn btn-primary">Register <i class="fa fa-check"></i></button>
+                    <div class="form-group">
+                      <input type="password" name="password" required="" class="input-material">
+                      <label for="login-password" class="label-material">Enter New Password</label>
+                    </div>
+                    <div class="form-group">
+                      <input type="password" name="con_password" required="" class="input-material">
+                      <label for="login-password" class="label-material">Confirm new password</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Change Password <i class="fa fa-check"></i></button>
                   </form>
-
-                  <br/><br/>
-                  <p class="text-muted text-center"><small>Already have an account?</small>
-                  <a href="<?php echo base_url('login') ?>">Sign in</a></p>
-
                 </div>
               </div>
             </div>
@@ -95,9 +76,9 @@
       </div>
     </div>
 
-    <footer style="bottom: 0; width: 100%; padding: 20px 10px; text-align: center;">
-     <span>Copyright &copy; 2020-<?php echo date('Y'); ?> <?php echo @$setting['setting_footer'] ?>.</span>
-    </footer>
+  <footer style="bottom: 0; width: 100%; padding: 20px 10px; text-align: center;">
+   <span>Copyright &copy; 2020-<?php echo date('Y'); ?> <?php echo @$setting['setting_footer'] ?>.</span>
+  </footer>
 
         <!-- JavaScript files-->
     <script src="<?php echo base_url('asset/theme') ?>/vendor/jquery/jquery.min.js"></script>
@@ -132,4 +113,5 @@
     })
 
 <?php endif ?>
+
 </script>

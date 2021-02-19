@@ -8,7 +8,7 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>adminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css"> 
+  <link rel="stylesheet" href="<?php echo base_url() ?>adminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css">  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?php echo base_url() ?>adminLTE/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons --> 
@@ -16,9 +16,6 @@
   <!-- Theme style --> 
   <link rel="stylesheet" href="<?php echo base_url() ?>adminLTE/dist/css/AdminLTE.css">
 
-  <link href="<?php echo base_url() ?>asset/block/popup.css" rel="stylesheet">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url() ?>adminLTE/dist/css/skins/_all-skins.css">
   <!-- Morris chart -->
   <link rel="stylesheet" href="<?php echo base_url() ?>adminLTE/bower_components/morris.js/morris.css">
@@ -176,19 +173,7 @@
   </header>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-
-    <!-- start popup -->
-    <!-- <div id="close">
-        <div class="container-popup">
-            <form action="#" method="post" class="popup-form">
-                <img src="<?php echo base_url() ?>/asset/block/block.jpg" alt="">
-            </form> -->
-           <!--  <a class="close" href="#close">close</a> -->
-        <!-- </div>
-    </div> -->
-<!-- end popup -->
-
+    
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel">
@@ -223,6 +208,20 @@
               <i class="fa fa-user-o "></i> <span>User Control</span>
             </a>
           </li>
+
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-check-square-o"></i> <span>Validasi</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="<?php echo @$tree; ?>">
+              <li><a href="<?php echo base_url('validasi/umkm') ?>"><i class="fa fa-minus"></i> UMKM</a></li>
+              <li><a href="<?php echo base_url('validasi/bumn') ?>"><i class="fa fa-minus"></i> BUMN</a></li>
+            </ul>
+          </li>
+
         <?php endif ?>
 
         <?php if ($this->session->userdata('level') == 2): ?>
@@ -249,6 +248,24 @@
           </li>
         <?php endif ?>
 
+        <?php if ($this->session->userdata('level') == 1): ?>
+
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-file-text-o"></i> <span>Log Book</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="<?php echo @$log; ?>">
+              <li><a href="<?php echo base_url('bumn_log/kunjungan') ?>"><i class="fa fa-minus"></i> Kunjungan UMKM</a></li>
+              <li><a href="<?php echo base_url('bumn_log/pelatihan') ?>"><i class="fa fa-minus"></i> Pelatihan</a></li>
+              <li><a href="<?php echo base_url('bumn_log/pameran') ?>"><i class="fa fa-minus"></i> Pameran</a></li>
+            </ul>
+          </li>
+
+        <?php endif ?>
+
         <?php if ($this->session->userdata('level') == 0): ?>
           <li <?php echo @$data_bumn; ?>>
             <a href="<?php echo base_url() ?>data_bumn">
@@ -262,6 +279,14 @@
             <i class="fa fa-user-circle-o"></i> <span>Profile</span>
           </a>
         </li>
+
+        <?php if ($this->session->userdata('level') == 0): ?>
+          <li <?php echo @$data_setting; ?>>
+            <a href="<?php echo base_url() ?>setting">
+              <i class="fa fa-cog"></i> <span>Setting</span>
+            </a>
+          </li>
+        <?php endif ?>
       </ul>
     </section>
     <!-- /.sidebar -->
