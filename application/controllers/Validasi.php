@@ -8,7 +8,7 @@ class Validasi extends CI_Controller{
 		if ( $this->session->userdata('login') == 1) {
 			$data['tree'] = 'display: block;';
 		    $data['title'] = 'VALIDASI UMKM';
-		    $data['data'] = $this->db->query("SELECT * FROM t_user where user_level = '1' AND user_hapus = 0")->result_array();
+		    $data['data'] = $this->db->query("SELECT * FROM t_user where user_level = '2' AND user_hapus = 0")->result_array();
 
 		    $this->load->view('v_template_admin/admin_header',$data);
 		    $this->load->view('validasi/umkm');
@@ -23,7 +23,7 @@ class Validasi extends CI_Controller{
 		if ( $this->session->userdata('login') == 1) {
 			$data['tree'] = 'display: block;';
 		    $data['title'] = 'VALIDASI BUMN';
-		    $data['data'] = $this->db->query("SELECT * FROM t_user where user_level = '2' AND user_hapus = 0")->result_array();
+		    $data['data'] = $this->db->query("SELECT * FROM t_user where user_level = '1' AND user_hapus = 0")->result_array();
 
 		    $this->load->view('v_template_admin/admin_header',$data);
 		    $this->load->view('validasi/bumn');

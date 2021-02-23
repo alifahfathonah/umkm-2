@@ -37,7 +37,7 @@
           </a>
         </div>
         <!-- ./col -->
-        <div class="col-lg-6 col-xs-6">
+        <div class="col-lg-6 col-xs-6"> 
           <!-- small box -->
          <a href="<?php echo base_url() ?>data_bumn">
           <div class="small-box bg-green img-thumbnail" style="border-width: 3px; border-color: #ffffff;">
@@ -53,7 +53,9 @@
         </a>
         </div>
 
+      </div>
 
+      <div class="row">
         <div class="col-lg-4 col-xs46">
           <!-- small box -->
          <a href="<?php echo base_url('data_log/kunjungan') ?>">
@@ -101,7 +103,6 @@
           </div>
         </a>
         </div>
-
       </div>
 
       <div class="box">
@@ -292,5 +293,8 @@
       var year = (yy < 000) ? yy + 1900 : yy;
       document.getElementById('date').innerHTML=thisDay + ', ' + day + ' ' + months[month] + ' ' + year;
 
-      var table = $('#example1').DataTable();
+      var table = $('#example1').DataTable({
+        "scrollX": true,
+        "autoWidth": false,
+      });
     </script>

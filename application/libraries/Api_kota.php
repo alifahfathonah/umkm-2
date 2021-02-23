@@ -9,19 +9,25 @@ class Api_kota {
 
     public static function provinsi()
     {
-        $link = 'https://bukacoding.my.id/project/api_indonesia/request/provinsi?id=';
+        $link = 'http://127.0.0.1/api_indonesia/request/provinsi?id=';
+        return $link;
+    }
+
+    public static function provinsi_all()
+    {
+        $link = 'http://127.0.0.1/api_indonesia/request/provinsi?id=all';
         return $link;
     }
 
      public static function kota()
     {
-        $link = 'https://bukacoding.my.id/project/api_indonesia/request/kota?id=';
+        $link = 'http://127.0.0.1/api_indonesia/request/kota?id=';
         return $link;   
     }
 
      public static function kecamatan()
     {
-        $link = 'https://bukacoding.my.id/project/api_indonesia/request/kecamatan?id=';
+        $link = 'http://127.0.0.1/api_indonesia/request/kecamatan?id=';
         return $link;
     }
 } 

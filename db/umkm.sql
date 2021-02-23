@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 23 Feb 2021 pada 07.44
+-- Generation Time: 23 Feb 2021 pada 19.12
 -- Versi Server: 10.1.13-MariaDB
 -- PHP Version: 7.0.6
 
@@ -228,8 +228,11 @@ CREATE TABLE `t_umkm` (
   `umkm_jenis` text NOT NULL,
   `umkm_jenis_lain` text NOT NULL,
   `umkm_provinsi` text NOT NULL,
+  `umkm_provinsi_text` text NOT NULL,
   `umkm_kota` text NOT NULL,
+  `umkm_kota_text` text NOT NULL,
   `umkm_kecamatan` text NOT NULL,
+  `umkm_kecamatan_text` text NOT NULL,
   `umkm_pos` text NOT NULL,
   `umkm_alamat` text NOT NULL,
   `umkm_pemilik` text NOT NULL,
@@ -268,8 +271,8 @@ CREATE TABLE `t_umkm` (
 -- Dumping data untuk tabel `t_umkm`
 --
 
-INSERT INTO `t_umkm` (`umkm_id`, `umkm_user`, `umkm_rumah`, `umkm_skc`, `umkm_cabang`, `umkm_brand`, `umkm_usaha`, `umkm_jenis`, `umkm_jenis_lain`, `umkm_provinsi`, `umkm_kota`, `umkm_kecamatan`, `umkm_pos`, `umkm_alamat`, `umkm_pemilik`, `umkm_no`, `umkm_pic`, `umkm_no_pic`, `umkm_ig`, `umkm_fb`, `umkm_email`, `umkm_shopee`, `umkm_tokopedia`, `umkm_lazada`, `umkm_bukalapak`, `umkm_jdid`, `umkm_blibli`, `umkm_padi`, `umkm_website`, `umkm_pameran_dalam`, `umkm_pameran_luar`, `umkm_penghargaan`, `umkm_deskripsi`, `umkm_berdiri`, `umkm_skala`, `umkm_karyawan`, `umkm_omset`, `umkm_jenis_biaya_bni`, `umkm_kredit`, `umkm_produk`, `umkm_logo`, `umkm_bpom`, `umkm_izinusaha`, `umkm_tanggal`) VALUES
-(3, 4, 'Tanjung Balai', 'SKC Pekanbaru', 'Banjarbaru', 'Like Video', 'Indah Corporations', 'Lain-lain', 'Tiktok', '35', '3505', '3505070', '61661', 'Ds. Desa RT01 RW01', 'Indah Krisna Devi', '081000000000', 'Bagas', '085000000000', 'intagram/indah', 'facebook/indah', 'indah@gmail.com', 'shopee/indah', 'toped/indah', 'lazada/indah', 'BL/indah', 'jd/indah', 'blibli/indah', 'PADI/indah', 'https://indahsekali.com', '["dalam 1","dalam 2"]', '["luar 1","luar 2"]', '["penghargaan 1","penghargaan 2"]', '["deskripsi 1","deskripsi 2"]', '2021', 'Menengah', '200', '1000000', 'Kredit Kemitraan', '22000', '["4_dessert_donut.png","4_dessert_eclair.png"]', 'subscribe_logo_png_1326590.png', 'Ya', '["PIRT","SKDP","Sertifikat Halal"]', '2021-02-19');
+INSERT INTO `t_umkm` (`umkm_id`, `umkm_user`, `umkm_rumah`, `umkm_skc`, `umkm_cabang`, `umkm_brand`, `umkm_usaha`, `umkm_jenis`, `umkm_jenis_lain`, `umkm_provinsi`, `umkm_provinsi_text`, `umkm_kota`, `umkm_kota_text`, `umkm_kecamatan`, `umkm_kecamatan_text`, `umkm_pos`, `umkm_alamat`, `umkm_pemilik`, `umkm_no`, `umkm_pic`, `umkm_no_pic`, `umkm_ig`, `umkm_fb`, `umkm_email`, `umkm_shopee`, `umkm_tokopedia`, `umkm_lazada`, `umkm_bukalapak`, `umkm_jdid`, `umkm_blibli`, `umkm_padi`, `umkm_website`, `umkm_pameran_dalam`, `umkm_pameran_luar`, `umkm_penghargaan`, `umkm_deskripsi`, `umkm_berdiri`, `umkm_skala`, `umkm_karyawan`, `umkm_omset`, `umkm_jenis_biaya_bni`, `umkm_kredit`, `umkm_produk`, `umkm_logo`, `umkm_bpom`, `umkm_izinusaha`, `umkm_tanggal`) VALUES
+(3, 4, 'Tanjung Balai', 'SKC Pekanbaru', 'Banjarbaru', 'Like Video', 'Indah Corporations', 'Lain-lain', 'Tiktok', '35', 'JAWA TIMUR', '3505', 'KABUPATEN BLITAR', '3505040', 'WATES', '61661', 'Ds. Desa RT01 RW01', 'Indah Krisna Devi', '081000000000', 'Bagas', '085000000000', 'intagram/indah', 'facebook/indah', 'indah@gmail.com', 'shopee/indah', 'toped/indah', 'lazada/indah', 'BL/indah', 'jd/indah', 'blibli/indah', 'PADI/indah', 'https://indahsekali.com', '["dalam 1","dalam 2"]', '["luar 1","luar 2"]', '["penghargaan 1","penghargaan 2"]', '["deskripsi 1","deskripsi 2"]', '2021', 'Menengah', '200', '1000000', 'Kredit Kemitraan', '22000', '["4_dessert_donut.png","4_dessert_eclair.png"]', 'subscribe_logo_png_1326590.png', 'Ya', '["PIRT","SKDP","Sertifikat Halal"]', '2021-02-24');
 
 -- --------------------------------------------------------
 
@@ -296,7 +299,7 @@ CREATE TABLE `t_user` (
 
 INSERT INTO `t_user` (`user_id`, `user_foreignkey`, `user_name`, `user_email`, `user_password`, `user_level`, `user_foto`, `user_hapus`, `user_tanggal`, `user_status`) VALUES
 (1, '1', 'Admin', 'admin@admin.com', '21232f297a57a5a743894a0e4a801fc3', '0', 'dessert_donut.png', 0, '2021-01-18', 1),
-(9, '4', 'Indah Krisna Devi', 'indah@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '2', NULL, 0, '2021-02-09', 1),
+(9, '4', 'Indah', 'indah@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '2', NULL, 0, '2021-02-09', 1),
 (10, '5', 'Papa Fait', 'papa@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '1', NULL, 0, '2021-02-17', 1);
 
 --
@@ -370,7 +373,7 @@ ALTER TABLE `t_bumn`
 -- AUTO_INCREMENT for table `t_detail_user`
 --
 ALTER TABLE `t_detail_user`
-  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `t_jenis_usaha`
 --
@@ -400,12 +403,12 @@ ALTER TABLE `t_setting`
 -- AUTO_INCREMENT for table `t_umkm`
 --
 ALTER TABLE `t_umkm`
-  MODIFY `umkm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `umkm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `t_user`
 --
 ALTER TABLE `t_user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

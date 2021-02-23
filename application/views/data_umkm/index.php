@@ -103,13 +103,9 @@
                     <td><?php echo $key['umkm_usaha'] ?></td>
                     <td><?php echo $key['umkm_jenis'] ?></td>
                     <td><?php echo $key['umkm_jenis_lain'] ?></td>
-                    
-                    <td id="provinsi"></td>
-                   
-                    <td id="kota"></td>
-                   
-                    <td id="kecamatan"></td>
-
+                    <td><?php echo $key['umkm_provinsi_text'] ?></td>
+                    <td><?php echo $key['umkm_kota_text'] ?></td>
+                    <td><?php echo $key['umkm_kecamatan_text'] ?></td>
                     <td><?php echo $key['umkm_pos'] ?></td>
                     <td><?php echo $key['umkm_alamat'] ?></td>
                     <td><?php echo $key['umkm_pemilik'] ?></td>
@@ -204,39 +200,5 @@
        'autoWidth'   : false,
     });
 })
-
-//api kota
-var provinsi = <?php echo $data[0]['umkm_provinsi'] ?>;
-var kota = <?php echo $data[0]['umkm_kota'] ?>;
-var kecamatan = <?php echo $data[0]['umkm_kecamatan'] ?>;
-
-//provinsi
-$.getJSON('<?php echo $this->api_kota->provinsi() ?>'+provinsi, function(data) {
-  $('#provinsi').text(data[0]['provinsi_nama']);      
-});
-
-//kota
-$.getJSON('<?php echo $this->api_kota->kota() ?>'+provinsi, function(data) {
-    
-    $.each(data, function(index) {
-          
-      if (data[index].kota_id == kota) {
-        $('#kota').text(data[index].kota_nama);
-      }
-
-    });      
-});
-
-//kecamatan
-$.getJSON('<?php echo $this->api_kota->kecamatan() ?>'+kota, function(data) {
-    
-    $.each(data, function(index) {
-          
-      if (data[index].kecamatan_id == kecamatan) {
-        $('#kecamatan').text(data[index].kecamatan_nama);
-      }
-
-    });      
-});
 
 </script>

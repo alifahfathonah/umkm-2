@@ -9,7 +9,7 @@ class Umkm extends CI_Controller{
 
 			$data['umkm'] = 'class="active"'; 
 		    $data['title'] = 'UMKM';
-
+ 
 		    $user = $this->session->userdata('foreign');
 
 		    $data['data'] = $this->db->query("SELECT * FROM t_umkm where umkm_user = '$user'")->row_array();
@@ -26,18 +26,8 @@ class Umkm extends CI_Controller{
 			    ),
 			);  
 
-	 		//kota
-			@$api_kota = file_get_contents('http://127.0.0.1/api_indonesia/request/kota?id=all', false, stream_context_create($arrContextOptions));
-
-			$json_kota = json_decode($api_kota,true);
-			if (count($json_kota) > 0) {
-				$data['kota'] = $json_kota;
-			} else {
-				$data['kota'] = '';
-			}
-
-			//provinsi
-			@$api_provinsi = file_get_contents('http://127.0.0.1/api_indonesia/request/provinsi?id=all', false, stream_context_create($arrContextOptions));
+	 		//provinsi
+			@$api_provinsi = file_get_contents($this->api_kota->provinsi_all(), false, stream_context_create($arrContextOptions));
 
 			$json_provinsi = json_decode($api_provinsi,true);
 			if (count($json_provinsi) > 0) {
@@ -148,8 +138,11 @@ class Umkm extends CI_Controller{
 						'umkm_jenis' => @$_POST['umkm_jenis'],
 						'umkm_jenis_lain' => @$_POST['umkm_jenis_lain'],
 						'umkm_provinsi' => @$_POST['umkm_provinsi'],
+						'umkm_provinsi_text' => $_POST['umkm_provinsi_text'],
 						'umkm_kota' => @$_POST['umkm_kota'],
+						'umkm_kota_text' => $_POST['umkm_kota_text'],
 						'umkm_kecamatan' => @$_POST['umkm_kecamatan'],
+						'umkm_kecamatan_text' => $_POST['umkm_kecamatan_text'],
 						'umkm_pos' => @$_POST['umkm_pos'],
 						'umkm_alamat' => @$_POST['umkm_alamat'],
 						'umkm_pemilik' => @$_POST['umkm_pemilik'],

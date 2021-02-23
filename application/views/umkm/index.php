@@ -188,7 +188,7 @@
 		                    <input value="<?php echo $data['umkm_usaha'] ?>" name="umkm_usaha" type="text"  class="form-control" placeholder="Usaha" />
 		                </div>
 		                <div class="form-group">
-		                    <label class="control-label">Jenisi Usaha</label>
+		                    <label class="control-label">Jenis Usaha</label>
 		                    <select id="umkm_jenis" name="umkm_jenis"  class="form-control">
 		                    	<option value="" hidden="">Jenis Usaha</option>
 		                    	<?php foreach ($jenis_usaha as $key): ?>
@@ -217,6 +217,8 @@
 		                    	<?php endforeach ?>
 		                    </select>
 
+		                    <input type="hidden" id="umkm_provinsi_text" name="umkm_provinsi_text" value="<?php echo @$data['umkm_provinsi_text'] ?>">
+
 		                </div>
 		                <div class="form-group">
 
@@ -224,13 +226,17 @@
 		                    	<option value="" hidden="">Kab/Kota</option>
 		                    </select>
 
+		                    <input type="hidden" id="umkm_kota_text" name="umkm_kota_text" value="<?php echo @$data['umkm_kota_text'] ?>">
+
 		                </div>
 
 		                <div class="form-group">
 
-		                    <select id="umkm_kacamatan" name="umkm_kacamatan"  class="form-control">
+		                    <select id="umkm_kecamatan" name="umkm_kecamatan"  class="form-control">
 		                    	<option value="" hidden="">Kecamatan</option>
 		                    </select>
+
+		                    <input type="hidden" id="umkm_kecamatan_text" name="umkm_kecamatan_text" value="<?php echo @$data['umkm_kecamatan_text'] ?>">
 
 		                </div>
 
@@ -654,7 +660,6 @@
 		  <span style="position: fixed; bottom: 50%; right: 40%; padding: 0.5%; background-color: #1b30587d; color: white;"><h4>Loading <i class="fa fa-spinner fa-pulse"></i></h4></span>
 		</div>
 
-
 	  </div>
 
 <script type="text/javascript">
@@ -733,9 +738,14 @@ $('#umkm_provinsi').on('change', function (e) {
    			html += '<option value="'+data[index].kota_id+'">'+data[index].kota_nama+'</option>';
 
    			$('#umkm_kota').append(html);
+
+   			$('#umkm_kota').val('<?php echo @$data['umkm_kota'] ?>').change();
    		});
 
    });
+
+   //umkm_provinsi_text
+  $('#umkm_provinsi_text').val($('#umkm_provinsi option:selected').text());
    
 });
 
@@ -756,11 +766,21 @@ $('#umkm_kota').on('change', function (e) {
    			let html = '';
    			html += '<option value="'+data[index].kecamatan_id+'">'+data[index].kecamatan_nama+'</option>';
 
-   			$('#umkm_kacamatan').append(html);
+   			$('#umkm_kecamatan').append(html);
+
+   			$('#umkm_kecamatan').val('<?php echo @$data['umkm_kecamatan'] ?>').change();
    		});   		
 
    });
+
+   //umkm_kota_text
+  $('#umkm_kota_text').val($('#umkm_kota option:selected').text());
    
+});
+
+$('#umkm_kecamatan').on('change', function (e) {
+	//umkm_kecamatan_text
+	$('#umkm_kecamatan_text').val($('#umkm_kecamatan option:selected').text());
 });
 	
 //loading ajax
@@ -799,8 +819,6 @@ $('#umkm_bpom').on('change', function (e) {
 
 //alamat usaha
 $('#umkm_provinsi').val('<?php echo @$data['umkm_provinsi'] ?>').change();
-setTimeout(function(){$('#umkm_kota').val('<?php echo @$data['umkm_kota'] ?>').change();}, 500);
-setTimeout(function(){$('#umkm_kacamatan').val('<?php echo @$data['umkm_kacamatan'] ?>').change();}, 1000);
 /////////////
 
 $('#umkm_rumah').val('<?php echo @$data['umkm_rumah'] ?>').change();
