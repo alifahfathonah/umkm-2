@@ -8,7 +8,13 @@ class Data_bumn extends CI_Controller{
 		if ( $this->session->userdata('login') == 1) {
 			$data['data_bumn'] = 'class="active"';
 		    $data['title'] = 'RUMAH BUMN';
-		    $data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_bumn AS b ON a.user_foreignkey = b.bumn_user WHERE a.user_level = '1' AND a.user_hapus = 0 AND a.user_status = 1")->result_array();
+
+		    $filter = @$_POST['filter'];
+		    if ($filter) {
+		    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_bumn AS b ON a.user_foreignkey = b.bumn_user WHERE a.user_level = '1' AND a.user_hapus = 0 AND a.user_status = 1 AND DATE_FORMAT(b.bumn_tanggal, '%m/%Y') = '$filter'")->result_array();
+		    } else {
+		    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_bumn AS b ON a.user_foreignkey = b.bumn_user WHERE a.user_level = '1' AND a.user_hapus = 0 AND a.user_status = 1")->result_array();
+		    }
 
 		    $this->load->view('v_template_admin/admin_header',$data);
 		    $this->load->view('data_bumn/index');

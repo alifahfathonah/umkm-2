@@ -258,9 +258,9 @@
               </span>
             </a>
             <ul class="treeview-menu" style="<?php echo @$log; ?>">
-              <li><a href="<?php echo base_url('bumn_log/kunjungan') ?>"><i class="fa fa-minus"></i> Kunjungan UMKM</a></li>
-              <li><a href="<?php echo base_url('bumn_log/pelatihan') ?>"><i class="fa fa-minus"></i> Pelatihan</a></li>
-              <li><a href="<?php echo base_url('bumn_log/pameran') ?>"><i class="fa fa-minus"></i> Pameran</a></li>
+              <li <?php echo @$log_kunjungan; ?>><a href="<?php echo base_url('log_kunjungan') ?>"><i class="fa fa-minus"></i> Kunjungan UMKM</a></li>
+              <li <?php echo @$log_pelatihan; ?>><a href="<?php echo base_url('log_pelatihan') ?>"><i class="fa fa-minus"></i> Pelatihan</a></li>
+              <li <?php echo @$log_pameran; ?>><a href="<?php echo base_url('log_pameran') ?>"><i class="fa fa-minus"></i> Pameran</a></li>
             </ul>
           </li>
 
@@ -272,6 +272,24 @@
               <i class="fa fa-home"></i> <span>Rumah BUMN</span>
             </a>
           </li>
+        <?php endif ?>
+
+        <?php if ($this->session->userdata('level') == 0): ?>
+
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-file-text-o"></i> <span>Log Book</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="<?php echo @$log; ?>">
+              <li <?php echo @$log_kunjungan; ?>><a href="<?php echo base_url('data_log/kunjungan') ?>"><i class="fa fa-minus"></i> Kunjungan UMKM</a></li>
+              <li <?php echo @$log_pelatihan; ?>><a href="<?php echo base_url('data_log/pelatihan') ?>"><i class="fa fa-minus"></i> Pelatihan</a></li>
+              <li <?php echo @$log_pameran; ?>><a href="<?php echo base_url('data_log/pameran') ?>"><i class="fa fa-minus"></i> Pameran</a></li>
+            </ul>
+          </li>
+
         <?php endif ?>
 
         <li <?php echo @$profile; ?>>

@@ -68,7 +68,12 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Change Password <i class="fa fa-check"></i></button>
                   </form>
-                </div>
+
+                  <br/><br/>
+                  <p class="text-muted text-center"><small>Already have an account?</small>
+                  <a href="<?php echo base_url('login') ?>">Sign in</a></p>
+                  
+                </div> 
               </div>
             </div>
           </div>

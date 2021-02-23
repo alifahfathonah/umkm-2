@@ -719,7 +719,7 @@ $('#umkm_provinsi').on('change', function (e) {
 	$('#umkm_kota').empty();
 	$('#umkm_kota').append('<option value="" hidden="">Kab/Kota</option>');
 
-   $.getJSON('http://127.0.0.1/api_indonesia/request/kota?id='+id, function(data) {
+   $.getJSON('<?php echo $this->api_kota->kota() ?>'+id, function(data) {
    		
    		$.each(data, function(index) {
    			
@@ -743,7 +743,7 @@ $('#umkm_kota').on('change', function (e) {
 	$('#umkm_kecamatan').empty();
 	$('#umkm_kecamatan').append('<option value="" hidden="">Kecamatan</option>');
 
-   $.getJSON('http://127.0.0.1/api_indonesia/request/kecamatan?id='+id, function(data) {
+   $.getJSON('<?php echo $this->api_kota->kecamatan() ?>'+id, function(data) {
    		
    		$.each(data, function(index) {
    			

@@ -9,7 +9,7 @@
         <?php echo $this->session->flashdata('gagal'); ?>
       </div>
     <?php endif ?>
- 
+  
     <?php if ($this->session->flashdata('success')): ?>
       <div class="alert alert-success alert-dismissible">
          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -21,6 +21,19 @@
       <!-- Default box --> 
       <div class="box"> 
         <div class="box-header with-border">
+
+          <form action="" method="POST" style="display: grid;">
+            <div class="form-group" style="margin-bottom: 0px;">
+              <div class="row">
+                <div class="col-md-3 col-xs-10">
+                  <input placeholder="Filter Bulan" autocomplete="off" required="" name="filter" type="text" class="form-control pull-right" id="monthpicker" value="">
+                </div>
+                <div class="col-md-3 col-xs-2 row">
+                  <button class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            </div>
+          </form>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -36,12 +49,14 @@
                 <tr>
                   <th>Rumah BUMN</th>
                   <th>SKC</th>
+                  <th>Cabang</th>
                   <th>Nama Brand/Merk</th>
                   <th>Nama Usaha</th>
                   <th>Jenisi Usaha</th>
                   <th>Jenis Lain-lain</th>
                   <th>Provinsi</th>
                   <th>Kab/Kota</th>
+                  <th>Kecamatan</th>
                   <th>Kode Pos</th>
                   <th>Alamat lengkap</th>
                   <th>Nama Pemilik </th>
@@ -50,17 +65,19 @@
                   <th>No Tlp/HP PIC</th>
                   <th>Nama IG Usaha</th>
                   <th>Nama FB Usaha</th>
-                  <th>Alamat Email</th>
+                  <th>Alamat Email (Aktif)</th>
                   <th>Shopee</th>
                   <th>Tokopedia</th>
                   <th>Lazada</th>
                   <th>Bukalapak</th>
                   <th>JD.ID</th>
-                  <th>Nama Website</th>
+                  <th>PADI</th>
+                  <th>Blibli</th>
+                  <th>Nama Website Usaha</th>
                   <th>Pameran yang pernah di ikuti di dalam negeri</th>
                   <th>Pameran yang pernah di ikuti di luar negeri :</th>
                   <th>Penghargaan yang pernah di terima </th>
-                  <th>Ceritakan mengenai Brand Anda</th>
+                  <th>Deskripsi produk UMKM</th>
                   <th>Berdiri sejak tahun</th>
                   <th>Skala Usaha</th>
                   <th>Jumlah Karyawan</th>
@@ -68,8 +85,9 @@
                   <th>Jenis pembiayaan BNI</th>
                   <th>Nilai Kredit</th>
                   <th>Foto Produk</th>
-                  <th>Deskripsi Foto</th>
+                  <th>Logo</th>
                   <th>Izin BPOM</th>
+                  <th>Izin Usaha yang dimiliki</th>
                   <th>Delete</th>
                 </tr>
                 </thead>
@@ -80,12 +98,18 @@
                   <tr>
                     <td><?php echo $key['umkm_rumah'] ?></td>
                     <td><?php echo $key['umkm_skc'] ?></td>
+                    <td><?php echo $key['umkm_cabang'] ?></td>
                     <td><?php echo $key['umkm_brand'] ?></td>
                     <td><?php echo $key['umkm_usaha'] ?></td>
                     <td><?php echo $key['umkm_jenis'] ?></td>
                     <td><?php echo $key['umkm_jenis_lain'] ?></td>
-                    <td><?php echo $key['umkm_provinsi'] ?></td>
-                    <td><?php echo $key['umkm_kota'] ?></td>
+                    
+                    <td id="provinsi"></td>
+                   
+                    <td id="kota"></td>
+                   
+                    <td id="kecamatan"></td>
+
                     <td><?php echo $key['umkm_pos'] ?></td>
                     <td><?php echo $key['umkm_alamat'] ?></td>
                     <td><?php echo $key['umkm_pemilik'] ?></td>
@@ -100,20 +124,33 @@
                     <td><?php echo $key['umkm_lazada'] ?></td>
                     <td><?php echo $key['umkm_bukalapak'] ?></td>
                     <td><?php echo $key['umkm_jdid'] ?></td>
+                    <td><?php echo $key['umkm_blibli'] ?></td>
+                    <td><?php echo $key['umkm_padi'] ?></td>
                     <td><?php echo $key['umkm_website'] ?></td>
-                    <td><?php echo $key['umkm_pameran_dalam'] ?></td>
-                    <td><?php echo $key['umkm_pameran_luar'] ?></td>
-                    <td><?php echo $key['umkm_penghargaan'] ?></td>
-                    <td><?php echo $key['umkm_cerita'] ?></td>
+                    <td><?php echo implode(', ', json_decode($key['umkm_pameran_dalam'],true)); ?></td>
+                    <td><?php echo implode(', ', json_decode($key['umkm_pameran_luar'],true)); ?></td>
+                    <td><?php echo implode(', ', json_decode($key['umkm_penghargaan'],true)); ?></td>
+                    <td><?php echo implode(', ', json_decode($key['umkm_deskripsi'],true)); ?></td>
                     <td><?php echo $key['umkm_berdiri'] ?></td>
                     <td><?php echo $key['umkm_skala'] ?></td>
                     <td><?php echo $key['umkm_karyawan'] ?></td>
                     <td><?php echo $key['umkm_omset'] ?></td>
                     <td><?php echo $key['umkm_jenis_biaya_bni'] ?></td>
                     <td><?php echo $key['umkm_kredit'] ?></td>
-                    <td><a href="<?php echo base_url('asset/gambar/umkm/'.$key['umkm_produk']) ?>" taget="_BLANK"><img width="100" src="<?php echo base_url('asset/gambar/umkm/'.$key['umkm_produk']) ?>"></a></td>
-                    <td><?php echo $key['umkm_produk_deskripsi'] ?></td>
+                    
+                    <td>
+                        
+                        <?php if (@$key['umkm_produk']): ?>
+                           <?php foreach (json_decode($key['umkm_produk'],true) as $i): ?>
+                            <a href="<?php echo base_url('asset/gambar/umkm/'.$i) ?>" target="_BLANK"><img src="<?php echo base_url('asset/gambar/umkm/'.$i) ?>" alt="" class="img-thumbnail" width="100"></a>
+                           <?php endforeach ?>
+                        <?php endif ?>
+
+                    </td>
+                    <td><a href="<?php echo base_url('asset/gambar/umkm/'.$key['umkm_logo']) ?>" target="_BLANK"><img src="<?php echo base_url('asset/gambar/umkm/'.$key['umkm_logo']) ?>" alt="" class="img-thumbnail" width="100"></a></td>
+
                     <td><?php echo $key['umkm_bpom'] ?></td>
+                    <td><?php echo implode(', ', json_decode($key['umkm_izinusaha'],true)); ?></td>
                     <td style="width: 50px;">
                       <div>
 
@@ -167,4 +204,39 @@
        'autoWidth'   : false,
     });
 })
+
+//api kota
+var provinsi = <?php echo $data[0]['umkm_provinsi'] ?>;
+var kota = <?php echo $data[0]['umkm_kota'] ?>;
+var kecamatan = <?php echo $data[0]['umkm_kecamatan'] ?>;
+
+//provinsi
+$.getJSON('<?php echo $this->api_kota->provinsi() ?>'+provinsi, function(data) {
+  $('#provinsi').text(data[0]['provinsi_nama']);      
+});
+
+//kota
+$.getJSON('<?php echo $this->api_kota->kota() ?>'+provinsi, function(data) {
+    
+    $.each(data, function(index) {
+          
+      if (data[index].kota_id == kota) {
+        $('#kota').text(data[index].kota_nama);
+      }
+
+    });      
+});
+
+//kecamatan
+$.getJSON('<?php echo $this->api_kota->kecamatan() ?>'+kota, function(data) {
+    
+    $.each(data, function(index) {
+          
+      if (data[index].kecamatan_id == kecamatan) {
+        $('#kecamatan').text(data[index].kecamatan_nama);
+      }
+
+    });      
+});
+
 </script>

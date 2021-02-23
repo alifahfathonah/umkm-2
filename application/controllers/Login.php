@@ -8,7 +8,7 @@ class Login extends CI_Controller{
     $data['setting'] = $this->db->query("SELECT * FROM t_setting")->row_array();
 
     $data['title'] = 'LOGIN';
-    $this->load->view('login.php',$data);
+    $this->load->view('login.php',$data); 
   }   
   function auth(){  
     $email = $this->input->post('email'); 
@@ -126,7 +126,8 @@ class Login extends CI_Controller{
                 $this->db->set($a);
                 $this->db->insert('t_bumn');
 
-                redirect(base_url('bumn'));
+                $this->session->set_flashdata('sukses','registrasi berhasil, tunggu akun anda di validasi admin');
+                redirect(base_url('login'));
 
               } else {
                 //UMKM
@@ -139,7 +140,8 @@ class Login extends CI_Controller{
                 $this->db->set($b);
                 $this->db->insert('t_umkm');
 
-                redirect(base_url('umkm'));
+                $this->session->set_flashdata('sukses','registrasi berhasil, tunggu akun anda di validasi admin');
+                redirect(base_url('login'));
 
               }
               

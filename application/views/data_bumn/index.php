@@ -22,6 +22,19 @@
       <div class="box">
         <div class="box-header with-border">
 
+          <form action="" method="POST" style="display: grid;">
+            <div class="form-group" style="margin-bottom: 0px;">
+              <div class="row">
+                <div class="col-md-3 col-xs-10">
+                  <input placeholder="Filter Bulan" autocomplete="off" required="" name="filter" type="text" class="form-control pull-right" id="monthpicker" value="">
+                </div>
+                <div class="col-md-3 col-xs-2 row">
+                  <button class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            </div>
+          </form>
+
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
               <i class="fa fa-minus"></i></button>
@@ -34,13 +47,13 @@
           <table id="example" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>Nama Rumah BUMN</th>
+                  <th>Nama Rumah BUMN</th> 
+                  <th>Kantor Cabang Pengelola</th>
                   <th>Berdiri sejak </th>
                   <th>Status Gedung Rumah BUMN</th>
                   <th>Foto gedung Rumah BUMN</th>
                   <th>Nama pengelolah Rumah BUMN</th>
                   <th>No Telepon/HP</th>
-                  <th>Kantor Cabang pengelolah</th>
                   <th>Nama PIC Kantor Cabang</th>
                   <th>Delete</th>
                 </tr>
@@ -51,12 +64,20 @@
                                   
                   <tr>
                     <td><?php echo $key['bumn_rumah'] ?></td>
+                    <td><?php echo $key['bumn_kantor_cabang'] ?></td>
                     <td><?php echo $key['bumn_berdiri'] ?></td>
                     <td><?php echo $key['bumn_status'] ?></td>
-                    <td><a target="_BLANK" href="<?php echo base_url('asset/gambar/bumn/'.$key['bumn_foto']) ?>"><img width="50" src="<?php echo base_url('asset/gambar/bumn/'.$key['bumn_foto']) ?>"></a></td>
+                    <td>
+                      
+                      <?php if (@$key['bumn_foto']): ?>
+                         <?php foreach (json_decode($key['bumn_foto'],true) as $i): ?>
+                          <a href="<?php echo base_url('asset/gambar/bumn/'.$i) ?>" target="_BLANK"><img src="<?php echo base_url('asset/gambar/bumn/'.$i) ?>" alt="" class="img-thumbnail" width="50"></a>
+                         <?php endforeach ?>
+                      <?php endif ?>
+
+                    </td>
                     <td><?php echo $key['bumn_pengelola'] ?></td>
                     <td><?php echo $key['bumn_no'] ?></td>
-                    <td><?php echo $key['bumn_cabang'] ?></td>
                     <td><?php echo $key['bumn_pic'] ?></td>
                     <td style="width: 50px;">
                       <div>

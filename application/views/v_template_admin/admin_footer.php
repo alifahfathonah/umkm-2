@@ -79,6 +79,12 @@ $('#datepicker').datepicker({
   autoclose: true
 })
 
+$('#monthpicker').datepicker({
+  format: "mm/yyyy",
+  startView: "months", 
+  minViewMode: "months"
+})
+
 $(function () {
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.

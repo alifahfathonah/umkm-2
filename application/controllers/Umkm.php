@@ -149,7 +149,7 @@ class Umkm extends CI_Controller{
 						'umkm_jenis_lain' => @$_POST['umkm_jenis_lain'],
 						'umkm_provinsi' => @$_POST['umkm_provinsi'],
 						'umkm_kota' => @$_POST['umkm_kota'],
-						'umkm_kacamatan' => @$_POST['umkm_kacamatan'],
+						'umkm_kecamatan' => @$_POST['umkm_kecamatan'],
 						'umkm_pos' => @$_POST['umkm_pos'],
 						'umkm_alamat' => @$_POST['umkm_alamat'],
 						'umkm_pemilik' => @$_POST['umkm_pemilik'],

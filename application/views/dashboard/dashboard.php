@@ -9,7 +9,7 @@
           <i class="icon fa fa-close"></i>
           <?php echo $this->session->flashdata('gagal'); ?>
         </div>
-      <?php endif ?>
+      <?php endif ?> 
    
       <?php if ($this->session->flashdata('success')): ?>
         <div class="alert alert-success alert-dismissible">
@@ -23,7 +23,7 @@
       <div class="row"> 
         <div class="col-lg-6 col-xs-6">
           <!-- small box -->
-           <a href="<?php echo base_url() ?>umkm">
+           <a href="<?php echo base_url() ?>data_umkm">
             <div class="small-box bg-red img-thumbnail" style="border-width: 3px; border-color: #ffffff;">
               <div class="inner">
                 <h3><?php echo $umkm ?></h3>
@@ -39,7 +39,7 @@
         <!-- ./col -->
         <div class="col-lg-6 col-xs-6">
           <!-- small box -->
-         <a href="<?php echo base_url() ?>bumn">
+         <a href="<?php echo base_url() ?>data_bumn">
           <div class="small-box bg-green img-thumbnail" style="border-width: 3px; border-color: #ffffff;">
             <div class="inner">
               <h3><?php echo $bumn ?></h3>
@@ -48,6 +48,55 @@
             </div>
             <div class="icon">
               <i class="fa fa-home"></i>
+            </div>
+          </div>
+        </a>
+        </div>
+
+
+        <div class="col-lg-4 col-xs46">
+          <!-- small box -->
+         <a href="<?php echo base_url('data_log/kunjungan') ?>">
+          <div class="small-box bg-blue img-thumbnail" style="border-width: 3px; border-color: #ffffff;">
+            <div class="inner">
+              <h3><?php echo $kunjungan ?></h3>
+
+              <p>KUNJUNGAN RUMAH BUMN KE UMKM</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-folder"></i>
+            </div>
+          </div>
+        </a>
+        </div>
+
+         <div class="col-lg-4 col-xs46">
+          <!-- small box -->
+         <a href="<?php echo base_url('data_log/pelatihan') ?>">
+          <div class="small-box bg-yellow img-thumbnail" style="border-width: 3px; border-color: #ffffff;">
+            <div class="inner">
+              <h3><?php echo $pelatihan ?></h3>
+
+              <p>PELATIHAN UNTUK UMKM</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-folder"></i>
+            </div>
+          </div>
+        </a>
+        </div>
+
+         <div class="col-lg-4 col-xs46">
+          <!-- small box -->
+         <a href="<?php echo base_url('data_log/pameran') ?>">
+          <div class="small-box bg-aqua img-thumbnail" style="border-width: 3px; border-color: #ffffff;">
+            <div class="inner">
+              <h3><?php echo $pameran ?></h3>
+
+              <p>PAMERAN UNTUK UMKM</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-folder"></i>
             </div>
           </div>
         </a>
@@ -74,7 +123,7 @@
                 <td>No</td>
                 <td>Username</td>
                 <td>Sebagai</td>
-                <td>Status</td>
+                <td>Validasi</td>
                 <td>Tanggal</td>
                 <td width="150">Aksi</td>
               </tr>
@@ -121,7 +170,16 @@
       </div>
 
 
-          <!-- ./wrapper -->
+</div>
+<!-- /.content-wrapper -->
+  <footer class="main-footer">
+   
+    <strong>Copyright &copy; 2020-<?php echo date('Y'); ?> <?php echo $this->session->userdata('footer'); ?>.</strong> All rights
+    reserved.
+  </footer>
+
+
+
 <!-- jQuery 3 -->
 <script src="<?php echo base_url() ?>adminLTE/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
