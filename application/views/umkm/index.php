@@ -6,7 +6,7 @@
         <i class="icon fa fa-close"></i>
         <?php echo $this->session->flashdata('gagal'); ?>
       </div> 
-    <?php endif ?> 
+    <?php endif ?>  
   
     <?php if ($this->session->flashdata('success')): ?>
       <div class="alert alert-success alert-dismissible">
@@ -649,6 +649,12 @@
 
 	    </div>
 	    <!-- /.box-body -->
+
+	    <div id="loading">
+		  <span style="position: fixed; bottom: 50%; right: 40%; padding: 0.5%; background-color: #1b30587d; color: white;"><h4>Loading <i class="fa fa-spinner fa-pulse"></i></h4></span>
+		</div>
+
+
 	  </div>
 
 <script type="text/javascript">
@@ -756,7 +762,13 @@ $('#umkm_kota').on('change', function (e) {
    });
    
 });
-
+	
+//loading ajax
+$(document).ajaxStart(function(){
+    $('#loading').show();
+}).ajaxStop(function(){
+    $('#loading').hide();
+});
 
 //add input
 function add_input(id,target){
