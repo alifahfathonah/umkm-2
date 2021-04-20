@@ -4,7 +4,7 @@ class Umkm extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 	} 
-	function index(){ 
+	function index(){  
 		if ( $this->session->userdata('login') == 1) {
 
 			$data['umkm'] = 'class="active"'; 
@@ -15,6 +15,12 @@ class Umkm extends CI_Controller{
 		    $data['data'] = $this->db->query("SELECT * FROM t_umkm where umkm_user = '$user'")->row_array();
 
 		    $data['jenis_usaha'] = $this->db->query("SELECT * FROM t_jenis_usaha")->result_array();
+
+		    $data['rumah_bumn'] = $this->db->query("SELECT * FROM t_rumah_bumn")->result_array();
+
+		    $data['cabang'] = $this->db->query("SELECT * FROM t_rumah_bumn_cabang")->result_array();
+
+		    $data['skc'] = $this->db->query("SELECT * FROM t_skc")->result_array();
 
 
 		    /////////// API ////////////////////////////
@@ -135,6 +141,7 @@ class Umkm extends CI_Controller{
 						'umkm_cabang' => @$_POST['umkm_cabang'],
 						'umkm_brand' => @$_POST['umkm_brand'],
 						'umkm_usaha' => @$_POST['umkm_usaha'],
+						'umkm_kategori' => @$_POST['umkm_kategori'],
 						'umkm_jenis' => @$_POST['umkm_jenis'],
 						'umkm_jenis_lain' => @$_POST['umkm_jenis_lain'],
 						'umkm_provinsi' => @$_POST['umkm_provinsi'],

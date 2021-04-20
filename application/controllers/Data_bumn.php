@@ -11,9 +11,9 @@ class Data_bumn extends CI_Controller{
 
 		    $filter = @$_POST['filter'];
 		    if ($filter) {
-		    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_bumn AS b ON a.user_foreignkey = b.bumn_user WHERE a.user_level = '1' AND a.user_hapus = 0 AND a.user_status = 1 AND DATE_FORMAT(b.bumn_tanggal, '%m/%Y') = '$filter'")->result_array();
+		    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_bumn AS b ON a.user_foreignkey = b.bumn_user JOIN t_rumah_bumn as c ON b.bumn_rumah = c.rumah_bumn_id JOIN t_rumah_bumn_cabang as d ON b.bumn_kantor_cabang = d.rumah_bumn_cabang_id WHERE a.user_level = '1' AND a.user_hapus = 0 AND a.user_status = 1 AND DATE_FORMAT(b.bumn_tanggal, '%m/%Y') = '$filter'")->result_array();
 		    } else {
-		    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_bumn AS b ON a.user_foreignkey = b.bumn_user WHERE a.user_level = '1' AND a.user_hapus = 0 AND a.user_status = 1")->result_array();
+		    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_bumn AS b ON a.user_foreignkey = b.bumn_user JOIN t_rumah_bumn as c ON b.bumn_rumah = c.rumah_bumn_id JOIN t_rumah_bumn_cabang as d ON b.bumn_kantor_cabang = d.rumah_bumn_cabang_id WHERE a.user_level = '1' AND a.user_hapus = 0 AND a.user_status = 1")->result_array();
 		    }
 
 		    $this->load->view('v_template_admin/admin_header',$data);

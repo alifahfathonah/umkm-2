@@ -41,23 +41,28 @@
 			                  <div class="input-group-addon">
 			                    <i class="fa fa-calendar"></i>
 			                  </div>
-			                  <input required="" name="log_kunjungan_kunjungan" type="text" class="form-control pull-right" id="datepicker" value="">
+			                  <input required="" name="log_kunjungan_kunjungan" type="text" class="form-control pull-right" id="datepicker" value="" placeholder="M/D/Y">
 			                </div>
 		            	</div>
 
 		                <div class="form-group">
 		                   <label>Nama UMKM</label>
-		                   <input required="" type="text" name="log_kunjungan_nama" class="form-control" value=""> 
+		                   <input required="" type="text" name="log_kunjungan_nama" class="form-control" value="" placeholder="Nama UMKM"> 
 		                </div>
 
 		                <div class="form-group">
 		                   <label>Kategori Usaha</label>
-		                   <input required="" type="text" name="log_kunjungan_kategori" class="form-control" value=""> 
+		                   <input required="" type="text" name="log_kunjungan_kategori" class="form-control" value="" placeholder="Kategori"> 
 		                </div>
 
 		                <div class="form-group">
 		                   <label>Lokasi Tempat</label>
-		                   <input required="" type="text" name="log_kunjungan_lokasi" class="form-control" value=""> 
+		                   <input required="" type="text" name="log_kunjungan_lokasi" class="form-control" value="" placeholder="Lokasi"> 
+		                </div>
+
+		                <div class="form-group">
+		                   <label>Laporan Hasil Kunjungan</label>
+		                   <textarea style="height: 85px;" name="log_kunjungan_laporan" class="form-control" placeholder="Deskripsi"></textarea>
 		                </div>
 
 		                <div class="form-group">

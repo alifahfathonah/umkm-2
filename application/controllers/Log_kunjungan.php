@@ -18,7 +18,7 @@ class Log_kunjungan extends CI_Controller{
 		    $this->load->view('kunjungan/index');
 		    $this->load->view('v_template_admin/admin_footer');
  
-		}
+		} 
 		else{
 			redirect(base_url('login'));
 		}
@@ -50,6 +50,7 @@ class Log_kunjungan extends CI_Controller{
 						'log_kunjungan_nama' => @$_POST['log_kunjungan_nama'],
 						'log_kunjungan_kategori' => @$_POST['log_kunjungan_kategori'],
 						'log_kunjungan_lokasi' => @$_POST['log_kunjungan_lokasi'],
+						'log_kunjungan_laporan' => @$_POST['log_kunjungan_laporan'],
 						'log_kunjungan_tanggal' => date('Y-m-d'), 
 					);
 
@@ -155,6 +156,7 @@ class Log_kunjungan extends CI_Controller{
 						'log_kunjungan_nama' => @$_POST['log_kunjungan_nama'],
 						'log_kunjungan_kategori' => @$_POST['log_kunjungan_kategori'],
 						'log_kunjungan_lokasi' => @$_POST['log_kunjungan_lokasi'],
+						'log_kunjungan_laporan' => @$_POST['log_kunjungan_laporan'],
 					);
 
 		$this->db->set($set);

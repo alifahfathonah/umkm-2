@@ -1,4 +1,4 @@
- <section class="content">
+ <section class="content"> 
 
  	<?php if ($this->session->flashdata('gagal')): ?>
       <div class="alert alert-danger alert-dismissible">
@@ -13,8 +13,8 @@
          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <i class="icon fa fa-check"></i>
         <?php echo $this->session->flashdata('success'); ?>
-      </div>
-    <?php endif ?>
+      </div> 
+    <?php endif ?> 
 
 	 <div class="box">
 	    <div class="box-header with-border">
@@ -43,7 +43,7 @@
 			            		<option value="offline">OFFLINE</option>
 			            		<option value="bimtek">BIMTEK</option>
 			            		<option value="workshop">WORKSHOP</option>
-			            		<option value="lainya">LAINYA</option>
+			            		<option value="lainya">LAINNYA</option>
 		            		</select>
 
 		            		<input required="" placeholder="pelatihan yang di ikuti" id="log_pelatihan_pelatihan_lainya" type="hidden" name="log_pelatihan_pelatihan_lainya" style="margin-top: 1%;" class="form-control" value="<?php echo @$data['log_pelatihan_pelatihan_lainya'] ?>">
@@ -71,8 +71,53 @@
 
 		                <div class="form-group">
 		                   <label>Narasumber/pemateri</label>
-		                   <input required="" type="text" name="log_pelatihan_narasumber" class="form-control" value=""> 
-		                </div>
+		                   <div class="input-group" style="margin-top: 1%;">
+	                    		<input type="text" class="form-control" name="log_pelatihan_narasumber[]" value="">
+								<span class="input-group-addon" style="background-color: #efefef;">
+								<button style="border: none; outline:none;" type="button" onclick="add_input('log_pelatihan_narasumber_copy','log_pelatihan_narasumber_tampil')"><i class="fa fa-plus"></i></button>
+								</span>
+							</div>
+
+		                <!--clone element-->
+							<div hidden="" id="log_pelatihan_narasumber_copy">
+								<div class="input-group" style="margin-top: 1%;">
+		                    		<input type="text" class="form-control" name="log_pelatihan_narasumber[]">
+									<span class="input-group-addon" style="background-color: #efefef;"><button onclick="remove_input(this,'input-group')" style="border: none; outline:none;" type="button"><i class="fa fa-minus"></i></button></span>
+								</div>
+							</div>
+
+						<!--tampil-->
+							<div id="log_pelatihan_narasumber_tampil">
+								
+							</div>
+
+
+						</div>
+
+		                <div class="form-group">
+		                   <label>Asal Pemateri</label>
+		                   <div class="input-group" style="margin-top: 1%;">
+	                    		<input type="text" class="form-control" name="log_pelatihan_narasumber_asal[]" value="">
+								<span class="input-group-addon" style="background-color: #efefef;">
+								<button style="border: none; outline:none;" type="button" onclick="add_input('log_pelatihan_narasumber_asal_copy','log_pelatihan_narasumber_asal_tampil')"><i class="fa fa-plus"></i></button>
+								</span>
+							</div>
+
+		                <!--clone element-->
+							<div hidden="" id="log_pelatihan_narasumber_asal_copy">
+								<div class="input-group" style="margin-top: 1%;">
+		                    		<input type="text" class="form-control" name="log_pelatihan_narasumber_asal[]">
+									<span class="input-group-addon" style="background-color: #efefef;"><button onclick="remove_input(this,'input-group')" style="border: none; outline:none;" type="button"><i class="fa fa-minus"></i></button></span>
+								</div>
+							</div>
+
+						<!--tampil-->
+							<div id="log_pelatihan_narasumber_asal_tampil">
+								
+							</div>
+
+
+						</div>
 
 		                <div class="form-group">
 		                   <label>Jumlah Peserta</label>

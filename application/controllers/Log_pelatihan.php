@@ -1,4 +1,4 @@
-<?php
+<?php 
 class Log_pelatihan extends CI_Controller{
 
 	function __construct(){
@@ -51,7 +51,8 @@ class Log_pelatihan extends CI_Controller{
 						'log_pelatihan_nama' => $_POST['log_pelatihan_nama'],
 						'log_pelatihan_waktu' => @$date,
 						'log_pelatihan_lokasi' => $_POST['log_pelatihan_lokasi'],
-						'log_pelatihan_narasumber' => $_POST['log_pelatihan_narasumber'],
+						'log_pelatihan_narasumber' => str_replace('[]', '', json_encode(array_filter(@$_POST['log_pelatihan_narasumber'], 'strlen'))),
+						'log_pelatihan_narasumber_asal' => str_replace('[]', '', json_encode(array_filter(@$_POST['log_pelatihan_narasumber_asal'], 'strlen'))),
 						'log_pelatihan_jumlah' => $_POST['log_pelatihan_jumlah'],
 						'log_pelatihan_tanggal' => date('Y-m-d'), 
 					);
@@ -143,7 +144,7 @@ class Log_pelatihan extends CI_Controller{
 		    $this->load->view('v_template_admin/admin_footer');
  
 		}
-		else{
+		else{ 
 			redirect(base_url('login'));
 		}
 	} 
@@ -159,7 +160,8 @@ class Log_pelatihan extends CI_Controller{
 						'log_pelatihan_nama' => $_POST['log_pelatihan_nama'],
 						'log_pelatihan_waktu' => @$date,
 						'log_pelatihan_lokasi' => $_POST['log_pelatihan_lokasi'],
-						'log_pelatihan_narasumber' => $_POST['log_pelatihan_narasumber'],
+						'log_pelatihan_narasumber' => str_replace('[]', '', json_encode(array_filter(@$_POST['log_pelatihan_narasumber'], 'strlen'))),
+						'log_pelatihan_narasumber_asal' => str_replace('[]', '', json_encode(array_filter(@$_POST['log_pelatihan_narasumber_asal'], 'strlen'))),
 						'log_pelatihan_jumlah' => $_POST['log_pelatihan_jumlah'],
 					);
 

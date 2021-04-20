@@ -217,7 +217,7 @@
               </span>
             </a>
             <ul class="treeview-menu" style="<?php echo @$tree; ?>">
-              <li><a href="<?php echo base_url('validasi/umkm') ?>"><i class="fa fa-minus"></i> UMKM</a></li>
+              <!-- <li><a href="<?php echo base_url('validasi/umkm') ?>"><i class="fa fa-minus"></i> UMKM</a></li> -->
               <li><a href="<?php echo base_url('validasi/bumn') ?>"><i class="fa fa-minus"></i> BUMN</a></li>
             </ul>
           </li>
@@ -232,18 +232,18 @@
           </li>
         <?php endif ?>
 
-        <?php if ($this->session->userdata('level') == 0): ?>
-          <li <?php echo @$data_umkm; ?>>
-            <a href="<?php echo base_url() ?>data_umkm">
-              <i class="fa fa-users"></i> <span>Data UMKM</span>
-            </a>
-          </li>
-        <?php endif ?>
-
         <?php if ($this->session->userdata('level') == 1): ?>
           <li <?php echo @$bumn; ?>>
             <a href="<?php echo base_url() ?>bumn">
               <i class="fa fa-question-circle"></i> <span>BUMN</span>
+            </a>
+          </li>
+        <?php endif ?>
+
+        <?php if ($this->session->userdata('level') < 2): ?>
+          <li <?php echo @$data_umkm; ?>>
+            <a href="<?php echo base_url() ?>data_umkm">
+              <i class="fa fa-users"></i> <span>Data UMKM</span>
             </a>
           </li>
         <?php endif ?>

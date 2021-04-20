@@ -60,6 +60,11 @@
 		                   <input required="" type="text" name="log_kunjungan_lokasi" class="form-control" value="<?php echo @$data['log_kunjungan_lokasi'] ?>"> 
 		                </div>
 
+		                 <div class="form-group">
+		                   <label>Laporan Hasil Kunjungan</label>
+		                   <textarea style="height: 85px;" name="log_kunjungan_laporan" class="form-control" placeholder="Deskripsi"><?php echo @$data['log_kunjungan_laporan'] ?></textarea>
+		                </div>
+
 		                <div class="form-group">
 		                   <label>Dokumentasi</label>
 		                   <div class="input-group" style="margin-top: 1%;">

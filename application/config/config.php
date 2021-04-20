@@ -523,10 +523,3 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-function __autoload($class)
-{
-    if(strpos($class, 'SYS_') !== 0)
-    {
-        @include_once( APPPATH . 'core/'. $class . '.php' );
-    }
-}

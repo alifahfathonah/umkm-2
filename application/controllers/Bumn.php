@@ -14,6 +14,10 @@ class Bumn extends CI_Controller{
 
 		    $data['data'] = $this->db->query("SELECT * FROM t_bumn where bumn_user = '$user'")->row_array();
 
+		    $data['rumah_bumn'] = $this->db->query("SELECT * FROM t_rumah_bumn")->result_array();
+
+		    $data['cabang'] = $this->db->query("SELECT * FROM t_rumah_bumn_cabang")->result_array();
+
 		    $this->load->view('v_template_admin/admin_header',$data);
 		    $this->load->view('bumn/index');
 		    $this->load->view('v_template_admin/admin_footer',$data);
@@ -79,9 +83,10 @@ class Bumn extends CI_Controller{
 						'bumn_kantor_cabang' => @$_POST['bumn_kantor_cabang'],
 						'bumn_berdiri' => @$_POST['bumn_berdiri'],
 						'bumn_status' => @$_POST['bumn_status'],
-						'bumn_pengelola' => @$_POST['bumn_pengelola'],
-						'bumn_no' => @$_POST['bumn_no'],
-						'bumn_pic' => @$_POST['bumn_pic'],
+						'bumn_status_dinas' => @$_POST['bumn_status_dinas'],
+						'bumn_pengelola' => str_replace('[]', '', json_encode(array_filter(@$_POST['bumn_pengelola'], 'strlen'))),
+						'bumn_no' => str_replace('[]', '', json_encode(array_filter(@$_POST['bumn_no'], 'strlen'))),
+						'bumn_pic' => str_replace('[]', '', json_encode(array_filter(@$_POST['bumn_pic'], 'strlen'))),
 						'bumn_tanggal' => date('Y-m-d'), 
 					);
 		$this->db->set($set);

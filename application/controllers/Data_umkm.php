@@ -1,5 +1,5 @@
 <?php
-class Data_umkm extends CI_Controller{ 
+class Data_umkm extends CI_Controller{  
 
 	function __construct(){
 		parent::__construct();
@@ -9,12 +9,34 @@ class Data_umkm extends CI_Controller{
 			$data['data_umkm'] = 'class="active"';
 		    $data['title'] = 'Data UMKM';
 
+		    $id = $this->session->userdata('foreign');
+		    $level = $this->session->userdata('level');
+
 		    $filter = @$_POST['filter'];
-		    if ($filter) {
-		    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_umkm AS b ON a.user_foreignkey = b.umkm_user WHERE a.user_level = '2' AND a.user_hapus = 0 AND a.user_status = 1 AND DATE_FORMAT(b.umkm_tanggal, '%m/%Y') = '$filter'")->result_array();
-		    }else{
-		    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_umkm AS b ON a.user_foreignkey = b.umkm_user WHERE a.user_level = '2' AND a.user_hapus = 0 AND a.user_status = 1")->result_array(); 
+
+		    switch ($level) {
+		    	case '0':
+		    		
+		    		if ($filter) {
+				    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_umkm AS b ON a.user_foreignkey = b.umkm_user JOIN t_rumah_bumn as c ON b.umkm_rumah = c.rumah_bumn_id JOIN t_skc as d ON b.umkm_skc = d.skc_id JOIN t_rumah_bumn_cabang as e ON b.umkm_cabang = e.rumah_bumn_cabang_id WHERE a.user_level = '2' AND a.user_hapus = 0 AND DATE_FORMAT(b.umkm_tanggal, '%m/%Y') = '$filter'")->result_array();
+				    }else{
+				    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_umkm AS b ON a.user_foreignkey = b.umkm_user JOIN t_rumah_bumn as c ON b.umkm_rumah = c.rumah_bumn_id JOIN t_skc as d ON b.umkm_skc = d.skc_id JOIN t_rumah_bumn_cabang as e ON b.umkm_cabang = e.rumah_bumn_cabang_id WHERE a.user_level = '2' AND a.user_hapus = 0")->result_array(); 
+				    }
+		    		break;
+		    	
+		    	case '1':
+		    		$get = $this->db->query("SELECT * FROM t_bumn WHERE bumn_user = '$id'")->row_array();
+		    		$rumah_bumn = $get['bumn_rumah'];
+
+		    		if ($filter) {
+				    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_umkm AS b ON a.user_foreignkey = b.umkm_user JOIN t_rumah_bumn as c ON b.umkm_rumah = c.rumah_bumn_id JOIN t_skc as d ON b.umkm_skc = d.skc_id JOIN t_rumah_bumn_cabang as e ON b.umkm_cabang = e.rumah_bumn_cabang_id WHERE a.user_level = '2' AND a.user_hapus = 0 AND DATE_FORMAT(b.umkm_tanggal, '%m/%Y') = '$filter' AND b.umkm_rumah = '$rumah_bumn'")->result_array();
+				    }else{
+				    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_umkm AS b ON a.user_foreignkey = b.umkm_user JOIN t_rumah_bumn as c ON b.umkm_rumah = c.rumah_bumn_id JOIN t_skc as d ON b.umkm_skc = d.skc_id JOIN t_rumah_bumn_cabang as e ON b.umkm_cabang = e.rumah_bumn_cabang_id WHERE a.user_level = '2' AND a.user_hapus = 0 AND b.umkm_rumah = '$rumah_bumn'")->result_array(); 
+				    }
+		    		break;
+		    	
 		    }
+		    
 
 		    $this->load->view('v_template_admin/admin_header',$data);
 		    $this->load->view('data_umkm/index');

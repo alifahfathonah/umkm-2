@@ -1,6 +1,6 @@
 
  
-    <!-- Main content -->  
+    <!-- Main content -->    
     <section class="content"> 
 
       <?php if ($this->session->flashdata('gagal')): ?>
@@ -10,7 +10,7 @@
           <?php echo $this->session->flashdata('gagal'); ?>
         </div>
       <?php endif ?> 
-   
+    
       <?php if ($this->session->flashdata('success')): ?>
         <div class="alert alert-success alert-dismissible">
            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -52,7 +52,7 @@
           </div>
         </a>
         </div>
-
+ 
       </div>
 
       <div class="row">
@@ -104,6 +104,29 @@
         </a>
         </div>
       </div>
+
+       <!-- AREA CHART -->
+          <div class="box">
+            <div class="box-header with-border">
+              <a href="<?php echo base_url('dashboard/index/kunjungan') ?>"><button class="<?= (@$btn_kunjungan)? 'btn btn-primary' : 'btn btn-default' ?>" type="button">Kunjungan UMKM terbanyak</button></a>
+              <a href="<?php echo base_url('dashboard/index/pelatihan') ?>"><button class="<?= (@$btn_pelatihan)? 'btn btn-primary' : 'btn btn-default' ?>" type="button">Pelatihan terbanyak</button></a>
+              <a href="<?php echo base_url('dashboard/index/terbaru') ?>"><button class="<?= (@$btn_terbaru)? 'btn btn-primary' : 'btn btn-default' ?>" type="button">Jumlah UMKM terbaru terbanyak</button></a>
+
+              <button class="btn btn-success" data-toggle="modal" data-target="#download" type="button"><i class="fa fa-download"></i> Download data UMKM</button>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              
+              <div id="bar-chart" style="height: 300px;"></div>
+
+            </div>
+            <!-- /.box-body -->
+          </div>
 
       <div class="box">
         <div class="box-header with-border">
@@ -171,6 +194,159 @@
       </div>
 
 
+      <div class="modal fade" id="download">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <select id="download_bumn" class="form-control">
+                    <option value="" hidden="">-- Rumah BUMN --</option>
+                    <?php foreach ($download as $key): ?>
+                      <option value="<?php echo $key['bumn'] ?>"><?php echo $key['bumn'] ?></option>
+                    <?php endforeach ?>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <select id="download_tahun" class="form-control">
+                    <option value="" hidden="">-- Tahun / Bulan --</option>
+                    <?php foreach ($download as $key): ?>
+                      <option value="<?php echo $key['tanggal'] ?>"><?php echo $key['tanggal'] ?></option>
+                    <?php endforeach ?>
+                  </select>
+                </div>
+
+                <button onclick="download()" class="btn btn-success" type="button"><i class="fa fa-download"> Download</i></button>
+
+                <div hidden="">
+                      
+                    <table id="example2" class="table table-bordered table-responsive">
+                    <thead>
+                    <tr>
+                      <th>Rumah BUMN</th>
+                      <th>SKC</th>
+                      <th>Cabang</th>
+                      <th>Nama Brand/Merk</th>
+                      <th>Nama Usaha</th>
+                      <th>Kategori</th>
+                      <th>Jenis Usaha</th>
+                      <th>Jenis Lain-lain</th>
+                      <th>Provinsi</th>
+                      <th>Kab/Kota</th>
+                      <th>Kecamatan</th>
+                      <th>Kode Pos</th>
+                      <th>Alamat lengkap</th>
+                      <th>Nama Pemilik </th>
+                      <th>No Tlp/Hp pemilik</th>
+                      <th>Nama PIC selain pemilik</th>
+                      <th>No Tlp/HP PIC</th>
+                      <th>Nama IG Usaha</th>
+                      <th>Nama FB Usaha</th>
+                      <th>Alamat Email (Aktif)</th>
+                      <th>Shopee</th>
+                      <th>Tokopedia</th>
+                      <th>Lazada</th>
+                      <th>Bukalapak</th>
+                      <th>JD.ID</th>
+                      <th>PADI</th>
+                      <th>Blibli</th>
+                      <th>Nama Website Usaha</th>
+                      <th>Pameran yang pernah di ikuti di dalam negeri</th>
+                      <th>Pameran yang pernah di ikuti di luar negeri :</th>
+                      <th>Penghargaan yang pernah di terima </th>
+                      <th>Deskripsi produk UMKM</th>
+                      <th>Berdiri sejak tahun</th>
+                      <th>Skala Usaha</th>
+                      <th>Jumlah Karyawan</th>
+                      <th>Omset rata-rata per bulan :</th>
+                      <th>Jenis pembiayaan BNI</th>
+                      <th>Nilai Kredit</th>
+                      <th>Foto Produk</th>
+                      <th>Logo</th>
+                      <th>Izin BPOM</th>
+                      <th>Izin Usaha yang dimiliki</th>
+                      <th>Tanggal Input</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <?php foreach ($table_umkm as $key): ?>
+                                      
+                      <tr>
+                        <td><?php echo $key['rumah_bumn_nama'] ?></td>
+                        <td><?php echo $key['skc_nama'] ?></td>
+                        <td><?php echo $key['rumah_bumn_cabang_nama'] ?></td>
+                        <td><?php echo $key['umkm_brand'] ?></td>
+                        <td><?php echo $key['umkm_usaha'] ?></td>
+                        <td><?php echo $key['umkm_kategori'] ?></td>
+                        <td><?php echo $key['umkm_jenis'] ?></td>
+                        <td><?php echo $key['umkm_jenis_lain'] ?></td>
+                        <td><?php echo $key['umkm_provinsi_text'] ?></td>
+                        <td><?php echo $key['umkm_kota_text'] ?></td>
+                        <td><?php echo $key['umkm_kecamatan_text'] ?></td>
+                        <td><?php echo $key['umkm_pos'] ?></td>
+                        <td><?php echo $key['umkm_alamat'] ?></td>
+                        <td><?php echo $key['umkm_pemilik'] ?></td>
+                        <td><?php echo $key['umkm_no'] ?></td>
+                        <td><?php echo $key['umkm_pic'] ?></td>
+                        <td><?php echo $key['umkm_no_pic'] ?></td>
+                        <td><?php echo $key['umkm_ig'] ?></td>
+                        <td><?php echo $key['umkm_fb'] ?></td>
+                        <td><?php echo $key['umkm_email'] ?></td>
+                        <td><?php echo $key['umkm_shopee'] ?></td>
+                        <td><?php echo $key['umkm_tokopedia'] ?></td>
+                        <td><?php echo $key['umkm_lazada'] ?></td>
+                        <td><?php echo $key['umkm_bukalapak'] ?></td>
+                        <td><?php echo $key['umkm_jdid'] ?></td>
+                        <td><?php echo $key['umkm_blibli'] ?></td>
+                        <td><?php echo $key['umkm_padi'] ?></td>
+                        <td><?php echo $key['umkm_website'] ?></td>
+                        <td><?php echo implode(', ', json_decode($key['umkm_pameran_dalam'],true)); ?></td>
+                        <td><?php echo implode(', ', json_decode($key['umkm_pameran_luar'],true)); ?></td>
+                        <td><?php echo implode(', ', json_decode($key['umkm_penghargaan'],true)); ?></td>
+                        <td><?php echo implode(', ', json_decode($key['umkm_deskripsi'],true)); ?></td>
+                        <td><?php echo $key['umkm_berdiri'] ?></td>
+                        <td><?php echo $key['umkm_skala'] ?></td>
+                        <td><?php echo $key['umkm_karyawan'] ?></td>
+                        <td><?php echo $key['umkm_omset'] ?></td>
+                        <td><?php echo $key['umkm_jenis_biaya_bni'] ?></td>
+                        <td><?php echo $key['umkm_kredit'] ?></td>
+                        
+                        <td>
+                            
+                            <?php if (@$key['umkm_produk']): ?>
+                               <?php foreach (json_decode($key['umkm_produk'],true) as $i): ?>
+                                <a href="<?php echo base_url('asset/gambar/umkm/'.$i) ?>" target="_BLANK"><img src="<?php echo base_url('asset/gambar/umkm/'.$i) ?>" alt="" class="img-thumbnail" width="100"></a>
+                               <?php endforeach ?>
+                            <?php endif ?>
+
+                        </td>
+                        <td><a href="<?php echo base_url('asset/gambar/umkm/'.$key['umkm_logo']) ?>" target="_BLANK"><img src="<?php echo base_url('asset/gambar/umkm/'.$key['umkm_logo']) ?>" alt="" class="img-thumbnail" width="100"></a></td>
+
+                        <td><?php echo $key['umkm_bpom'] ?></td>
+                        <td><?php echo implode(', ', json_decode($key['umkm_izinusaha'],true)); ?></td>
+                        <td><?php echo $key['umkm_tanggal'] ?></td>
+                      </tr>
+                      
+                    <?php endforeach ?>
+
+                  </table>
+
+                </div>
+              
+              </div>
+
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+
 </div>
 <!-- /.content-wrapper -->
   <footer class="main-footer">
@@ -181,9 +357,7 @@
 
 
 
-<!-- jQuery 3 -->
-<script src="<?php echo base_url() ?>adminLTE/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
+  <!-- jQuery UI 1.11.4 -->
 <script src="<?php echo base_url() ?>adminLTE/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
@@ -219,7 +393,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url() ?>adminLTE/dist/js/demo.js"></script>
 
-<script src="<?php echo base_url() ?>adminLTE/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- ChartJS -->
 <script src="<?php echo base_url() ?>adminLTE/bower_components/chart/Chart.js"></script>
 
@@ -242,8 +415,45 @@
 
 <script src="<?php echo base_url() ?>adminLTE/bower_components/ckeditor/ckeditor.js"></script>
 
+<!--button datatable-->
+<script type="text/javascript" src="<?php echo base_url() ?>adminLTE/bower_components/button/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>adminLTE/bower_components/button/jszip.min.js"></script>
+
+<script type="text/javascript" language="javascript" src="<?php echo base_url() ?>adminLTE/bower_components/button/vfs_fonts.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>adminLTE/bower_components/button/buttons.html5.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>adminLTE/bower_components/button/buttons.print.min.js"></script>
+
 
   <script type="text/javascript">
+
+    var bar_data = {
+      data : [
+                <?php foreach ($peringkat as $key): ?>
+                ['<?php echo $key['lokasi'] ?>', <?php echo $key['jumlah'] ?>],
+                <?php endforeach ?>
+             ],
+      color: '#117A8B'
+    }
+    $.plot('#bar-chart', [bar_data], {
+      grid  : {
+        borderWidth: 1,
+        borderColor: '#117A8B',
+        tickColor  : '#117A8B'
+      },
+      series: {
+        bars: {
+          show    : true,
+          barWidth: 0.5,
+          align   : 'center'
+        }
+      },
+      xaxis : {
+        mode      : 'categories',
+        tickLength: 0
+      }
+    })
+    /* END BAR CHART */
+
     <!--
     function showTime() {
         var a_p = "";
@@ -293,8 +503,41 @@
       var year = (yy < 000) ? yy + 1900 : yy;
       document.getElementById('date').innerHTML=thisDay + ', ' + day + ' ' + months[month] + ' ' + year;
 
-      var table = $('#example1').DataTable({
-        "scrollX": true,
-        "autoWidth": false,
-      });
+      //data table
+    $(function () {
+
+      //data table
+      $('#example1').DataTable()
+      $('#example2').DataTable({
+        dom: 'Blfrtip',
+         lengthMenu: [[10, 25, 50,100,200,300,400], [10, 25, 50,100,200,300,400]],
+         buttons: [
+             'copy', 'excel', 'pdf', 'print'
+         ],
+         'lengthChange': false,
+         'autoWidth'   : false,
+         'scrollX'     : true
+      })
+    })
+
+
+    //download
+    function download(){
+      var bumn = $('#download_bumn').val();
+      var tahun = $('#download_tahun').val();
+
+      if (bumn == '' || tahun == '') {
+        alert('Periksa kembali !');
+      }else{
+        var table = $('#example2').DataTable();
+
+        if (table.search(bumn+' '+tahun).draw()) {
+
+          $('#example2_wrapper > div.dt-buttons > button.dt-button.buttons-excel.buttons-html5').click();
+        }
+
+      }
+
+    }
+
     </script>

@@ -7,7 +7,7 @@
          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <i class="icon fa fa-close"></i>
         <?php echo $this->session->flashdata('gagal'); ?>
-      </div>
+      </div> 
     <?php endif ?>
   
     <?php if ($this->session->flashdata('success')): ?>
@@ -52,7 +52,8 @@
                   <th>Cabang</th>
                   <th>Nama Brand/Merk</th>
                   <th>Nama Usaha</th>
-                  <th>Jenisi Usaha</th>
+                  <th>Kategori</th>
+                  <th>Jenis Usaha</th>
                   <th>Jenis Lain-lain</th>
                   <th>Provinsi</th>
                   <th>Kab/Kota</th>
@@ -88,6 +89,7 @@
                   <th>Logo</th>
                   <th>Izin BPOM</th>
                   <th>Izin Usaha yang dimiliki</th>
+                  <th>Tanggal Input</th>
                   <th>Delete</th>
                 </tr>
                 </thead>
@@ -96,11 +98,12 @@
                 <?php foreach ($data as $key): ?>
                                   
                   <tr>
-                    <td><?php echo $key['umkm_rumah'] ?></td>
-                    <td><?php echo $key['umkm_skc'] ?></td>
-                    <td><?php echo $key['umkm_cabang'] ?></td>
+                    <td><?php echo $key['rumah_bumn_nama'] ?></td>
+                    <td><?php echo $key['skc_nama'] ?></td>
+                    <td><?php echo $key['rumah_bumn_cabang_nama'] ?></td>
                     <td><?php echo $key['umkm_brand'] ?></td>
                     <td><?php echo $key['umkm_usaha'] ?></td>
+                    <td><?php echo $key['umkm_kategori'] ?></td>
                     <td><?php echo $key['umkm_jenis'] ?></td>
                     <td><?php echo $key['umkm_jenis_lain'] ?></td>
                     <td><?php echo $key['umkm_provinsi_text'] ?></td>
@@ -147,6 +150,7 @@
 
                     <td><?php echo $key['umkm_bpom'] ?></td>
                     <td><?php echo implode(', ', json_decode($key['umkm_izinusaha'],true)); ?></td>
+                    <td><?php echo $key['umkm_tanggal'] ?></td>
                     <td style="width: 50px;">
                       <div>
 

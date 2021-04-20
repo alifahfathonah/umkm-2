@@ -16,7 +16,7 @@
         <i class="icon fa fa-check"></i>
         <?php echo $this->session->flashdata('success'); ?>
       </div>
-    <?php endif ?>
+    <?php endif ?> 
  
       <!-- Default box --> 
       <div class="box">
@@ -53,6 +53,7 @@
                   <th>Waktu pelatihan</th>
                   <th>Lokasi</th>
                   <th>Narasumber/pemateri</th>
+                  <th>Asal Pemateri / narasumber</th>
                   <th>Jumlah Peserta</th>
                   <th>Dokumentasi</th>
                   <th width="1">Delete</th>
@@ -68,7 +69,8 @@
                     <td><?php echo $key['log_pelatihan_nama'] ?></td>
                     <td><?php echo $key['log_pelatihan_waktu'] ?></td>
                     <td><?php echo $key['log_pelatihan_lokasi'] ?></td>
-                    <td><?php echo $key['log_pelatihan_narasumber'] ?></td>
+                    <td><?php echo implode(', ', json_decode($key['log_pelatihan_narasumber'],true)); ?></td>
+                    <td><?php echo implode(', ', json_decode($key['log_pelatihan_narasumber_asal'],true)); ?></td>
                     <td><?php echo $key['log_pelatihan_jumlah'] ?></td>
                     <td>
                       <button data-toggle="modal" data-target="#view_image<?php echo $key['log_pelatihan_id'] ?>">View Image</button>

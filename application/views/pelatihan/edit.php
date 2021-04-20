@@ -1,4 +1,4 @@
- <section class="content">
+ <section class="content"> 
 
  	<?php if ($this->session->flashdata('gagal')): ?>
       <div class="alert alert-danger alert-dismissible">
@@ -43,7 +43,7 @@
 			            		<option value="offline">OFFLINE</option>
 			            		<option value="bimtek">BIMTEK</option>
 			            		<option value="workshop">WORKSHOP</option>
-			            		<option value="lainya">LAINYA</option>
+			            		<option value="lainya">LAINNYA</option>
 		            		</select>
 
 		            		<input required="" placeholder="pelatihan yang di ikuti" id="log_pelatihan_pelatihan_lainya" type="hidden" name="log_pelatihan_pelatihan_lainya" style="margin-top: 1%;" class="form-control" value="<?php echo @$data['log_pelatihan_pelatihan_lainya'] ?>">
@@ -70,8 +70,99 @@
 		                </div>
 
 		                <div class="form-group">
-		                   <label>Narasumber/pemateri</label>
-		                   <input type="text" name="log_pelatihan_narasumber" class="form-control" value="<?php echo @$data['log_pelatihan_narasumber'] ?>"> 
+		                    <label class="control-label">Narasumber/pemateri</label>
+
+							<?php if (@$data['log_pelatihan_narasumber']): ?>
+
+								<?php $i = 0; ?>
+								<?php foreach (json_decode(@$data['log_pelatihan_narasumber']) as $key): ?>
+
+									<div class="input-group" style="margin-top: 1%;">
+			                    		<input type="text" class="form-control" name="log_pelatihan_narasumber[]" value="<?php echo $key ?>">
+										<span class="input-group-addon" style="background-color: #efefef;">
+
+											<?php if ($i < 1): ?>
+												<button style="border: none; outline:none;" type="button" onclick="add_input('log_pelatihan_narasumber_copy','log_pelatihan_narasumber_tampil')"><i class="fa fa-plus"></i></button>
+											<?php else: ?>	
+												<button style="border: none; outline:none;" type="button" <button onclick="remove_input(this,'input-group')" style="border: none; outline:none;"><i class="fa fa-minus"></i></button>
+											<?php endif ?>
+
+										</span>
+									</div>
+								
+								<?php $i++; ?>
+								<?php endforeach ?>
+							
+							<?php else: ?>
+								
+								<div class="input-group">
+		                    		<input type="text" class="form-control" name="log_pelatihan_narasumber[]">
+									<span class="input-group-addon" style="background-color: #efefef;"><button style="border: none; outline:none;" type="button" onclick="add_input('log_pelatihan_narasumber_copy','log_pelatihan_narasumber_tampil')"><i class="fa fa-plus"></i></button></span>
+								</div>
+
+							<?php endif ?>
+
+							<!--clone element-->
+							<div hidden="" id="log_pelatihan_narasumber_copy">
+								<div class="input-group" style="margin-top: 1%;">
+		                    		<input type="text" class="form-control" name="log_pelatihan_narasumber[]">
+									<span class="input-group-addon" style="background-color: #efefef;"><button onclick="remove_input(this,'input-group')" style="border: none; outline:none;" type="button"><i class="fa fa-minus"></i></button></span>
+								</div>
+							</div>
+
+							<!--tampil-->
+							<div id="log_pelatihan_narasumber_tampil">
+								
+							</div>
+
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label">Asal Pemateri</label>
+
+							<?php if (@$data['log_pelatihan_narasumber_asal']): ?>
+
+								<?php $i = 0; ?>
+								<?php foreach (json_decode(@$data['log_pelatihan_narasumber_asal']) as $key): ?>
+
+									<div class="input-group" style="margin-top: 1%;">
+			                    		<input type="text" class="form-control" name="log_pelatihan_narasumber_asal[]" value="<?php echo $key ?>">
+										<span class="input-group-addon" style="background-color: #efefef;">
+
+											<?php if ($i < 1): ?>
+												<button style="border: none; outline:none;" type="button" onclick="add_input('log_pelatihan_narasumber_asal_copy','log_pelatihan_narasumber_asal_tampil')"><i class="fa fa-plus"></i></button>
+											<?php else: ?>	
+												<button style="border: none; outline:none;" type="button" <button onclick="remove_input(this,'input-group')" style="border: none; outline:none;"><i class="fa fa-minus"></i></button>
+											<?php endif ?>
+
+										</span>
+									</div>
+								
+								<?php $i++; ?>
+								<?php endforeach ?>
+							
+							<?php else: ?>
+								
+								<div class="input-group">
+		                    		<input type="text" class="form-control" name="log_pelatihan_narasumber_asal[]">
+									<span class="input-group-addon" style="background-color: #efefef;"><button style="border: none; outline:none;" type="button" onclick="add_input('log_pelatihan_narasumber_asal_copy','log_pelatihan_narasumber_asal_tampil')"><i class="fa fa-plus"></i></button></span>
+								</div>
+
+							<?php endif ?>
+
+							<!--clone element-->
+							<div hidden="" id="log_pelatihan_narasumber_asal_copy">
+								<div class="input-group" style="margin-top: 1%;">
+		                    		<input type="text" class="form-control" name="log_pelatihan_narasumber_asal[]">
+									<span class="input-group-addon" style="background-color: #efefef;"><button onclick="remove_input(this,'input-group')" style="border: none; outline:none;" type="button"><i class="fa fa-minus"></i></button></span>
+								</div>
+							</div>
+
+							<!--tampil-->
+							<div id="log_pelatihan_narasumber_asal_tampil">
+								
+							</div>
+
 		                </div>
 
 		                <div class="form-group">

@@ -31,7 +31,7 @@
 	       <div class="stepwizard">
 		        <div class="stepwizard-row setup-panel">
 		            <div class="stepwizard-step col-xs-2"> 
-		                <a href="#step-1" type="button" class="btn btn-success btn-circle">1</a>
+		                <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
 		                <p><small>Step 1</small></p>
 		            </div>
 		            <div class="stepwizard-step col-xs-2"> 
@@ -56,6 +56,10 @@
 		            </div>
 		        </div>
 		    </div>
+
+		    <br/>
+		    <span style="background: #117a8b; padding: 0.3%; color: white;">Update Terakhir : <?php $xx = date_create($data['umkm_tanggal']); echo date_format($xx, 'd/m/Y') ?></span>
+		    <br/><br/>
 		    
 		    <form role="form" method="POST" action="<?php echo base_url('umkm/save') ?>" enctype="multipart/form-data">
 		        <div class="panel panel-primary setup-content" id="step-1">
@@ -65,42 +69,9 @@
 
 		                    <select id="umkm_rumah" name="umkm_rumah" class="form-control">
 		                    	<option value="" hidden="">Rumah BUMN</option>
-		                    	<option value="Aceh Tenggara">Aceh Tenggara</option>
-		                    	<option value="Nias Selatan">Nias Selatan</option>
-		                    	<option value="Tanjung Balai">Tanjung Balai</option>
-		                    	<option value="Padang">Padang</option>
-		                    	<option value="Payakumbuh">Payakumbuh</option>
-		                    	<option value="Payakumbuh 50 Kota">Payakumbuh 50 Kota</option>
-		                    	<option value="Pangkal Pinang">Pangkal Pinang</option>
-		                    	<option value="Tebo">Tebo</option>
-		                    	<option value="Way Kanan">Way Kanan</option>
-		                    	<option value="Pangandaran">Pangandaran</option>
-		                    	<option value="Cilacap">Cilacap</option>
-		                    	<option value="Sleman">Sleman</option>
-		                    	<option value="Tega">Tega</option>
-		                    	<option value="Wonogiri">Wonogiri</option>
-		                    	<option value="Banyuwangi">Banyuwangi</option>
-		                    	<option value="Ngawi">Ngawi</option>
-		                    	<option value="Tulungagung">Tulungagung</option>
-		                    	<option value="Manggarai">Manggarai</option>
-		                    	<option value="Belu">Belu</option>
-		                    	<option value="Sumba Barat Daya">Sumba Barat Daya</option>
-		                    	<option value="Sumba Tengah"></option>
-		                    	<option value="Banjarbaru">Banjarbaru</option>
-		                    	<option value="Katingan">Katingan</option>
-		                    	<option value="Pontianak">Pontianak</option>
-		                    	<option value="Tabalong">Tabalong</option>
-		                    	<option value="Bantaeng">Bantaeng</option>
-		                    	<option value="Maluku Tenggara">Maluku Tenggara</option>
-		                    	<option value="Mamuju">Mamuju</option>
-		                    	<option value="Takalar">Takalar</option>
-		                    	<option value="Banggai laut">Banggai laut</option>
-		                    	<option value="Pohuwato">Pohuwato</option>
-		                    	<option value="Ternate">Ternate</option>
-		                    	<option value="Fakfak">Fakfak</option>
-		                    	<option value="Jayapura">Jayapura</option>
-		                    	<option value="Raja Ampat">Raja Ampat</option>
-		                    	<option value="Bekasi">Bekasi</option>
+		                    	<?php foreach ($rumah_bumn as $key): ?>
+		                    		<option value="<?php echo $key['rumah_bumn_id'] ?>"><?php echo $key['rumah_bumn_nama'] ?></option>
+		                    	<?php endforeach ?>
 		                    </select>
 
 		                </div>
@@ -108,31 +79,9 @@
 		                	
 		                	<select id="umkm_skc" name="umkm_skc" class="form-control">
 		                    	<option value="" hidden="">SKC</option>
-		                    	<option value="SKC Medan">SKC Medan</option>
-		                    	<option value="SKC Polonia">SKC Polonia</option>
-		                    	<option value="SKC Pekanbaru">SKC Pekanbaru</option>
-		                    	<option value="SKC Palembang">SKC Palembang</option>
-		                    	<option value="SKC Bandung">SKC Bandung</option>
-		                    	<option value="SKC Priangan">SKC Priangan</option>
-		                    	<option value="SKC Semarang">SKC Semarang</option>
-		                    	<option value="SKC Solo">SKC Solo</option>
-		                    	<option value="SKC Yogjakarta">SKC Yogjakarta</option>
-		                    	<option value="SKC Graha Pangeran">SKC Graha Pangeran</option>
-		                    	<option value="SKC Surabaya">SKC Surabaya</option>
-		                    	<option value="SKC Makasar">SKC Makasar</option>
-		                    	<option value="SKC Denpasar">SKC Denpasar</option>
-		                    	<option value="SKC Banjarmasin">SKC Banjarmasin</option>
-		                    	<option value="SKC Melawai">SKC Melawai</option>
-		                    	<option value="SKC Tanah Abang">SKC Tanah Abang</option>
-		                    	<option value="SKC Jakarta Kota">SKC Jakarta Kota</option>
-		                    	<option value="SKC Kelapa Gading">SKC Kelapa Gading</option>
-		                    	<option value="SKC Pecenongan">SKC Pecenongan</option>
-		                    	<option value="SKC Bogor">SKC Bogor</option>
-		                    	<option value="SKC Tangerang">SKC Tangerang</option>
-		                    	<option value="SKC Bekasi">SKC Bekasi</option>
-		                    	<option value="SKC Jatinegara">SKC Jatinegara</option>
-		                    	<option value="SKC Kramat">SKC Kramat</option>
-		                    	<option value="SKC Kramat">SKC Jakarta Graha Elok Mas</option>
+		                    	<?php foreach ($skc as $key): ?>
+		                    		<option value="<?php echo $key['skc_id'] ?>"><?php echo $key['skc_nama'] ?></option>
+		                    	<?php endforeach ?>
 		                    </select>
 
 		                </div>
@@ -141,40 +90,9 @@
 		                	
 		                	<select id="umkm_cabang" name="umkm_cabang" class="form-control">
 		                    	<option value="" hidden="">Cabang</option>
-		                    	<option value="Langsa">Langsa</option>
-		                    	<option value="Gunung Sitoli">Gunung Sitoli</option>
-		                    	<option value="Tg Balai Karimun"></option>
-		                    	<option value="Padang">Padang</option>
-		                    	<option value="Payakumbuh">Payakumbuh</option>
-		                    	<option value="Payakumbuh">Payakumbuh</option>
-		                    	<option value="Pangkal Pinang">Pangkal Pinang</option>
-		                    	<option value="Muara Bungo">Muara Bungo</option>
-		                    	<option value="Kotabumi">Kotabumi</option>
-		                    	<option value="Banjar">Banjar</option>
-		                    	<option value="Cilacap">Cilacap</option>
-		                    	<option value="UGM">UGM</option>
-		                    	<option value="Tegal">Tegal</option>
-		                    	<option value="Wonogiri">Wonogiri</option>
-		                    	<option value="Banyuwang">Banyuwang</option>
-		                    	<option value="Madiun">Madiun</option>
-		                    	<option value="Tulungagung">Tulungagung</option>
-		                    	<option value="Ende">Ende</option>
-		                    	<option value="Kupang">Kupang</option>
-		                    	<option value="Banjarbaru">Banjarbaru</option>
-		                    	<option value="Palangkaraya">Palangkaraya</option>
-		                    	<option value="Pontianak">Pontianak</option>
-		                    	<option value="Barabai">Barabai</option>
-		                    	<option value="Bulukumba">Bulukumba</option>
-		                    	<option value="Ambon">Ambon</option>
-		                    	<option value="Mamuju">Mamuju</option>
-		                    	<option value="Mattoangin">Mattoangin</option>
-		                    	<option value="Luwuk">Luwuk</option>
-		                    	<option value="Gorontalo">Gorontalo</option>
-		                    	<option value="Ternate">Ternate</option>
-		                    	<option value="Monokwari">Monokwari</option>
-		                    	<option value="Jayapura">Jayapura</option>
-		                    	<option value="Sorong">Sorong</option>
-		                    	<option value="Bekasi">Bekasi</option>
+		                    	<?php foreach ($cabang as $key): ?>
+		                    		<option value="<?php echo $key['rumah_bumn_cabang_id'] ?>"><?php echo $key['rumah_bumn_cabang_nama'] ?></option>
+		                    	<?php endforeach ?>
 		                    </select>
 
 		                </div>
@@ -199,6 +117,15 @@
 		                </div>
 		                <div class="form-group">
 		                	<input value="<?php echo $data['umkm_jenis_lain'] ?>" id="lain" type="hidden" name="umkm_jenis_lain" class="form-control" placeholder="Lain-lain">
+		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label">Kategori UMKM</label>
+		                    <select id="umkm_kategori" name="umkm_kategori"  class="form-control">
+		                    	<option value="" hidden="">-- Pilih --</option>
+		                    	<option value="Unggulan">Unggulan</option>
+		                    	<option value="Non Unggulan">Non Unggulan</option>
+		                    </select>
 		                </div>
 
 		                <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
@@ -558,7 +485,7 @@
 		                </div>
 
 		                <div class="form-group">
-		                    <label class="control-label">Upload foto produk <small class="text-danger">* Maksimal 4 lebih dari 4 foto tidak akan di simpan</small></label>
+		                    <label class="control-label">Upload foto produk</label> <small class="text-danger">* Maksimal 4 lebih dari 4 foto tidak akan di simpan</small>
 
 		                    <div class="row">
 		                    	<div class="col-md-3">
@@ -635,7 +562,7 @@
 		                </div>
 
 		                <div class="form-group">
-			                <label>Izin Usaha yang dimiliki</label>
+			                <label>Izin Usaha yang dimiliki</label> <small class="text-danger">* dapat memilih lebih dari satu izin usahan</small>
 			                <select id="umkm_izinusaha" name="umkm_izinusaha[]" class="form-control select2" multiple="multiple" style="width: 100%;">
 			                  <option value="PIRT">PIRT</option>
 			                  <option value="SKDP">SKDP</option>
@@ -647,7 +574,7 @@
 			                </select>
 			              </div>
 
-		        		<button class="btn btn-success pull-right" type="submit">Finish!</button>
+		        		<button class="btn btn-primary pull-right" type="submit">Finish!</button>
 		        	</div>
 		        </div>
 
@@ -680,8 +607,8 @@
 	            $item = $(this);
 
 	        if (!$item.hasClass('disabled')) {
-	            navListItems.removeClass('btn-success').addClass('btn-default');
-	            $item.addClass('btn-success');
+	            navListItems.removeClass('btn-primary').addClass('btn-default');
+	            $item.addClass('btn-primary');
 	            allWells.hide();
 	            $target.show();
 	            $target.find('input:eq(0)').focus();
@@ -706,7 +633,7 @@
 	        if (isValid) nextStepWizard.removeAttr('disabled').trigger('click');
 	    });
 
-	    $('div.setup-panel div a.btn-success').trigger('click');
+	    $('div.setup-panel div a.btn-primary').trigger('click');
 	});
 
 	////////////////// end form next ////////////////////////
@@ -828,6 +755,7 @@ $('#umkm_cabang').val('<?php echo @$data['umkm_cabang'] ?>').change();
 $('#umkm_jenis').val('<?php echo @$data['umkm_jenis'] ?>').change();
 $('#umkm_skala').val('<?php echo @$data['umkm_skala'] ?>').change();
 $('#umkm_bpom').val('<?php echo @$data['umkm_bpom'] ?>').change();
+$('#umkm_kategori').val('<?php echo @$data['umkm_kategori'] ?>').change();
 
 $('#umkm_izinusaha').val(<?php echo @$data['umkm_izinusaha'] ?>).select();
  

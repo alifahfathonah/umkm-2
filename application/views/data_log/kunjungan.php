@@ -51,7 +51,8 @@
                   <th>Kunjungan UMKM</th>
                   <th>Nama UMKM</th>
                   <th>Kategori</th>
-                  <th>Lokasi</th>
+                  <th>Lokasi</th> 
+                  <th>Laporan</th>
                   <th>Dokumentas</th>
                   <th width="1">Delete</th>
                 </tr>
@@ -66,6 +67,7 @@
                     <td><?php echo $key['log_kunjungan_nama'] ?></td>
                     <td><?php echo $key['log_kunjungan_kategori'] ?></td>
                     <td><?php echo $key['log_kunjungan_lokasi'] ?></td>
+                    <td><?php echo $key['log_kunjungan_laporan'] ?></td>
                     <td>
                       <button data-toggle="modal" data-target="#view_image<?php echo $key['log_kunjungan_id'] ?>">View Image</button>
                     </td>

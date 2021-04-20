@@ -48,6 +48,7 @@
                 <thead>
                 <tr>
                   <th>Nama Rumah BUMN</th> 
+                  <th>Kantor Wilayah</th>
                   <th>Kantor Cabang Pengelola</th>
                   <th>Berdiri sejak </th>
                   <th>Status Gedung Rumah BUMN</th>
@@ -55,6 +56,7 @@
                   <th>Nama pengelolah Rumah BUMN</th>
                   <th>No Telepon/HP</th>
                   <th>Nama PIC Kantor Cabang</th>
+                  <th>Tanggal Input</th>
                   <th>Delete</th>
                 </tr>
                 </thead>
@@ -63,22 +65,24 @@
                 <?php foreach ($data as $key): ?>
                                   
                   <tr>
-                    <td><?php echo $key['bumn_rumah'] ?></td>
-                    <td><?php echo $key['bumn_kantor_cabang'] ?></td>
+                    <td><?php echo $key['rumah_bumn_nama'] ?></td> 
+                    <td><?php echo $key['bumn_kantor_wilayah'] ?></td>
+                    <td><?php echo $key['rumah_bumn_cabang_nama'] ?></td>
                     <td><?php echo $key['bumn_berdiri'] ?></td>
-                    <td><?php echo $key['bumn_status'] ?></td>
+                    <td><?= ( $key['bumn_status'] == 'milik dinas')? $key['bumn_status'].' ( '.$key['bumn_status_dinas'].' )' : $key['bumn_status'] ?></td>
                     <td>
                       
                       <?php if (@$key['bumn_foto']): ?>
                          <?php foreach (json_decode($key['bumn_foto'],true) as $i): ?>
-                          <a href="<?php echo base_url('asset/gambar/bumn/'.$i) ?>" target="_BLANK"><img src="<?php echo base_url('asset/gambar/bumn/'.$i) ?>" alt="" class="img-thumbnail" width="50"></a>
+                          <a href="<?php echo base_url('asset/gambar/bumn/'.$i) ?>" target="_BLANK"><img src="<?php echo base_url('asset/gambar/bumn/'.$i) ?>" alt="" class="img-thumbnail" width="40"></a>
                          <?php endforeach ?>
                       <?php endif ?>
 
                     </td>
-                    <td><?php echo $key['bumn_pengelola'] ?></td>
-                    <td><?php echo $key['bumn_no'] ?></td>
-                    <td><?php echo $key['bumn_pic'] ?></td>
+                    <td><?php echo implode(', ', json_decode($key['bumn_pengelola'],true)); ?></td>
+                    <td><?php echo implode(', ', json_decode($key['bumn_no'],true)); ?></td>
+                    <td><?php echo implode(', ', json_decode($key['bumn_pic'],true)); ?></td>
+                    <td><?php echo $key['bumn_tanggal'] ?></td>
                     <td style="width: 50px;">
                       <div>
 
