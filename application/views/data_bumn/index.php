@@ -66,7 +66,7 @@
                                   
                   <tr>
                     <td><?php echo $key['rumah_bumn_nama'] ?></td> 
-                    <td><?php echo $key['bumn_kantor_wilayah'] ?></td>
+                    <td><?php echo $key['wilayah_baru_nama'] ?></td>
                     <td><?php echo $key['rumah_bumn_cabang_nama'] ?></td>
                     <td><?php echo $key['bumn_berdiri'] ?></td>
                     <td><?= ( $key['bumn_status'] == 'milik dinas')? $key['bumn_status'].' ( '.$key['bumn_status_dinas'].' )' : $key['bumn_status'] ?></td>

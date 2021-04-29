@@ -1,5 +1,4 @@
 
- 
     <!-- Main content -->    
     <section class="content"> 
 
@@ -7,7 +6,7 @@
         <div class="alert alert-danger alert-dismissible">
            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
           <i class="icon fa fa-close"></i>
-          <?php echo $this->session->flashdata('gagal'); ?>
+          <?php echo $this->session->flashdata('gagal'); ?> 
         </div>
       <?php endif ?> 
     
@@ -122,7 +121,12 @@
             </div>
             <div class="box-body">
               
-              <div id="bar-chart" style="height: 300px;"></div>
+              <div class="col-md-6">
+                <div id="bar-chart" style="height: 300px;"></div>
+              </div>
+              <div class="col-md-6">
+                <div id="donut-chart" style="height: 300px;"></div>
+              </div>
 
             </div>
             <!-- /.box-body -->
@@ -437,8 +441,8 @@
     $.plot('#bar-chart', [bar_data], {
       grid  : {
         borderWidth: 1,
-        borderColor: '#117A8B',
-        tickColor  : '#117A8B'
+        borderColor: '#c1bdbd',
+        tickColor  : '#c1bdbd'
       },
       series: {
         bars: {
@@ -453,6 +457,51 @@
       }
     })
     /* END BAR CHART */
+
+    /*
+     * DONUT CHART
+     * -----------
+     */
+
+    var donutData = [
+
+       <?php foreach ($peringkat as $key): ?>
+      
+      { label: '<?php echo $key['lokasi'] ?>', data: <?php echo $key['jumlah'] ?> },
+
+      <?php endforeach ?>
+    ]
+    $.plot('#donut-chart', donutData, {
+      series: {
+        pie: {
+          show       : true,
+          radius     : 1,
+          innerRadius: 0.5,
+          label      : {
+            show     : true,
+            radius   : 2 / 3,
+            formatter: labelFormatter,
+            threshold: 0.1
+          }
+
+        }
+      },
+      legend: {
+        show: false
+      }
+    })
+
+    function labelFormatter(label, series) {
+      return '<div style="font-size:12px; text-align:center; padding:2px;">'
+        + label
+        + '<br>'
+        + Math.round(series.percent) + '%</div>'
+    }
+
+    /*
+     * END DONUT CHART
+     */
+    
 
     <!--
     function showTime() {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2021 at 06:25 PM
+-- Generation Time: Apr 29, 2021 at 09:28 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -48,7 +48,7 @@ CREATE TABLE `t_bumn` (
 --
 
 INSERT INTO `t_bumn` (`bumn_id`, `bumn_user`, `bumn_rumah`, `bumn_kantor_wilayah`, `bumn_kantor_cabang`, `bumn_berdiri`, `bumn_status`, `bumn_status_dinas`, `bumn_foto`, `bumn_pengelola`, `bumn_no`, `bumn_pic`, `bumn_tanggal`) VALUES
-(4, 5, '12', '', '11', '2021', 'milik dinas', 'Perhutanan', '[\"5_dessert_froyo.png\",\"5_dessert_keylimepie.png\"]', '[\"Rudi\",\"Yahya\"]', '[\"085855011542\",\"085222000111\"]', '[\"Cabang 1\",\"Cabang 2\"]', '2021-04-19');
+(4, 5, '12', 'W01', '11', '2021', 'milik dinas', 'Perhutanan', '[\"5_dessert_froyo.png\",\"5_dessert_keylimepie.png\"]', '[\"Rudi\",\"Yahya\"]', '[\"085855011542\",\"085222000111\"]', '[\"Cabang 1\",\"Cabang 2\"]', '2021-04-29');
 
 -- --------------------------------------------------------
 
@@ -454,6 +454,76 @@ INSERT INTO `t_user` (`user_id`, `user_foreignkey`, `user_name`, `user_email`, `
 (9, '4', 'Indah', 'indah@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '2', NULL, 0, '2021-02-09', 1),
 (10, '5', 'Papa Fait', 'papa@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '1', NULL, 0, '2021-02-17', 1);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_wilayah_baru`
+--
+
+CREATE TABLE `t_wilayah_baru` (
+  `wilayah_baru_id` int(11) NOT NULL,
+  `wilayah_baru_kode` text NOT NULL,
+  `wilayah_baru_nama` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `t_wilayah_baru`
+--
+
+INSERT INTO `t_wilayah_baru` (`wilayah_baru_id`, `wilayah_baru_kode`, `wilayah_baru_nama`) VALUES
+(1, 'W01', 'kantor wilayah 01'),
+(2, 'W02', 'kantor wilayah 02'),
+(3, 'W03', 'kantor wilayah 03'),
+(4, 'W04', 'kantor wilayah 04'),
+(5, 'W05', 'kantor wilayah 05'),
+(6, 'W06', 'kantor wilayah 06'),
+(7, 'W07', 'kantor wilayah 07'),
+(8, 'W08', 'kantor wilayah 08'),
+(9, 'W09', 'kantor wilayah 09'),
+(10, 'W10', 'kantor wilayah 10'),
+(11, 'W11', 'kantor wilayah 11'),
+(12, 'W12', 'kantor wilayah 12'),
+(13, 'W13', 'kantor wilayah 13'),
+(14, 'W14', 'kantor wilayah 14'),
+(15, 'W15', 'kantor wilayah 15'),
+(16, 'W16', 'kantor wilayah 16'),
+(17, 'W17', 'kantor wilayah 17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_wilayah_eksisting`
+--
+
+CREATE TABLE `t_wilayah_eksisting` (
+  `wilayah_eksisting_id` int(11) NOT NULL,
+  `wilayah_eksisting_kode` text NOT NULL,
+  `wilayah_eksisting_nama` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `t_wilayah_eksisting`
+--
+
+INSERT INTO `t_wilayah_eksisting` (`wilayah_eksisting_id`, `wilayah_eksisting_kode`, `wilayah_eksisting_nama`) VALUES
+(1, 'WMD', 'kantor wilayah medan'),
+(2, 'WPD', 'kantor wilayah padang'),
+(3, 'WPL', 'kantor wilayah palembang'),
+(4, 'WBN', 'kantor wilayah bandung'),
+(5, 'WSM', 'kantor wilayah semarang'),
+(6, 'WSY', 'kantor wilayah surabaya'),
+(7, 'WMK', 'kantor wilayah makasar'),
+(8, 'WDR', 'kantor wilayah denpasar'),
+(9, 'WBJ', 'kantor wilayah banjarmasin'),
+(10, 'WJS', 'kantor wilayah jakarta'),
+(11, 'WMO', 'kantor wilayah manado'),
+(12, 'WJK', 'kantor wilayah  jakarta kota'),
+(13, 'WJB', 'kantor wilayah jakarta BSD'),
+(14, 'WJY', 'kantor wilayah jakarta kemayoran'),
+(15, 'WPU', 'kantor wilayah papua'),
+(16, 'WYK', 'kantor wilayah yogyakarta'),
+(17, 'WMA', 'kantor wilayah malang');
+
 --
 -- Indexes for dumped tables
 --
@@ -531,6 +601,18 @@ ALTER TABLE `t_user`
   ADD PRIMARY KEY (`user_id`);
 
 --
+-- Indexes for table `t_wilayah_baru`
+--
+ALTER TABLE `t_wilayah_baru`
+  ADD PRIMARY KEY (`wilayah_baru_id`);
+
+--
+-- Indexes for table `t_wilayah_eksisting`
+--
+ALTER TABLE `t_wilayah_eksisting`
+  ADD PRIMARY KEY (`wilayah_eksisting_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -605,6 +687,18 @@ ALTER TABLE `t_umkm`
 --
 ALTER TABLE `t_user`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `t_wilayah_baru`
+--
+ALTER TABLE `t_wilayah_baru`
+  MODIFY `wilayah_baru_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `t_wilayah_eksisting`
+--
+ALTER TABLE `t_wilayah_eksisting`
+  MODIFY `wilayah_eksisting_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

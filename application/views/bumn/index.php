@@ -7,7 +7,7 @@
         <?php echo $this->session->flashdata('gagal'); ?>
       </div>
     <?php endif ?>
-  
+   
     <?php if ($this->session->flashdata('success')): ?>
       <div class="alert alert-success alert-dismissible">
          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -58,6 +58,9 @@
 		                    <label class="control-label">Kantor Wilayah</label>
 		                    <select id="bumn_kantor_wilayah" name="bumn_kantor_wilayah" class="form-control">
 		                    	<option value="" hidden="">-- Pilih --</option>
+		                    	<?php foreach ($wilayah as $key): ?>
+		                    		<option value="<?php echo $key['wilayah_baru_kode'] ?>"><?php echo $key['wilayah_baru_nama'] ?></option>
+		                    	<?php endforeach ?>
 		                    </select>
 		                </div>
 
@@ -375,5 +378,6 @@
 	$('#bumn_rumah').val('<?php echo @$data['bumn_rumah'] ?>').change();
 	$('#bumn_kantor_cabang').val('<?php echo @$data['bumn_kantor_cabang'] ?>').change();
 	$('#bumn_status').val('<?php echo @$data['bumn_status'] ?>').change();
+	$('#bumn_kantor_wilayah').val('<?php echo @$data['bumn_kantor_wilayah'] ?>').change();
  
 </script>

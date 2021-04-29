@@ -12,11 +12,13 @@ class Bumn extends CI_Controller{
 
 		    $user = $this->session->userdata('foreign');
 
-		    $data['data'] = $this->db->query("SELECT * FROM t_bumn where bumn_user = '$user'")->row_array();
+		    $data['data'] = $this->db->query("SELECT * FROM t_bumn where bumn_user = '$user'")->row_array(); 
 
 		    $data['rumah_bumn'] = $this->db->query("SELECT * FROM t_rumah_bumn")->result_array();
 
 		    $data['cabang'] = $this->db->query("SELECT * FROM t_rumah_bumn_cabang")->result_array();
+
+		    $data['wilayah'] = $this->db->query("SELECT * FROM t_wilayah_baru")->result_array();
 
 		    $this->load->view('v_template_admin/admin_header',$data);
 		    $this->load->view('bumn/index');
@@ -80,6 +82,7 @@ class Bumn extends CI_Controller{
 
 		$set = array(
 						'bumn_rumah' => @$_POST['bumn_rumah'],
+						'bumn_kantor_wilayah' => @$_POST['bumn_kantor_wilayah'],
 						'bumn_kantor_cabang' => @$_POST['bumn_kantor_cabang'],
 						'bumn_berdiri' => @$_POST['bumn_berdiri'],
 						'bumn_status' => @$_POST['bumn_status'],
