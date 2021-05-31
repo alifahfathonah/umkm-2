@@ -26,7 +26,7 @@
             <div class="form-group" style="margin-bottom: 0px;">
               <div class="row">
                 <div class="col-md-3 col-xs-10">
-                  <input placeholder="Filter Bulan" autocomplete="off" required="" name="filter" type="text" class="form-control pull-right" id="monthpicker" value="">
+                  <input placeholder="Filter Bulan" autocomplete="off" required="" name="filter" type="text" class="form-control pull-right" id="reservation" value="">
                 </div>
                 <div class="col-md-3 col-xs-2 row">
                   <button class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>

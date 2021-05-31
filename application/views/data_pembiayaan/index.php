@@ -47,7 +47,7 @@
           <table id="example" class="table table-bordered">
                 <thead>
                 <tr>
-                  <th>Rumah BUMN</th>
+                  <!-- <th>Rumah BUMN</th> -->
                   <th>SKC</th>
                   <th>Cabang</th>
                   <th>Kantor Wilayah</th>
@@ -80,7 +80,7 @@
                   <th>Pameran yang pernah di ikuti di dalam negeri</th>
                   <th>Pameran yang pernah di ikuti di luar negeri :</th>
                   <th>Penghargaan yang pernah di terima </th>
-                  <th>Deskripsi produk UMKM</th>
+                  <th>Deskripsi produk pembiayaan</th>
                   <th>Berdiri sejak tahun</th>
                   <th>Skala Usaha</th>
                   <th>Jumlah Karyawan</th>
@@ -99,71 +99,71 @@
                 <?php foreach ($data as $key): ?>
                                   
                   <tr>
-                    <td><?php echo $key['rumah_bumn_nama'] ?></td>
-                    <td><?php echo $key['skc_nama'] ?></td>
-                    <td><?php echo $key['rumah_bumn_cabang_nama'] ?></td>
-                    <td><?php echo $key['wilayah_baru_nama'] ?></td>
-                    <td><?php echo $key['umkm_brand'] ?></td>
-                    <td><?php echo $key['umkm_usaha'] ?></td>
-                    <td><?php echo $key['umkm_kategori'] ?></td>
-                    <td><?php echo $key['umkm_jenis'] ?></td>
-                    <td><?php echo $key['umkm_jenis_lain'] ?></td>
-                    <td><?php echo $key['umkm_provinsi_text'] ?></td>
+                    <!-- <td><?php echo @$key['rumah_bumn_nama'] ?></td> -->
+                    <td><?php echo @$key['skc_nama'] ?></td>
+                    <td><?php echo @$key['rumah_bumn_cabang_nama'] ?></td>
+                    <td><?php echo @$key['wilayah_baru_nama'] ?></td>
+                    <td><?php echo @$key['pembiayaan_brand'] ?></td>
+                    <td><?php echo @$key['pembiayaan_usaha'] ?></td>
+                    <td><?php echo @$key['pembiayaan_kategori'] ?></td>
+                    <td><?php echo @$key['pembiayaan_jenis'] ?></td>
+                    <td><?php echo @$key['pembiayaan_jenis_lain'] ?></td>
+                    <td><?php echo @$key['pembiayaan_provinsi_text'] ?></td>
                     <td style="width: 50px;">
                       <div>
 
-                      <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modalHapus<?php echo $key['user_id'] ?>"><i class="fa fa-trash"></i></button>
+                      <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modalHapus<?php echo @$key['user_id'] ?>"><i class="fa fa-trash"></i></button>
 
                       </div>
                     </td>
-                    <td><?php echo $key['umkm_kota_text'] ?></td>
-                    <td><?php echo $key['umkm_kecamatan_text'] ?></td>
-                    <td><?php echo $key['umkm_pos'] ?></td>
-                    <td><?php echo $key['umkm_alamat'] ?></td>
-                    <td><?php echo $key['umkm_pemilik'] ?></td>
-                    <td><?php echo $key['umkm_no'] ?></td>
-                    <td><?php echo $key['umkm_pic'] ?></td>
-                    <td><?php echo $key['umkm_no_pic'] ?></td>
-                    <td><?php echo $key['umkm_ig'] ?></td>
-                    <td><?php echo $key['umkm_fb'] ?></td>
-                    <td><?php echo $key['umkm_email'] ?></td>
-                    <td><?php echo $key['umkm_shopee'] ?></td>
-                    <td><?php echo $key['umkm_tokopedia'] ?></td>
-                    <td><?php echo $key['umkm_lazada'] ?></td>
-                    <td><?php echo $key['umkm_bukalapak'] ?></td>
-                    <td><?php echo $key['umkm_jdid'] ?></td>
-                    <td><?php echo $key['umkm_blibli'] ?></td>
-                    <td><?php echo $key['umkm_padi'] ?></td>
-                    <td><?php echo $key['umkm_website'] ?></td>
-                    <td><?php echo @implode(', ', json_decode($key['umkm_pameran_dalam'],true)); ?></td>
-                    <td><?php echo @implode(', ', json_decode($key['umkm_pameran_luar'],true)); ?></td>
-                    <td><?php echo @implode(', ', json_decode($key['umkm_penghargaan'],true)); ?></td>
-                    <td><?php echo @implode(', ', json_decode($key['umkm_deskripsi'],true)); ?></td>
-                    <td><?php echo $key['umkm_berdiri'] ?></td>
-                    <td><?php echo $key['umkm_skala'] ?></td>
-                    <td><?php echo $key['umkm_karyawan'] ?></td>
-                    <td><?php echo $key['umkm_omset'] ?></td>
-                    <td><?php echo $key['umkm_jenis_biaya_bni'] ?></td>
-                    <td><?php echo $key['umkm_kredit'] ?></td>
+                    <td><?php echo @$key['pembiayaan_kota_text'] ?></td>
+                    <td><?php echo @$key['pembiayaan_kecamatan_text'] ?></td>
+                    <td><?php echo @$key['pembiayaan_pos'] ?></td>
+                    <td><?php echo @$key['pembiayaan_alamat'] ?></td>
+                    <td><?php echo @$key['pembiayaan_pemilik'] ?></td>
+                    <td><?php echo @$key['pembiayaan_no'] ?></td>
+                    <td><?php echo @$key['pembiayaan_pic'] ?></td>
+                    <td><?php echo @$key['pembiayaan_no_pic'] ?></td>
+                    <td><?php echo @$key['pembiayaan_ig'] ?></td>
+                    <td><?php echo @$key['pembiayaan_fb'] ?></td>
+                    <td><?php echo @$key['pembiayaan_email'] ?></td>
+                    <td><?php echo @$key['pembiayaan_shopee'] ?></td>
+                    <td><?php echo @$key['pembiayaan_tokopedia'] ?></td>
+                    <td><?php echo @$key['pembiayaan_lazada'] ?></td>
+                    <td><?php echo @$key['pembiayaan_bukalapak'] ?></td>
+                    <td><?php echo @$key['pembiayaan_jdid'] ?></td>
+                    <td><?php echo @$key['pembiayaan_blibli'] ?></td>
+                    <td><?php echo @$key['pembiayaan_padi'] ?></td>
+                    <td><?php echo @$key['pembiayaan_website'] ?></td>
+                    <td><?php echo @implode(', ', json_decode(@$key['pembiayaan_pameran_dalam'],true)); ?></td>
+                    <td><?php echo @implode(', ', json_decode(@$key['pembiayaan_pameran_luar'],true)); ?></td>
+                    <td><?php echo @implode(', ', json_decode(@$key['pembiayaan_penghargaan'],true)); ?></td>
+                    <td><?php echo @implode(', ', json_decode(@$key['pembiayaan_deskripsi'],true)); ?></td>
+                    <td><?php echo @$key['pembiayaan_berdiri'] ?></td>
+                    <td><?php echo @$key['pembiayaan_skala'] ?></td>
+                    <td><?php echo @$key['pembiayaan_karyawan'] ?></td>
+                    <td><?php echo @$key['pembiayaan_omset'] ?></td>
+                    <td><?php echo @$key['pembiayaan_jenis_biaya_bni'] ?></td>
+                    <td><?php echo @$key['pembiayaan_kredit'] ?></td>
                     
                     <td>
                         
-                        <?php if (@$key['umkm_produk']): ?>
-                           <?php foreach (json_decode($key['umkm_produk'],true) as $i): ?>
-                            <a href="<?php echo base_url('asset/gambar/umkm/'.$i) ?>" target="_BLANK"><img src="<?php echo base_url('asset/gambar/umkm/'.$i) ?>" alt="" class="img-thumbnail" width="100"></a>
+                        <?php if (@$key['pembiayaan_produk']): ?>
+                           <?php foreach (json_decode(@$key['pembiayaan_produk'],true) as $i): ?>
+                            <a href="<?php echo base_url('asset/gambar/pembiayaan/'.$i) ?>" target="_BLANK"><img src="<?php echo base_url('asset/gambar/pembiayaan/'.$i) ?>" alt="" class="img-thumbnail" width="100"></a>
                            <?php endforeach ?>
                         <?php endif ?>
 
                     </td>
-                    <td><a href="<?php echo base_url('asset/gambar/umkm/'.$key['umkm_logo']) ?>" target="_BLANK"><img src="<?php echo base_url('asset/gambar/umkm/'.$key['umkm_logo']) ?>" alt="" class="img-thumbnail" width="100"></a></td>
+                    <td><a href="<?php echo base_url('asset/gambar/pembiayaan/'.@$key['pembiayaan_logo']) ?>" target="_BLANK"><img src="<?php echo base_url('asset/gambar/pembiayaan/'.@$key['pembiayaan_logo']) ?>" alt="" class="img-thumbnail" width="100"></a></td>
 
-                    <td><?php echo $key['umkm_bpom'] ?></td>
-                    <td><?php echo @implode(', ', json_decode($key['umkm_izinusaha'],true)); ?></td>
-                    <td><?php echo $key['umkm_tanggal'] ?></td>
+                    <td><?php echo @$key['pembiayaan_bpom'] ?></td>
+                    <td><?php echo @implode(', ', json_decode(@$key['pembiayaan_izinusaha'],true)); ?></td>
+                    <td><?php echo @$key['pembiayaan_tanggal'] ?></td>
                   </tr>
 
                    <!--modal hapus-->
-                      <div class="modal fade" id="modalHapus<?php echo $key['user_id'] ?>">
+                      <div class="modal fade" id="modalHapus<?php echo @$key['user_id'] ?>">
                         <div class="modal-dialog" align="center">
                           <div class="modal-content" style="max-width: 300px;">
                             <div class="modal-header">
@@ -172,7 +172,7 @@
                                 <h4>Confirmed ?</h4>
                               </div>
                             <div class="modal-body" align="center">
-                               <a href="<?php echo base_url() ?>data_umkm/delete/<?php echo $key['user_id'] ?>"><button class="btn btn-success" style="width: 49%;">Yes</button></a>
+                               <a href="<?php echo base_url() ?>data_pembiayaan/delete/<?php echo @$key['user_id'] ?>"><button class="btn btn-success" style="width: 49%;">Yes</button></a>
                                <button class="btn btn-danger" data-dismiss="modal" style="width: 49%;">No</button>
                             </div>
                           </div>

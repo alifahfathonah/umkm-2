@@ -6,7 +6,7 @@
         <div class="alert alert-danger alert-dismissible">
            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
           <i class="icon fa fa-close"></i>
-          <?php echo $this->session->flashdata('gagal'); ?> 
+          <?php echo $this->session->flashdata('gagal'); ?>  
         </div>
       <?php endif ?> 
     
@@ -111,7 +111,7 @@
               <a href="<?php echo base_url('dashboard/index/pelatihan') ?>"><button class="<?= (@$btn_pelatihan)? 'btn btn-primary' : 'btn btn-default' ?>" type="button">Pelatihan terbanyak</button></a>
               <a href="<?php echo base_url('dashboard/index/terbaru') ?>"><button class="<?= (@$btn_terbaru)? 'btn btn-primary' : 'btn btn-default' ?>" type="button">Jumlah UMKM terbaru terbanyak</button></a>
 
-              <button class="btn btn-success" data-toggle="modal" data-target="#download" type="button"><i class="fa fa-download"></i> Download data UMKM</button>
+              <button class="btn btn-success" data-toggle="modal" data-target="#download_<?php echo $modal ?>" type="button"><i class="fa fa-download"></i> Download <?php echo @$btn_name ?></button>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -198,7 +198,9 @@
       </div>
 
 
-      <div class="modal fade" id="download">
+
+      <!-- MODAL TERBARU -->
+      <div class="modal fade" id="download_terbaru">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -206,24 +208,12 @@
                   <span aria-hidden="true">&times;</span></button>
               </div>
               <div class="modal-body">
+
                 <div class="form-group">
-                  <select id="download_bumn" class="form-control">
-                    <option value="" hidden="">-- Rumah BUMN --</option>
-                    <?php foreach ($download as $key): ?>
-                      <option value="<?php echo $key['bumn'] ?>"><?php echo $key['bumn'] ?></option>
-                    <?php endforeach ?>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <select id="download_tahun" class="form-control">
-                    <option value="" hidden="">-- Tahun / Bulan --</option>
-                    <?php foreach ($download as $key): ?>
-                      <option value="<?php echo $key['tanggal'] ?>"><?php echo $key['tanggal'] ?></option>
-                    <?php endforeach ?>
-                  </select>
+                  <input placeholder="Filter Bulan" autocomplete="off" required="" name="filter" type="text" value="" class="form-control reservation" id="filter">
                 </div>
 
-                <button onclick="download()" class="btn btn-success" type="button"><i class="fa fa-download"> Download</i></button>
+                <button onclick="download('umkm')" class="btn btn-success" type="button"><i class="fa fa-download"> Download</i></button>
 
                 <div hidden="">
                       
@@ -277,7 +267,7 @@
                     </thead>
                     <tbody>
 
-                    <?php foreach ($table_umkm as $key): ?>
+                    <?php foreach ($download as $key): ?>
                                       
                       <tr>
                         <td><?php echo $key['rumah_bumn_nama'] ?></td>
@@ -332,7 +322,9 @@
 
                         <td><?php echo $key['umkm_bpom'] ?></td>
                         <td><?php echo implode(', ', json_decode($key['umkm_izinusaha'],true)); ?></td>
-                        <td><?php echo $key['umkm_tanggal'] ?></td>
+                        <td>
+                          <?php echo $key['umkm_tanggal']; ?>       
+                        </td>
                       </tr>
                       
                     <?php endforeach ?>
@@ -552,6 +544,9 @@
       var year = (yy < 000) ? yy + 1900 : yy;
       document.getElementById('date').innerHTML=thisDay + ', ' + day + ' ' + months[month] + ' ' + year;
 
+    //Date range picker
+  $('.reservation').daterangepicker()
+
       //data table
     $(function () {
 
@@ -571,22 +566,34 @@
 
 
     //download
-    function download(){
-      var bumn = $('#download_bumn').val();
-      var tahun = $('#download_tahun').val();
+    function download(x){
 
-      if (bumn == '' || tahun == '') {
-        alert('Periksa kembali !');
-      }else{
-        var table = $('#example2').DataTable();
+      var val = $('#filter').val();
 
-        if (table.search(bumn+' '+tahun).draw()) {
+       $.ajax({
+         url: '<?php echo base_url('dashboard/get_date') ?>',
+         type: 'POST',
+         dataType: 'json',
+         data: {val: val},
+       })
+       .done(function(data) {
 
-          $('#example2_wrapper > div.dt-buttons > button.dt-button.buttons-excel.buttons-html5').click();
-        }
+          if (data == '') {
+            alert('Data kosong !!');
+          }else{
+            
+            var whatsSelected = [];
+             $.each(data, function (index) {
+                 whatsSelected.push('(?=.*' + data[index].tanggal + ')');
+             });
 
-      }
+             if ($('#example2').DataTable().search(whatsSelected.join('|'), true, false, true).draw()) {
 
+                $('#example2_wrapper > div.dt-buttons > button.dt-button.buttons-excel.buttons-html5').click();
+             }
+          }
+       
+       });
     }
 
     </script>

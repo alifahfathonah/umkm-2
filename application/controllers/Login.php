@@ -140,6 +140,14 @@ class Login extends CI_Controller{
                 $this->db->set($b);
                 $this->db->insert('t_umkm');
 
+                $c = array(
+                            'pembiayaan_user' => $count,
+                            'pembiayaan_tanggal' => date('Y-m-d'), 
+                          );
+
+                $this->db->set($c);
+                $this->db->insert('t_pembiayaan');
+
                 $this->session->set_flashdata('sukses','registrasi berhasil, tunggu akun anda di validasi admin');
                 redirect(base_url('login'));
 

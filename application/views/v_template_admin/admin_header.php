@@ -230,6 +230,11 @@
               <i class="fa fa-question-circle"></i> <span>UMKM</span>
             </a>
           </li>
+          <li <?php echo @$pembiayaan; ?>>
+            <a href="<?php echo base_url() ?>pembiayaan">
+              <i class="fa fa-question-circle"></i> <span>Pembiayaan BNI</span>
+            </a>
+          </li>
         <?php endif ?>
 
         <?php if ($this->session->userdata('level') == 1): ?>
@@ -241,10 +246,23 @@
         <?php endif ?>
 
         <?php if ($this->session->userdata('level') < 2): ?>
-          <li <?php echo @$data_umkm; ?>>
+          <!-- <li <?php echo @$data_umkm; ?>>
             <a href="<?php echo base_url() ?>data_umkm">
               <i class="fa fa-users"></i> <span>Data UMKM</span>
             </a>
+          </li> -->
+
+          <li class="treeview">
+            <a href="#">
+              <i class="fa fa-users"></i> <span>UMKM</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu" style="<?php echo @$tree_umkm; ?>">
+              <li><a href="<?php echo base_url() ?>data_umkm"><i class="fa fa-minus"></i>Data UMKM</a></li>
+              <li><a href="<?php echo base_url() ?>data_pembiayaan"><i class="fa fa-minus"></i> Pembiayaan BNI</a></li>
+            </ul>
           </li>
         <?php endif ?>
 

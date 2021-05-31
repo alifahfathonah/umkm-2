@@ -26,7 +26,7 @@
             <div class="form-group" style="margin-bottom: 0px;">
               <div class="row">
                 <div class="col-md-3 col-xs-10">
-                  <input placeholder="Filter Bulan" autocomplete="off" required="" name="filter" type="text" class="form-control pull-right" id="monthpicker" value="">
+                  <input placeholder="Filter Bulan" autocomplete="off" required="" name="filter" type="text" class="form-control pull-right" id="reservation" value="">
                 </div>
                 <div class="col-md-3 col-xs-2 row">
                   <button class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
@@ -56,8 +56,8 @@
                   <th>Nama pengelolah Rumah BUMN</th>
                   <th>No Telepon/HP</th>
                   <th>Nama PIC Kantor Cabang</th>
-                  <th>Tanggal Input</th>
                   <th>Delete</th>
+                  <th>Tanggal Input</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -79,10 +79,9 @@
                       <?php endif ?>
 
                     </td>
-                    <td><?php echo implode(', ', json_decode($key['bumn_pengelola'],true)); ?></td>
-                    <td><?php echo implode(', ', json_decode($key['bumn_no'],true)); ?></td>
-                    <td><?php echo implode(', ', json_decode($key['bumn_pic'],true)); ?></td>
-                    <td><?php echo $key['bumn_tanggal'] ?></td>
+                    <td><?php echo @implode(', ', json_decode($key['bumn_pengelola'],true)); ?></td>
+                    <td><?php echo @implode(', ', json_decode($key['bumn_no'],true)); ?></td>
+                    <td><?php echo @implode(', ', json_decode($key['bumn_pic'],true)); ?></td>
                     <td style="width: 50px;">
                       <div>
 
@@ -90,6 +89,7 @@
 
                       </div>
                     </td>
+                    <td><?php echo $key['bumn_tanggal'] ?></td>
                   </tr>
 
                    <!--modal hapus-->

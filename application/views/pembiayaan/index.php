@@ -58,36 +58,36 @@
 		    </div>
 
 		    <br/>
-		    <span style="background: #117a8b; padding: 0.3%; color: white;">Update Terakhir : <?php $xx = date_create(@$data['umkm_tanggal']); echo date_format($xx, 'd/m/Y') ?></span>
+		    <span style="background: #117a8b; padding: 0.3%; color: white;">Update Terakhir : <?php $xx = date_create(@$data['pembiayaan_tanggal']); echo date_format($xx, 'd/m/Y') ?></span>
 		    <br/><br/>
 		    
-		    <form role="form" method="POST" action="<?php echo base_url('umkm/save') ?>" enctype="multipart/form-data">
+		    <form role="form" method="POST" action="<?php echo base_url('pembiayaan/save') ?>" enctype="multipart/form-data">
 		        <div class="panel panel-primary setup-content" id="step-1">
 		            <div class="panel-body">
 		                <div class="form-group">
-		                    <label class="control-label">Asal UMKM</label>
+		                    <label class="control-label">Asal pembiayaan</label>
 
-		                    <select id="umkm_rumah" name="umkm_rumah" class="form-control">
+		                    <!-- <select id="pembiayaan_rumah" name="pembiayaan_rumah" class="form-control">
 		                    	<option value="" hidden="">Rumah BUMN</option>
 		                    	<?php foreach ($rumah_bumn as $key): ?>
-		                    		<option value="<?php echo $key['rumah_bumn_id'] ?>"><?php echo $key['rumah_bumn_nama'] ?></option>
+		                    		<option value="<?php echo @$key['rumah_bumn_id'] ?>"><?php echo @$key['rumah_bumn_nama'] ?></option>
 		                    	<?php endforeach ?>
-		                    </select>
+		                    </select> -->
 
 		                </div>
 		                <div class="form-group">
 		                	<!--DB menyusul-->
-		                    <select id="umkm_skm" name="umkm_skm" class="form-control">
+		                    <select id="pembiayaan_skm" name="pembiayaan_skm" class="form-control">
 		                    	<option value="" hidden="">SKM</option>
 		                    	
 		                    </select>
 		                </div>
 		                <div class=" form-group">
 		                	
-		                	<select id="umkm_skc" name="umkm_skc" class="form-control">
+		                	<select id="pembiayaan_skc" name="pembiayaan_skc" class="form-control">
 		                    	<option value="" hidden="">SKC</option>
 		                    	<?php foreach ($skc as $key): ?>
-		                    		<option value="<?php echo $key['skc_id'] ?>"><?php echo $key['skc_nama'] ?></option>
+		                    		<option value="<?php echo @$key['skc_id'] ?>"><?php echo @$key['skc_nama'] ?></option>
 		                    	<?php endforeach ?>
 		                    </select>
 
@@ -95,10 +95,10 @@
 
 		                <div class=" form-group">
 		                	
-		                	<select id="umkm_cabang" name="umkm_cabang" class="form-control">
+		                	<select id="pembiayaan_cabang" name="pembiayaan_cabang" class="form-control">
 		                    	<option value="" hidden="">Cabang</option>
 		                    	<?php foreach ($cabang as $key): ?>
-		                    		<option value="<?php echo $key['rumah_bumn_cabang_id'] ?>"><?php echo $key['rumah_bumn_cabang_nama'] ?></option>
+		                    		<option value="<?php echo @$key['rumah_bumn_cabang_id'] ?>"><?php echo @$key['rumah_bumn_cabang_nama'] ?></option>
 		                    	<?php endforeach ?>
 		                    </select>
 
@@ -106,10 +106,10 @@
 
 						<div class="form-group">
 							<label class="control-label">Kantor Wilayah</label>		          
-							<select id="umkm_wilayah" name="umkm_wilayah" class="form-control">
+							<select id="pembiayaan_wilayah" name="pembiayaan_wilayah" class="form-control">
 		                    	<option value="" hidden="">-- Pilih --</option>
 		                    	<?php foreach ($wilayah as $key): ?>
-		                    		<option value="<?php echo $key['wilayah_baru_kode'] ?>"><?php echo $key['wilayah_baru_nama'] ?></option>
+		                    		<option value="<?php echo @$key['wilayah_baru_kode'] ?>"><?php echo @$key['wilayah_baru_nama'] ?></option>
 		                    	<?php endforeach ?>
 		                    </select>
 
@@ -117,29 +117,29 @@
 
 		                <div class="form-group">
 		                    <label class="control-label">Nama Brand/Merk</label>
-		                    <input value="<?php echo @$data['umkm_brand'] ?>" name="umkm_brand" type="text"  class="form-control" placeholder="Brand/Merk" />
+		                    <input value="<?php echo @$data['pembiayaan_brand'] ?>" name="pembiayaan_brand" type="text"  class="form-control" placeholder="Brand/Merk" />
 		                </div>
 		                <div class="form-group">
 		                    <label class="control-label">Nama Usaha</label>
-		                    <input value="<?php echo @$data['umkm_usaha'] ?>" name="umkm_usaha" type="text"  class="form-control" placeholder="Usaha" />
+		                    <input value="<?php echo @$data['pembiayaan_usaha'] ?>" name="pembiayaan_usaha" type="text"  class="form-control" placeholder="Usaha" />
 		                </div>
 		                <div class="form-group">
 		                    <label class="control-label">Jenis Usaha</label>
-		                    <select id="umkm_jenis" name="umkm_jenis"  class="form-control">
+		                    <select id="pembiayaan_jenis" name="pembiayaan_jenis"  class="form-control">
 		                    	<option value="" hidden="">Jenis Usaha</option>
 		                    	<?php foreach ($jenis_usaha as $key): ?>
-		                    		<option value="<?php echo $key['jenis_usaha_id'] ?>"><?php echo $key['jenis_usaha_nama'] ?></option>
+		                    		<option value="<?php echo @$key['jenis_usaha_id'] ?>"><?php echo @$key['jenis_usaha_nama'] ?></option>
 		                    	<?php endforeach ?>
 		                    	<option value="Lain-lain">Lain-lain sebutkan</option>
 		                    </select>
 		                </div>
 		                <div class="form-group">
-		                	<input value="<?php echo @$data['umkm_jenis_lain'] ?>" id="lain" type="hidden" name="umkm_jenis_lain" class="form-control" placeholder="Lain-lain">
+		                	<input value="<?php echo @$data['pembiayaan_jenis_lain'] ?>" id="lain" type="hidden" name="pembiayaan_jenis_lain" class="form-control" placeholder="Lain-lain">
 		                </div>
 
 		                <div class="form-group">
-		                    <label class="control-label">Kategori UMKM</label>
-		                    <select id="umkm_kategori" name="umkm_kategori"  class="form-control">
+		                    <label class="control-label">Kategori pembiayaan</label>
+		                    <select id="pembiayaan_kategori" name="pembiayaan_kategori"  class="form-control">
 		                    	<option value="" hidden="">-- Pilih --</option>
 		                    	<option value="Unggulan">Unggulan</option>
 		                    	<option value="Non Unggulan">Non Unggulan</option>
@@ -155,49 +155,49 @@
 		                <div class="form-group">
 		                    <label class="control-label">Alamat Usaha</label>
 
-		                    <select id="umkm_provinsi" name="umkm_provinsi"  class="form-control">
+		                    <select id="pembiayaan_provinsi" name="pembiayaan_provinsi"  class="form-control">
 		                    	<option value="" hidden="">Provinsi</option>
 		                    	<?php foreach ($provinsi as $key): ?>
-		                    		<option value="<?php echo $key['provinsi_id'] ?>"><?php echo $key['provinsi_nama'] ?></option>
+		                    		<option value="<?php echo @$key['provinsi_id'] ?>"><?php echo @$key['provinsi_nama'] ?></option>
 		                    	<?php endforeach ?>
 		                    </select>
 
-		                    <input type="hidden" id="umkm_provinsi_text" name="umkm_provinsi_text" value="<?php echo @@$data['umkm_provinsi_text'] ?>">
+		                    <input type="hidden" id="pembiayaan_provinsi_text" name="pembiayaan_provinsi_text" value="<?php echo @@$data['pembiayaan_provinsi_text'] ?>">
 
 		                </div>
 		                <div class="form-group">
 
-		                    <select id="umkm_kota" name="umkm_kota"  class="form-control">
+		                    <select id="pembiayaan_kota" name="pembiayaan_kota"  class="form-control">
 		                    	<option value="" hidden="">Kab/Kota</option>
 		                    </select>
 
-		                    <input type="hidden" id="umkm_kota_text" name="umkm_kota_text" value="<?php echo @@$data['umkm_kota_text'] ?>">
+		                    <input type="hidden" id="pembiayaan_kota_text" name="pembiayaan_kota_text" value="<?php echo @@$data['pembiayaan_kota_text'] ?>">
 
 		                </div>
 
 		                <div class="form-group">
 
-		                    <select id="umkm_kecamatan" name="umkm_kecamatan"  class="form-control">
+		                    <select id="pembiayaan_kecamatan" name="pembiayaan_kecamatan"  class="form-control">
 		                    	<option value="" hidden="">Kecamatan</option>
 		                    </select>
 
-		                    <input type="hidden" id="umkm_kecamatan_text" name="umkm_kecamatan_text" value="<?php echo @@$data['umkm_kecamatan_text'] ?>">
+		                    <input type="hidden" id="pembiayaan_kecamatan_text" name="pembiayaan_kecamatan_text" value="<?php echo @@$data['pembiayaan_kecamatan_text'] ?>">
 
 		                </div>
 
 		                <div class="form-group">
-		                    <input type="text" value="<?php echo @$data['umkm_pos'] ?>" name="umkm_pos"  class="form-control" placeholder="Kode Pos" />
+		                    <input type="text" value="<?php echo @$data['pembiayaan_pos'] ?>" name="pembiayaan_pos"  class="form-control" placeholder="Kode Pos" />
 		                </div>
 		                <div class="form-group">
-		                    <input type="text" value="<?php echo @$data['umkm_alamat'] ?>" name="umkm_alamat"  class="form-control" placeholder="Alamat lengkap" />
+		                    <input type="text" value="<?php echo @$data['pembiayaan_alamat'] ?>" name="pembiayaan_alamat"  class="form-control" placeholder="Alamat lengkap" />
 		                </div>
 		                <div class="form-group">
 		                    <label class="control-label">Nama Pemilik</label>
-		                    <input type="text" value="<?php echo @$data['umkm_pemilik'] ?>" name="umkm_pemilik"  class="form-control" placeholder="Nama Pemilik" />
+		                    <input type="text" value="<?php echo @$data['pembiayaan_pemilik'] ?>" name="pembiayaan_pemilik"  class="form-control" placeholder="Nama Pemilik" />
 		                </div>
 		                <div class="form-group">
 		                    <label class="control-label">No Tlp/Hp pemilik</label>
-		                    <input value="<?php echo @$data['umkm_no'] ?>" type="number" name="umkm_no"  class="form-control" placeholder="Tlp/Hp" />
+		                    <input value="<?php echo @$data['pembiayaan_no'] ?>" type="number" name="pembiayaan_no"  class="form-control" placeholder="Tlp/Hp" />
 		                </div>
 
 		                <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
@@ -208,23 +208,23 @@
 		            <div class="panel-body">
 		                <div class="form-group">
 		                    <label class="control-label">Nama PIC selain pemilik</label>
-		                    <input type="text" value="<?php echo @$data['umkm_pic'] ?>" name="umkm_pic"  class="form-control" placeholder="Nama PIC selain pemilik" />
+		                    <input type="text" value="<?php echo @$data['pembiayaan_pic'] ?>" name="pembiayaan_pic"  class="form-control" placeholder="Nama PIC selain pemilik" />
 		                </div>
 		                <div class="form-group">
 		                    <label class="control-label">No Tlp/HP PIC</label>
-		                    <input type="number" value="<?php echo @$data['umkm_no_pic'] ?>" name="umkm_no_pic"  class="form-control" placeholder="Tlp/HP PIC " />
+		                    <input type="number" value="<?php echo @$data['pembiayaan_no_pic'] ?>" name="pembiayaan_no_pic"  class="form-control" placeholder="Tlp/HP PIC " />
 		                </div>
 		                <div class="form-group">
 		                    <label class="control-label">Nama IG Usaha</label>
-		                    <input type="text" value="<?php echo @$data['umkm_ig'] ?>" name="umkm_ig"  class="form-control" placeholder="Instagram" />
+		                    <input type="text" value="<?php echo @$data['pembiayaan_ig'] ?>" name="pembiayaan_ig"  class="form-control" placeholder="Instagram" />
 		                </div>
 		                <div class="form-group">
 		                    <label class="control-label">Nama FB Usaha</label>
-		                    <input type="text" value="<?php echo @$data['umkm_fb'] ?>" name="umkm_fb"  class="form-control" placeholder="Facebook" />
+		                    <input type="text" value="<?php echo @$data['pembiayaan_fb'] ?>" name="pembiayaan_fb"  class="form-control" placeholder="Facebook" />
 		                </div>
 		                <div class="form-group">
 		                    <label class="control-label">Alamat Email (Aktif)</label>
-		                    <input type="text" value="<?php echo @$data['umkm_email'] ?>" name="umkm_email"  class="form-control" placeholder="Gmail" />
+		                    <input type="text" value="<?php echo @$data['pembiayaan_email'] ?>" name="pembiayaan_email"  class="form-control" placeholder="Gmail" />
 		                </div>
 
 		                <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
@@ -235,29 +235,29 @@
 		            <div class="panel-body">
 		                <div class="form-group">
 		                    <label class="control-label">Channel penjualan online</label>
-		                    <input type="text" name="umkm_shopee"  class="form-control" placeholder="Shopee" value="<?php echo @$data['umkm_shopee'] ?>" />
+		                    <input type="text" name="pembiayaan_shopee"  class="form-control" placeholder="Shopee" value="<?php echo @$data['pembiayaan_shopee'] ?>" />
 		                </div>
 		                <div class="form-group">
-		                    <input type="text" name="umkm_tokopedia"  class="form-control" placeholder="Tokopedia" value="<?php echo @$data['umkm_tokopedia'] ?>" />
+		                    <input type="text" name="pembiayaan_tokopedia"  class="form-control" placeholder="Tokopedia" value="<?php echo @$data['pembiayaan_tokopedia'] ?>" />
 		                </div>
 		                <div class="form-group">
-		                    <input type="text" value="<?php echo @$data['umkm_lazada'] ?>" name="umkm_lazada"  class="form-control" placeholder="Lazada" />
+		                    <input type="text" value="<?php echo @$data['pembiayaan_lazada'] ?>" name="pembiayaan_lazada"  class="form-control" placeholder="Lazada" />
 		                </div>
 		                <div class="form-group">
-		                    <input type="text" value="<?php echo @$data['umkm_bukalapak'] ?>" name="umkm_bukalapak"  class="form-control" placeholder="Bukalapak" />
+		                    <input type="text" value="<?php echo @$data['pembiayaan_bukalapak'] ?>" name="pembiayaan_bukalapak"  class="form-control" placeholder="Bukalapak" />
 		                </div>
 		                <div class="form-group">
-		                    <input type="text" value="<?php echo @$data['umkm_jdid'] ?>" name="umkm_jdid"  class="form-control" placeholder="Jd.id" />
+		                    <input type="text" value="<?php echo @$data['pembiayaan_jdid'] ?>" name="pembiayaan_jdid"  class="form-control" placeholder="Jd.id" />
 		                </div>
 		                <div class="form-group">
-		                    <input type="text" value="<?php echo @$data['umkm_blibli'] ?>" name="umkm_blibli"  class="form-control" placeholder="Blibli" />
+		                    <input type="text" value="<?php echo @$data['pembiayaan_blibli'] ?>" name="pembiayaan_blibli"  class="form-control" placeholder="Blibli" />
 		                </div>
 		                <div class="form-group">
-		                    <input type="text" value="<?php echo @$data['umkm_padi'] ?>" name="umkm_padi"  class="form-control" placeholder="PADI" />
+		                    <input type="text" value="<?php echo @$data['pembiayaan_padi'] ?>" name="pembiayaan_padi"  class="form-control" placeholder="PADI" />
 		                </div>
 		                <div class="form-group">
 		                    <label class="control-label">Nama Website Usaha</label>
-		                    <input type="text" value="<?php echo @$data['umkm_website'] ?>" name="umkm_website"  class="form-control" placeholder="Website" />
+		                    <input type="text" value="<?php echo @$data['pembiayaan_website'] ?>" name="pembiayaan_website"  class="form-control" placeholder="Website" />
 		                </div>
 
 		                <button class="btn btn-primary nextBtn pull-right" type="button">Next</button>
@@ -271,17 +271,17 @@
 			            <div class="form-group">
 		                    <label class="control-label">Pameran yang pernah di ikuti di dalam negeri</label>
 
-							<?php if (@@$data['umkm_pameran_dalam']): ?>
+							<?php if (@@$data['pembiayaan_pameran_dalam']): ?>
 
 								<?php $i = 0; ?>
-								<?php foreach (json_decode(@$data['umkm_pameran_dalam']) as $key): ?>
+								<?php foreach (json_decode(@$data['pembiayaan_pameran_dalam']) as $key): ?>
 
 									<div class="input-group" style="margin-top: 1%;">
-			                    		<input type="text" class="form-control" name="umkm_pameran_dalam[]" value="<?php echo $key ?>">
+			                    		<input type="text" class="form-control" name="pembiayaan_pameran_dalam[]" value="<?php echo $key ?>">
 										<span class="input-group-addon" style="background-color: #efefef;">
 
 											<?php if ($i < 1): ?>
-												<button style="border: none; outline:none;" type="button" onclick="add_input('umkm_pameran_dalam_copy','umkm_pameran_dalam_tampil')"><i class="fa fa-plus"></i></button>
+												<button style="border: none; outline:none;" type="button" onclick="add_input('pembiayaan_pameran_dalam_copy','pembiayaan_pameran_dalam_tampil')"><i class="fa fa-plus"></i></button>
 											<?php else: ?>	
 												<button style="border: none; outline:none;" type="button" <button onclick="remove_input(this,'input-group')" style="border: none; outline:none;"><i class="fa fa-minus"></i></button>
 											<?php endif ?>
@@ -295,22 +295,22 @@
 							<?php else: ?>
 								
 								<div class="input-group">
-		                    		<input type="text" class="form-control" name="umkm_pameran_dalam[]">
-									<span class="input-group-addon" style="background-color: #efefef;"><button style="border: none; outline:none;" type="button" onclick="add_input('umkm_pameran_dalam_copy','umkm_pameran_dalam_tampil')"><i class="fa fa-plus"></i></button></span>
+		                    		<input type="text" class="form-control" name="pembiayaan_pameran_dalam[]">
+									<span class="input-group-addon" style="background-color: #efefef;"><button style="border: none; outline:none;" type="button" onclick="add_input('pembiayaan_pameran_dalam_copy','pembiayaan_pameran_dalam_tampil')"><i class="fa fa-plus"></i></button></span>
 								</div>
 
 							<?php endif ?>
 
 							<!--clone element-->
-							<div hidden="" id="umkm_pameran_dalam_copy">
+							<div hidden="" id="pembiayaan_pameran_dalam_copy">
 								<div class="input-group" style="margin-top: 1%;">
-		                    		<input type="text" class="form-control" name="umkm_pameran_dalam[]">
+		                    		<input type="text" class="form-control" name="pembiayaan_pameran_dalam[]">
 									<span class="input-group-addon" style="background-color: #efefef;"><button onclick="remove_input(this,'input-group')" style="border: none; outline:none;" type="button"><i class="fa fa-minus"></i></button></span>
 								</div>
 							</div>
 
 							<!--tampil-->
-							<div id="umkm_pameran_dalam_tampil">
+							<div id="pembiayaan_pameran_dalam_tampil">
 								
 							</div>
 
@@ -319,17 +319,17 @@
 		                <div class="form-group">
 		                    <label class="control-label">Pameran yang pernah di ikuti di luar negeri</label>
 
-		                    <?php if (@@$data['umkm_pameran_luar']): ?>
+		                    <?php if (@@$data['pembiayaan_pameran_luar']): ?>
 
 								<?php $i = 0; ?>
-								<?php foreach (json_decode(@$data['umkm_pameran_luar']) as $key): ?>
+								<?php foreach (json_decode(@$data['pembiayaan_pameran_luar']) as $key): ?>
 
 									<div class="input-group" style="margin-top: 1%;">
-			                    		<input type="text" class="form-control" name="umkm_pameran_luar[]" value="<?php echo $key ?>">
+			                    		<input type="text" class="form-control" name="pembiayaan_pameran_luar[]" value="<?php echo $key ?>">
 										<span class="input-group-addon" style="background-color: #efefef;">
 
 											<?php if ($i < 1): ?>
-												<button style="border: none; outline:none;" type="button" onclick="add_input('umkm_pameran_luar_copy','umkm_pameran_luar_tampil')"><i class="fa fa-plus"></i></button>
+												<button style="border: none; outline:none;" type="button" onclick="add_input('pembiayaan_pameran_luar_copy','pembiayaan_pameran_luar_tampil')"><i class="fa fa-plus"></i></button>
 											<?php else: ?>	
 												<button style="border: none; outline:none;" type="button" <button onclick="remove_input(this,'input-group')" style="border: none; outline:none;"><i class="fa fa-minus"></i></button>
 											<?php endif ?>
@@ -343,22 +343,22 @@
 							<?php else: ?>
 								
 								<div class="input-group">
-		                    		<input type="text" class="form-control" name="umkm_pameran_luar[]">
-									<span class="input-group-addon" style="background-color: #efefef;"><button style="border: none; outline:none;" type="button" onclick="add_input('umkm_pameran_luar_copy','umkm_pameran_luar_tampil')"><i class="fa fa-plus"></i></button></span>
+		                    		<input type="text" class="form-control" name="pembiayaan_pameran_luar[]">
+									<span class="input-group-addon" style="background-color: #efefef;"><button style="border: none; outline:none;" type="button" onclick="add_input('pembiayaan_pameran_luar_copy','pembiayaan_pameran_luar_tampil')"><i class="fa fa-plus"></i></button></span>
 								</div>
 
 							<?php endif ?>
 
 							<!--clone element-->
-							<div hidden="" id="umkm_pameran_luar_copy">
+							<div hidden="" id="pembiayaan_pameran_luar_copy">
 								<div class="input-group" style="margin-top: 1%;">
-		                    		<input  type="text" class="form-control" name="umkm_pameran_luar[]">
+		                    		<input  type="text" class="form-control" name="pembiayaan_pameran_luar[]">
 									<span class="input-group-addon" style="background-color: #efefef;"><button onclick="remove_input(this,'input-group')" style="border: none; outline:none;" type="button"><i class="fa fa-minus"></i></button></span>
 								</div>
 							</div>
 
 							<!--tampil-->
-							<div id="umkm_pameran_luar_tampil">
+							<div id="pembiayaan_pameran_luar_tampil">
 								
 							</div>
 		                </div>
@@ -366,17 +366,17 @@
 		                <div class="form-group">
 		                    <label class="control-label">Penghargaan yang pernah di terima </label>
 
-		                    <?php if (@@$data['umkm_penghargaan']): ?>
+		                    <?php if (@@$data['pembiayaan_penghargaan']): ?>
 
 								<?php $i = 0; ?>
-								<?php foreach (json_decode(@$data['umkm_penghargaan']) as $key): ?>
+								<?php foreach (json_decode(@$data['pembiayaan_penghargaan']) as $key): ?>
 
 									<div class="input-group" style="margin-top: 1%;">
-			                    		<input type="text" class="form-control" name="umkm_penghargaan[]" value="<?php echo $key ?>">
+			                    		<input type="text" class="form-control" name="pembiayaan_penghargaan[]" value="<?php echo $key ?>">
 										<span class="input-group-addon" style="background-color: #efefef;">
 
 											<?php if ($i < 1): ?>
-												<button style="border: none; outline:none;" type="button" onclick="add_input('umkm_penghargaan_copy','umkm_penghargaan_tampil')"><i class="fa fa-plus"></i></button>
+												<button style="border: none; outline:none;" type="button" onclick="add_input('pembiayaan_penghargaan_copy','pembiayaan_penghargaan_tampil')"><i class="fa fa-plus"></i></button>
 											<?php else: ?>	
 												<button style="border: none; outline:none;" type="button" <button onclick="remove_input(this,'input-group')" style="border: none; outline:none;"><i class="fa fa-minus"></i></button>
 											<?php endif ?>
@@ -390,40 +390,40 @@
 							<?php else: ?>
 								
 								<div class="input-group">
-		                    		<input type="text" class="form-control" name="umkm_penghargaan[]">
-									<span class="input-group-addon" style="background-color: #efefef;"><button style="border: none; outline:none;" type="button" onclick="add_input('umkm_penghargaan_copy','umkm_penghargaan_tampil')"><i class="fa fa-plus"></i></button></span>
+		                    		<input type="text" class="form-control" name="pembiayaan_penghargaan[]">
+									<span class="input-group-addon" style="background-color: #efefef;"><button style="border: none; outline:none;" type="button" onclick="add_input('pembiayaan_penghargaan_copy','pembiayaan_penghargaan_tampil')"><i class="fa fa-plus"></i></button></span>
 								</div>
 
 							<?php endif ?>
 
 							<!--clone element-->
-							<div hidden="" id="umkm_penghargaan_copy">
+							<div hidden="" id="pembiayaan_penghargaan_copy">
 								<div class="input-group" style="margin-top: 1%;">
-		                    		<input  type="text" class="form-control" name="umkm_penghargaan[]">
+		                    		<input  type="text" class="form-control" name="pembiayaan_penghargaan[]">
 									<span class="input-group-addon" style="background-color: #efefef;"><button onclick="remove_input(this,'input-group')" style="border: none; outline:none;" type="button"><i class="fa fa-minus"></i></button></span>
 								</div>
 							</div>
 
 							<!--tampil-->
-							<div id="umkm_penghargaan_tampil">
+							<div id="pembiayaan_penghargaan_tampil">
 								
 							</div>
 		                </div>
 
 		                <div class="form-group">
-		                    <label class="control-label">Deskripsi produk UMKM</label>
+		                    <label class="control-label">Deskripsi produk pembiayaan</label>
 		                    
-		                    <?php if (@@$data['umkm_deskripsi']): ?>
+		                    <?php if (@@$data['pembiayaan_deskripsi']): ?>
 
 								<?php $i = 0; ?>
-								<?php foreach (json_decode(@$data['umkm_deskripsi']) as $key): ?>
+								<?php foreach (json_decode(@$data['pembiayaan_deskripsi']) as $key): ?>
 
 									<div class="input-group" style="margin-top: 1%;">
-			                    		<input type="text" class="form-control" name="umkm_deskripsi[]" value="<?php echo $key ?>">
+			                    		<input type="text" class="form-control" name="pembiayaan_deskripsi[]" value="<?php echo $key ?>">
 										<span class="input-group-addon" style="background-color: #efefef;">
 
 											<?php if ($i < 1): ?>
-												<button style="border: none; outline:none;" type="button" onclick="add_input('umkm_deskripsi_copy','umkm_deskripsi_tampil')"><i class="fa fa-plus"></i></button>
+												<button style="border: none; outline:none;" type="button" onclick="add_input('pembiayaan_deskripsi_copy','pembiayaan_deskripsi_tampil')"><i class="fa fa-plus"></i></button>
 											<?php else: ?>	
 												<button style="border: none; outline:none;" type="button" <button onclick="remove_input(this,'input-group')" style="border: none; outline:none;"><i class="fa fa-minus"></i></button>
 											<?php endif ?>
@@ -437,34 +437,34 @@
 							<?php else: ?>
 								
 								<div class="input-group">
-		                    		<input type="text" class="form-control" name="umkm_deskripsi[]">
-									<span class="input-group-addon" style="background-color: #efefef;"><button style="border: none; outline:none;" type="button" onclick="add_input('umkm_deskripsi_copy','umkm_deskripsi_tampil')"><i class="fa fa-plus"></i></button></span>
+		                    		<input type="text" class="form-control" name="pembiayaan_deskripsi[]">
+									<span class="input-group-addon" style="background-color: #efefef;"><button style="border: none; outline:none;" type="button" onclick="add_input('pembiayaan_deskripsi_copy','pembiayaan_deskripsi_tampil')"><i class="fa fa-plus"></i></button></span>
 								</div>
 
 							<?php endif ?>
 
 							<!--clone element-->
-							<div hidden="" id="umkm_deskripsi_copy">
+							<div hidden="" id="pembiayaan_deskripsi_copy">
 								<div class="input-group" style="margin-top: 1%;">
-		                    		<input  type="text" class="form-control" name="umkm_deskripsi[]">
+		                    		<input  type="text" class="form-control" name="pembiayaan_deskripsi[]">
 									<span class="input-group-addon" style="background-color: #efefef;"><button onclick="remove_input(this,'input-group')" style="border: none; outline:none;" type="button"><i class="fa fa-minus"></i></button></span>
 								</div>
 							</div>
 
 							<!--tampil-->
-							<div id="umkm_deskripsi_tampil">
+							<div id="pembiayaan_deskripsi_tampil">
 								
 							</div>
 		                </div>
 
 		                <div class="form-group">
 		                    <label class="control-label">Berdiri sejak tahun</label>
-		                    <input type="text" value="<?php echo @$data['umkm_berdiri'] ?>" name="umkm_berdiri"  class="form-control" placeholder="Sejak Tahun" />
+		                    <input type="text" value="<?php echo @$data['pembiayaan_berdiri'] ?>" name="pembiayaan_berdiri"  class="form-control" placeholder="Sejak Tahun" />
 		                </div>
 
 		                <div class="form-group">
 		                    <label class="control-label">Skala Usaha</label>
-		                    <select id="umkm_skala" name="umkm_skala" class="form-control">
+		                    <select id="pembiayaan_skala" name="pembiayaan_skala" class="form-control">
 		                    	<option value="Mikro">Mikro</option>
 		                    	<option value="Kecil">Kecil</option>
 		                    	<option value="Menengah">Menengah</option>
@@ -480,17 +480,17 @@
 
 		            	<div class="form-group">
 		                    <label class="control-label">Jumlah Karyawan</label>
-		                    <input type="number" value="<?php echo @$data['umkm_karyawan'] ?>" name="umkm_karyawan"  class="form-control" placeholder="Jumlah Karyawan" />
+		                    <input type="number" value="<?php echo @$data['pembiayaan_karyawan'] ?>" name="pembiayaan_karyawan"  class="form-control" placeholder="Jumlah Karyawan" />
 		                </div>
 
 		                <div class="form-group">
 		                    <label class="control-label">Omset rata-rata per bulan</label>
-		                    <input type="text" value="<?php echo @$data['umkm_omset'] ?>" name="umkm_omset"  class="form-control" placeholder="Omset rata-rata" />
+		                    <input type="text" value="<?php echo @$data['pembiayaan_omset'] ?>" name="pembiayaan_omset"  class="form-control" placeholder="Omset rata-rata" />
 		                </div>
 
 		                <div class="form-group">
 		                    <label class="control-label">Jenis pembiayaan BNI</label>
-		                    <select id="umkm_jenis_biaya_bni" name="umkm_jenis_biaya_bni" class="form-control">
+		                    <select id="pembiayaan_jenis_biaya_bni" name="pembiayaan_jenis_biaya_bni" class="form-control">
 		                   		<option value="Kredit Kemitraan">Kredit Kemitraan</option>
 		                    	<option value="KUR">KUR</option>
 		                    	<option value="BCM">BCM</option>
@@ -499,7 +499,7 @@
 
 		                <div class="form-group">
 		                    <label class="control-label">Nilai Kredit</label>
-		                    <input type="number" value="<?php echo @$data['umkm_kredit'] ?>" name="umkm_kredit"  class="form-control" placeholder="Nilai Kredit" />
+		                    <input type="number" value="<?php echo @$data['pembiayaan_kredit'] ?>" name="pembiayaan_kredit"  class="form-control" placeholder="Nilai Kredit" />
 		                </div>
 
 		                <div class="form-group">
@@ -507,16 +507,16 @@
 
 		                    <div class="row">
 		                    	<div class="col-md-3">
-			                    	<input type="file" name="umkm_produk[]"  class="form-control" />
+			                    	<input type="file" name="pembiayaan_produk[]"  class="form-control" />
 			                    </div>
 			                    <div class="col-md-3">
-			                    	<input type="file" name="umkm_produk[]"  class="form-control" />
+			                    	<input type="file" name="pembiayaan_produk[]"  class="form-control" />
 			                    </div>
 			                    <div class="col-md-3">
-			                    	<input type="file" name="umkm_produk[]"  class="form-control" />
+			                    	<input type="file" name="pembiayaan_produk[]"  class="form-control" />
 			                    </div>
 			                    <div class="col-md-3">
-			                    	<input type="file" name="umkm_produk[]"  class="form-control" />
+			                    	<input type="file" name="pembiayaan_produk[]"  class="form-control" />
 			                    </div>
 		                    </div>
 
@@ -526,11 +526,11 @@
 
 		                	<div class="row">
 		                
-		                	<?php if (@@$data['umkm_produk']): ?>
+		                	<?php if (@@$data['pembiayaan_produk']): ?>
 		                    	<?php $i = 1; ?>
-		                    	 <?php foreach (json_decode(@$data['umkm_produk'],true) as $key): ?>
+		                    	 <?php foreach (json_decode(@$data['pembiayaan_produk'],true) as $key): ?>
 		                    	 	<div class="col-md-2 col-xs-6">
-			                    	 	<img src="<?php echo base_url('asset/gambar/umkm/'.$key) ?>" alt="" class="img-thumbnail" width="200">
+			                    	 	<img src="<?php echo base_url('asset/gambar/pembiayaan/'.$key) ?>" alt="" class="img-thumbnail" width="200">
 			                    	 	<button data-toggle="modal" data-target="#modal_hapus<?php echo $i ?>" class="btn btn-danger btn-xs" style="position: absolute; border-radius: 100%; margin-left: -20px;" type="button"><i class="fa fa-times"></i></button>
 			                    	 </div>
 
@@ -545,7 +545,7 @@
 			                                <h4>Confirmed ?</h4>
 			                              </div>
 			                            <div class="modal-body" align="center">
-			                               <a href="<?php echo base_url('umkm/delete/'.$key) ?>"><button class="btn btn-success" type="button" style="width: 49%;">Yes</button></a>
+			                               <a href="<?php echo base_url('pembiayaan/delete/'.$key) ?>"><button class="btn btn-success" type="button" style="width: 49%;">Yes</button></a>
 			                               <button class="btn btn-danger" data-dismiss="modal" style="width: 49%;">No</button>
 			                            </div>
 
@@ -562,18 +562,18 @@
 		                </div>
 
 		                <div class="form-group">
-		                    <label class="control-label">Upload Logo UMKM</label>
-		                    <input type="file" name="umkm_logo"  class="form-control" />
+		                    <label class="control-label">Upload Logo pembiayaan</label>
+		                    <input type="file" name="pembiayaan_logo"  class="form-control" />
 
 		                    <div style="margin-top: 0.5%;"></div>
-			                    <?php if (@@$data['umkm_logo']): ?>
-			                    	<img src="<?php echo base_url('asset/gambar/umkm/'.@$data['umkm_logo']) ?>" alt="" class="img-thumbnail" width="100">
+			                    <?php if (@@$data['pembiayaan_logo']): ?>
+			                    	<img src="<?php echo base_url('asset/gambar/pembiayaan/'.@$data['pembiayaan_logo']) ?>" alt="" class="img-thumbnail" width="100">
 			                    <?php endif ?>
 			                </div>
 
 		                <div class="form-group">
 		                    <label class="control-label"> Bila usaha merupakan usaha makanan/minuman apa sudah – Memiliki izin BPOM</label>
-		                    <select id="umkm_bpom" name="umkm_bpom" class="form-control">
+		                    <select id="pembiayaan_bpom" name="pembiayaan_bpom" class="form-control">
 		                    	<option value="Tidak">Tidak</option>
 		                    	<option value="Ya">Ya</option>
 		                    </select>
@@ -581,7 +581,7 @@
 
 		                <div class="form-group">
 			                <label>Izin Usaha yang dimiliki</label> <small class="text-danger">* dapat memilih lebih dari satu izin usahan</small>
-			                <select id="umkm_izinusaha" name="umkm_izinusaha[]" class="form-control select2" multiple="multiple" style="width: 100%;">
+			                <select id="pembiayaan_izinusaha" name="pembiayaan_izinusaha[]" class="form-control select2" multiple="multiple" style="width: 100%;">
 			                  <option value="PIRT">PIRT</option>
 			                  <option value="SKDP">SKDP</option>
 			                  <option value="SIUP">SIUP</option>
@@ -656,8 +656,8 @@
 
 	////////////////// end form next ////////////////////////
 
-$('#umkm_jenis').on('change', function (e) {
-    if ($('#umkm_jenis').val() == 'Lain-lain') {
+$('#pembiayaan_jenis').on('change', function (e) {
+    if ($('#pembiayaan_jenis').val() == 'Lain-lain') {
     	$('#lain').attr('type','text');
     	$('#lain').attr('required',true);
     }else{
@@ -666,14 +666,14 @@ $('#umkm_jenis').on('change', function (e) {
     }
 });
 
-//umkm kota
-$('#umkm_provinsi').on('change', function (e) {
+//pembiayaan kota
+$('#pembiayaan_provinsi').on('change', function (e) {
 
 	let id = $(this).val();
 
 	//delete
-	$('#umkm_kota').empty();
-	$('#umkm_kota').append('<option value="" hidden="">Kab/Kota</option>');
+	$('#pembiayaan_kota').empty();
+	$('#pembiayaan_kota').append('<option value="" hidden="">Kab/Kota</option>');
 
    $.getJSON('<?php echo $this->api_kota->kota() ?>'+id, function(data) {
    		
@@ -682,27 +682,27 @@ $('#umkm_provinsi').on('change', function (e) {
    			let html = '';
    			html += '<option value="'+data[index].kota_id+'">'+data[index].kota_nama+'</option>';
 
-   			$('#umkm_kota').append(html);
+   			$('#pembiayaan_kota').append(html);
 
-   			$('#umkm_kota').val('<?php echo @@$data['umkm_kota'] ?>').change();
+   			$('#pembiayaan_kota').val('<?php echo @@$data['pembiayaan_kota'] ?>').change();
    		});
 
    });
 
-   //umkm_provinsi_text
-  $('#umkm_provinsi_text').val($('#umkm_provinsi option:selected').text());
+   //pembiayaan_provinsi_text
+  $('#pembiayaan_provinsi_text').val($('#pembiayaan_provinsi option:selected').text());
    
 });
 
 
-//umkm kecamatan
-$('#umkm_kota').on('change', function (e) {
+//pembiayaan kecamatan
+$('#pembiayaan_kota').on('change', function (e) {
 
 	let id = $(this).val();
 
 	//delete
-	$('#umkm_kecamatan').empty();
-	$('#umkm_kecamatan').append('<option value="" hidden="">Kecamatan</option>');
+	$('#pembiayaan_kecamatan').empty();
+	$('#pembiayaan_kecamatan').append('<option value="" hidden="">Kecamatan</option>');
 
    $.getJSON('<?php echo $this->api_kota->kecamatan() ?>'+id, function(data) {
    		
@@ -711,21 +711,21 @@ $('#umkm_kota').on('change', function (e) {
    			let html = '';
    			html += '<option value="'+data[index].kecamatan_id+'">'+data[index].kecamatan_nama+'</option>';
 
-   			$('#umkm_kecamatan').append(html);
+   			$('#pembiayaan_kecamatan').append(html);
 
-   			$('#umkm_kecamatan').val('<?php echo @@$data['umkm_kecamatan'] ?>').change();
+   			$('#pembiayaan_kecamatan').val('<?php echo @@$data['pembiayaan_kecamatan'] ?>').change();
    		});   		
 
    });
 
-   //umkm_kota_text
-  $('#umkm_kota_text').val($('#umkm_kota option:selected').text());
+   //pembiayaan_kota_text
+  $('#pembiayaan_kota_text').val($('#pembiayaan_kota option:selected').text());
    
 });
 
-$('#umkm_kecamatan').on('change', function (e) {
-	//umkm_kecamatan_text
-	$('#umkm_kecamatan_text').val($('#umkm_kecamatan option:selected').text());
+$('#pembiayaan_kecamatan').on('change', function (e) {
+	//pembiayaan_kecamatan_text
+	$('#pembiayaan_kecamatan_text').val($('#pembiayaan_kecamatan option:selected').text());
 });
 	
 //loading ajax
@@ -750,7 +750,7 @@ function remove_input(id,target){
 }
 
 //izin_usaha
-$('#umkm_bpom').on('change', function (e) {
+$('#pembiayaan_bpom').on('change', function (e) {
 	if ($(this).val() == 'Ya') {
 		$('#izin_usaha').removeAttr('hidden');
 	}else{
@@ -763,19 +763,19 @@ $('#umkm_bpom').on('change', function (e) {
 /////////////select option/////////////////////////
 
 //alamat usaha
-$('#umkm_provinsi').val('<?php echo @@$data['umkm_provinsi'] ?>').change();
+$('#pembiayaan_provinsi').val('<?php echo @@$data['pembiayaan_provinsi'] ?>').change();
 /////////////
 
-$('#umkm_rumah').val('<?php echo @@$data['umkm_rumah'] ?>').change();
-$('#umkm_skc').val('<?php echo @@$data['umkm_skc'] ?>').change();
-$('#umkm_cabang').val('<?php echo @@$data['umkm_cabang'] ?>').change();
+$('#pembiayaan_rumah').val('<?php echo @@$data['pembiayaan_rumah'] ?>').change();
+$('#pembiayaan_skc').val('<?php echo @@$data['pembiayaan_skc'] ?>').change();
+$('#pembiayaan_cabang').val('<?php echo @@$data['pembiayaan_cabang'] ?>').change();
 
-$('#umkm_jenis').val('<?php echo @@$data['umkm_jenis'] ?>').change();
-$('#umkm_skala').val('<?php echo @@$data['umkm_skala'] ?>').change();
-$('#umkm_bpom').val('<?php echo @@$data['umkm_bpom'] ?>').change();
-$('#umkm_kategori').val('<?php echo @@$data['umkm_kategori'] ?>').change();
-$('#umkm_wilayah').val('<?php echo @@$data['umkm_wilayah'] ?>').change(); 
+$('#pembiayaan_jenis').val('<?php echo @@$data['pembiayaan_jenis'] ?>').change();
+$('#pembiayaan_skala').val('<?php echo @@$data['pembiayaan_skala'] ?>').change();
+$('#pembiayaan_bpom').val('<?php echo @@$data['pembiayaan_bpom'] ?>').change();
+$('#pembiayaan_kategori').val('<?php echo @@$data['pembiayaan_kategori'] ?>').change();
+$('#pembiayaan_wilayah').val('<?php echo @@$data['pembiayaan_wilayah'] ?>').change(); 
 
-$('#umkm_izinusaha').val(<?php echo @@$data['umkm_izinusaha'] ?>).select();
+$('#pembiayaan_izinusaha').val(<?php echo @@$data['pembiayaan_izinusaha'] ?>).select();
  
 </script>

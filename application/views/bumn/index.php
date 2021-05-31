@@ -76,7 +76,7 @@
 
 		                <div class="form-group">
 		                    <label class="control-label">Berdiri sejak</label>
-		                    <input name="bumn_berdiri" type="text" value="<?php echo $data['bumn_berdiri'] ?>" class="form-control" placeholder="Sejak" />
+		                    <input name="bumn_berdiri" type="text" value="<?php echo @$data['bumn_berdiri'] ?>" class="form-control" placeholder="Sejak" />
 		                </div>
 		                <div class="form-group">
 		                    <label class="control-label">Status Gedung Rumah BUMN</label>
@@ -86,7 +86,7 @@
 		                    	<option value="milik dinas">Milik Dinas</option>
 		                    </select>
 		                    <br/>
-							<input id="dinas" name="bumn_status_dinas" type="hidden" value="<?php echo $data['bumn_status_dinas'] ?>" class="form-control" placeholder="Dinas ......" />		                   
+							<input id="dinas" name="bumn_status_dinas" type="hidden" value="<?php echo @$data['bumn_status_dinas'] ?>" class="form-control" placeholder="Dinas ......" />		                   
 
 		                </div>
 		                <div class="form-group">
@@ -111,9 +111,9 @@
 
 		                	<div class="row">
 		                
-		                	<?php if (@$data['bumn_foto']): ?>
+		                	<?php if (@@$data['bumn_foto']): ?>
 		                    	<?php $i = 1; ?>
-		                    	 <?php foreach (json_decode($data['bumn_foto']) as $key): ?>
+		                    	 <?php foreach (json_decode(@$data['bumn_foto']) as $key): ?>
 		                    	 	<div class="col-md-2 col-xs-6">
 			                    	 	<img src="<?php echo base_url('asset/gambar/bumn/'.$key) ?>" alt="" class="img-thumbnail" width="200">
 			                    	 	<button data-toggle="modal" data-target="#modal_hapus<?php echo $i ?>" class="btn btn-danger btn-xs" style="position: absolute; border-radius: 100%; margin-left: -20px;" type="button"><i class="fa fa-times"></i></button>
@@ -156,10 +156,10 @@
 		                <div class="form-group">
 		                    <label class="control-label">Nama pengelola Rumah BUMN</label>
 
-							<?php if (@$data['bumn_pengelola']): ?>
+							<?php if (@@$data['bumn_pengelola']): ?>
 
 								<?php $i = 0; ?>
-								<?php foreach (json_decode(@$data['bumn_pengelola']) as $key): ?>
+								<?php foreach (json_decode(@@$data['bumn_pengelola']) as $key): ?>
 
 									<div class="input-group" style="margin-top: 1%;">
 			                    		<input type="text" class="form-control" name="bumn_pengelola[]" value="<?php echo $key ?>">
@@ -204,10 +204,10 @@
 		                <div class="form-group">
 		                    <label class="control-label">No Telepon/HP</label>
 
-							<?php if (@$data['bumn_no']): ?>
+							<?php if (@@$data['bumn_no']): ?>
 
 								<?php $i = 0; ?>
-								<?php foreach (json_decode($data['bumn_no']) as $key): ?>
+								<?php foreach (json_decode(@$data['bumn_no']) as $key): ?>
 
 									<div class="input-group" style="margin-top: 1%;">
 			                    		<input type="text" class="form-control" name="bumn_no[]" value="<?php echo $key ?>">
@@ -252,10 +252,10 @@
 		                <div class="form-group">
 		                    <label class="control-label">Nama PIC Kantor Cabang</label>
 
-							<?php if (@$data['bumn_pic']): ?>
+							<?php if (@@$data['bumn_pic']): ?>
 
 								<?php $i = 0; ?>
-								<?php foreach (json_decode($data['bumn_pic']) as $key): ?>
+								<?php foreach (json_decode(@$data['bumn_pic']) as $key): ?>
 
 									<div class="input-group" style="margin-top: 1%;">
 			                    		<input type="text" class="form-control" name="bumn_pic[]" value="<?php echo $key ?>">
@@ -375,9 +375,9 @@
 	}
 
 	//select option
-	$('#bumn_rumah').val('<?php echo @$data['bumn_rumah'] ?>').change();
-	$('#bumn_kantor_cabang').val('<?php echo @$data['bumn_kantor_cabang'] ?>').change();
-	$('#bumn_status').val('<?php echo @$data['bumn_status'] ?>').change();
-	$('#bumn_kantor_wilayah').val('<?php echo @$data['bumn_kantor_wilayah'] ?>').change();
+	$('#bumn_rumah').val('<?php echo @@$data['bumn_rumah'] ?>').change();
+	$('#bumn_kantor_cabang').val('<?php echo @@$data['bumn_kantor_cabang'] ?>').change();
+	$('#bumn_status').val('<?php echo @@$data['bumn_status'] ?>').change();
+	$('#bumn_kantor_wilayah').val('<?php echo @@$data['bumn_kantor_wilayah'] ?>').change();
  
 </script>

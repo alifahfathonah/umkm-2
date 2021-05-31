@@ -86,6 +86,9 @@ $('#monthpicker').datepicker({
   minViewMode: "months"
 })
 
+//Date range picker
+$('#reservation').daterangepicker()
+
 $(function () {
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.

@@ -7,9 +7,10 @@ class Data_log extends CI_Controller{
 	function kunjungan(){
 		if ( $this->session->userdata('login') == 1) {
 
-		    $filter = @$_POST['filter'];
-		    if ($filter) {
-		    	$data['data'] = $this->db->query("SELECT * FROM t_log_kunjungan AS a JOIN t_user AS b ON a.log_kunjungan_user = b.user_foreignkey WHERE a.log_kunjungan_hapus = 0 AND DATE_FORMAT(a.log_kunjungan_tanggal, '%m/%Y') = '$filter'")->result_array();
+		    @$filter = explode(' - ', @$_POST['filter']);
+
+		    if (@$_POST['filter']) {
+		    	$data['data'] = $this->db->query("SELECT * FROM t_log_kunjungan AS a JOIN t_user AS b ON a.log_kunjungan_user = b.user_foreignkey WHERE a.log_kunjungan_hapus = 0 AND DATE_FORMAT(a.log_kunjungan_kunjungan, '%m/%d/%Y') BETWEEN '$filter[0]' AND '$filter[1]'")->result_array();
 		    } else {
 		    	$data['data'] = $this->db->query("SELECT * FROM t_log_kunjungan AS a JOIN t_user AS b ON a.log_kunjungan_user = b.user_foreignkey WHERE a.log_kunjungan_hapus = 0")->result_array();
 		    }
@@ -44,9 +45,10 @@ class Data_log extends CI_Controller{
 	function pelatihan(){
 		if ( $this->session->userdata('login') == 1) {
 
-		    $filter = @$_POST['filter'];
-		    if ($filter) {
-		    	$data['data'] = $this->db->query("SELECT * FROM t_log_pelatihan AS a JOIN t_user AS b ON a.log_pelatihan_user = b.user_foreignkey WHERE a.log_pelatihan_hapus = 0 AND DATE_FORMAT(a.log_pelatihan_tanggal, '%m/%Y') = '$filter'")->result_array();
+		    @$filter = explode(' - ', @$_POST['filter']);
+
+		    if (@$_POST['filter']) {
+		    	$data['data'] = $this->db->query("SELECT * FROM t_log_pelatihan AS a JOIN t_user AS b ON a.log_pelatihan_user = b.user_foreignkey WHERE a.log_pelatihan_hapus = 0 AND DATE_FORMAT(a.log_pelatihan_tanggal, '%m/%d/%Y') BETWEEN '$filter[0]' AND '$filter[1]'")->result_array();
 		    } else {
 		    	$data['data'] = $this->db->query("SELECT * FROM t_log_pelatihan AS a JOIN t_user AS b ON a.log_pelatihan_user = b.user_foreignkey WHERE a.log_pelatihan_hapus = 0")->result_array();
 		    }
@@ -81,9 +83,10 @@ class Data_log extends CI_Controller{
 	function pameran(){
 		if ( $this->session->userdata('login') == 1) {
 
-		    $filter = @$_POST['filter'];
-		    if ($filter) {
-		    	$data['data'] = $this->db->query("SELECT * FROM t_log_pameran AS a JOIN t_user AS b ON a.log_pameran_user = b.user_foreignkey WHERE a.log_pameran_hapus = 0 AND DATE_FORMAT(a.log_pameran_tanggal, '%m/%Y') = '$filter'")->result_array();
+		    @$filter = explode(' - ', @$_POST['filter']);
+
+		    if (@$_POST['filter']) {
+		    	$data['data'] = $this->db->query("SELECT * FROM t_log_pameran AS a JOIN t_user AS b ON a.log_pameran_user = b.user_foreignkey WHERE a.log_pameran_hapus = 0 AND DATE_FORMAT(a.log_pameran_waktu, '%m/%d/%Y') BETWEEN '$filter[0]' AND '$filter[1]'")->result_array();
 		    } else {
 		    	$data['data'] = $this->db->query("SELECT * FROM t_log_pameran AS a JOIN t_user AS b ON a.log_pameran_user = b.user_foreignkey WHERE a.log_pameran_hapus = 0")->result_array();
 		    }
