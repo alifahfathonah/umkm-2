@@ -109,7 +109,7 @@
             <div class="box-header with-border">
               <a href="<?php echo base_url('dashboard/index/kunjungan') ?>"><button class="<?= (@$btn_kunjungan)? 'btn btn-primary' : 'btn btn-default' ?>" type="button">Kunjungan UMKM terbanyak</button></a>
               <a href="<?php echo base_url('dashboard/index/pelatihan') ?>"><button class="<?= (@$btn_pelatihan)? 'btn btn-primary' : 'btn btn-default' ?>" type="button">Pelatihan terbanyak</button></a>
-              <a href="<?php echo base_url('dashboard/index/terbaru') ?>"><button class="<?= (@$btn_terbaru)? 'btn btn-primary' : 'btn btn-default' ?>" type="button">Jumlah UMKM terbaru terbanyak</button></a>
+              <a href="<?php echo base_url('dashboard/index/umkm') ?>"><button class="<?= (@$btn_terbaru)? 'btn btn-primary' : 'btn btn-default' ?>" type="button">Jumlah UMKM terbaru terbanyak</button></a>
 
               <button class="btn btn-success" data-toggle="modal" data-target="#download_<?php echo $modal ?>" type="button"><i class="fa fa-download"></i> Download <?php echo @$btn_name ?></button>
 
@@ -199,8 +199,8 @@
 
 
 
-      <!-- MODAL TERBARU -->
-      <div class="modal fade" id="download_terbaru">
+      <!-- MODAL UMKM -->
+      <div class="modal fade" id="download_umkm">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -210,10 +210,10 @@
               <div class="modal-body">
 
                 <div class="form-group">
-                  <input placeholder="Filter Bulan" autocomplete="off" required="" name="filter" type="text" value="" class="form-control reservation" id="filter">
+                  <input placeholder="Filter Bulan" autocomplete="off" required="" name="filter" type="text" value="" class="form-control reservation" id="filter2">
                 </div>
 
-                <button onclick="download('umkm')" class="btn btn-success" type="button"><i class="fa fa-download"> Download</i></button>
+                <button onclick="download('umkm',2)" class="btn btn-success" type="button"><i class="fa fa-download"> Download</i></button>
 
                 <div hidden="">
                       
@@ -328,6 +328,124 @@
                       </tr>
                       
                     <?php endforeach ?>
+
+                  </table>
+
+                </div>
+              
+              </div>
+
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+
+      <!-- MODAL UMKM -->
+      <div class="modal fade" id="download_kunjungan">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+
+                <div class="form-group">
+                  <input placeholder="Filter Bulan" autocomplete="off" required="" name="filter" type="text" value="" class="form-control reservation" id="filter3">
+                </div>
+
+                <button onclick="download('kunjungan','3')" class="btn btn-success" type="button"><i class="fa fa-download"> Download</i></button>
+
+                <div hidden="">
+                      
+                    <table id="example3" class="table table-bordered table-responsive">
+                    <thead>
+                    <tr>
+                      <th>User</th>
+                      <th>Kunjungan UMKM</th>
+                      <th>Nama UMKM</th>
+                      <th>Kategori</th>
+                      <th>Lokasi</th> 
+                      <th>Laporan</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      
+                      <?php foreach ($download as $key): ?>            
+                        <tr>
+                          <td><?php echo $key['user_name'] ?></td>
+                          <td><?php echo $key['log_kunjungan_kunjungan'] ?></td>
+                          <td><?php echo $key['log_kunjungan_nama'] ?></td>
+                          <td><?php echo $key['log_kunjungan_kategori'] ?></td>
+                          <td><?php echo $key['log_kunjungan_lokasi'] ?></td>
+                          <td><?php echo $key['log_kunjungan_laporan'] ?></td>
+                        </tr>
+                      <?php endforeach ?>
+
+                  </table>
+
+                </div>
+              
+              </div>
+
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+
+        <!-- MODAL Pelatihan -->
+      <div class="modal fade" id="download_pelatihan">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+
+                <div class="form-group">
+                  <input placeholder="Filter Bulan" autocomplete="off" required="" name="filter" type="text" value="" class="form-control reservation" id="filter4">
+                </div>
+
+                <button onclick="download('pelatihan','4')" class="btn btn-success" type="button"><i class="fa fa-download"> Download</i></button>
+
+                <div hidden="">
+                      
+                    <table id="example4" class="table table-bordered table-responsive">
+                    <thead>
+                    <tr>
+                      <th>User</th>
+                      <th>Pelatihan</th>
+                      <th>Nama Pelatihan</th>
+                      <th>Waktu pelatihan</th>
+                      <th>Lokasi</th>
+                      <th>Narasumber/pemateri</th>
+                      <th>Asal Pemateri / narasumber</th>
+                      <th>Jumlah Peserta</th>
+                      <th>Log Pelatihan Tanggal</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      
+                      <?php foreach ($download as $key): ?>            
+                        <tr>
+                          <td><?php echo $key['user_name'] ?></td>
+                          <td><?= ($key['log_pelatihan_pelatihan'] == 'lainya')? $key['log_pelatihan_pelatihan_lainya'] : $key['log_pelatihan_pelatihan'] ?></td>
+                          <td><?php echo $key['log_pelatihan_nama'] ?></td>
+                          <td><?php echo $key['log_pelatihan_waktu'] ?></td>
+                          <td><?php echo $key['log_pelatihan_lokasi'] ?></td>
+                          <td><?php echo implode(', ', json_decode($key['log_pelatihan_narasumber'],true)); ?></td>
+                          <td><?php echo implode(', ', json_decode($key['log_pelatihan_narasumber_asal'],true)); ?></td>
+                          <td><?php echo $key['log_pelatihan_jumlah'] ?></td>
+                          <td><?php echo $key['log_pelatihan_tanggal'] ?></td>
+                        </tr>
+                      <?php endforeach ?>
 
                   </table>
 
@@ -552,29 +670,34 @@
 
       //data table
       $('#example1').DataTable()
-      $('#example2').DataTable({
-        dom: 'Blfrtip',
-         lengthMenu: [[10, 25, 50,100,200,300,400], [10, 25, 50,100,200,300,400]],
-         buttons: [
-             'copy', 'excel', 'pdf', 'print'
-         ],
-         'lengthChange': false,
-         'autoWidth'   : false,
-         'scrollX'     : true
-      })
+
+      //data table modal
+       for (var i = 2; i < 5; i++) {
+         $('#example'+i).DataTable({
+            dom: 'Blfrtip',
+             lengthMenu: [[10, 25, 50,100,200,300,400], [10, 25, 50,100,200,300,400]],
+             buttons: [
+                 'copy', 'excel', 'pdf', 'print'
+             ],
+             'lengthChange': false,
+             'autoWidth'   : false,
+             'scrollX'     : true
+          })
+       }
+
     })
 
 
     //download
-    function download(x){
+    function download(type,i){
 
-      var val = $('#filter').val();
+      var val = $('#filter'+i).val();
 
        $.ajax({
-         url: '<?php echo base_url('dashboard/get_date') ?>',
+         url: '<?php echo base_url('dashboard/get_date/') ?>',
          type: 'POST',
          dataType: 'json',
-         data: {val: val},
+         data: {val: val,type: type},
        })
        .done(function(data) {
 
@@ -587,9 +710,9 @@
                  whatsSelected.push('(?=.*' + data[index].tanggal + ')');
              });
 
-             if ($('#example2').DataTable().search(whatsSelected.join('|'), true, false, true).draw()) {
+             if ($('#example'+i).DataTable().search(whatsSelected.join('|'), true, false, true).draw()) {
 
-                $('#example2_wrapper > div.dt-buttons > button.dt-button.buttons-excel.buttons-html5').click();
+                $('#example'+i+'_wrapper > div.dt-buttons > button.dt-button.buttons-excel.buttons-html5').click();
              }
           }
        

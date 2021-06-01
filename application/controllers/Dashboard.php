@@ -3,7 +3,7 @@ class Dashboard extends CI_Controller{
 
 	function __construct(){
 		parent::__construct();
-	} 
+	}  
 	function index($x = ''){
 		if ( $this->session->userdata('login') == 1) {
 			
@@ -45,13 +45,13 @@ class Dashboard extends CI_Controller{
 
 						break;
 
-					case 'terbaru':
+					case 'umkm':
 
 						$data['peringkat'] = $this->db->query("SELECT c.rumah_bumn_nama AS lokasi, COUNT(a.umkm_rumah) AS jumlah FROM t_umkm AS a JOIN t_bumn AS b ON a.umkm_rumah = b.bumn_rumah JOIN t_rumah_bumn AS c ON a.umkm_rumah = c.rumah_bumn_id GROUP BY lokasi ORDER BY jumlah DESC limit 10")->result_array();
 
 						$data['btn_terbaru'] = 1;
 						$data['btn_name'] = 'UMKM';
-						$data['modal'] = 'terbaru';
+						$data['modal'] = 'umkm';
 
 						$data['download'] =  $this->db->query("SELECT * FROM t_user AS a JOIN t_umkm AS b ON a.user_foreignkey = b.umkm_user JOIN t_rumah_bumn as c ON b.umkm_rumah = c.rumah_bumn_id JOIN t_skc as d ON b.umkm_skc = d.skc_id JOIN t_rumah_bumn_cabang as e ON b.umkm_cabang = e.rumah_bumn_cabang_id")->result_array(); 
 
@@ -65,7 +65,7 @@ class Dashboard extends CI_Controller{
 				$data['btn_name'] = 'Kunjungan';
 				$data['modal'] = 'kunjungan';
 
-				$data['download'] = $this->db->query("SELECT * FROM t_log_kunjungan WHERE log_kunjungan_hapus = 0")->result_array();
+				$data['download'] = $this->db->query("SELECT * FROM t_log_kunjungan AS a JOIN t_user AS b ON a.log_kunjungan_user = b.user_foreignkey WHERE a.log_kunjungan_hapus = 0")->result_array();
 			}
 
 			//data
@@ -85,19 +85,17 @@ class Dashboard extends CI_Controller{
 
 		@$filter = explode(' - ', @$_POST['val']);
 
-		// switch (@$_POST['type']) {
-		// 	case 'umkm':
-		// 		$v = $this->db->query("SELECT umkm_tanggal as tanggal FROM t_umkm WHERE DATE_FORMAT(umkm_tanggal, '%m/%d/%Y') BETWEEN '$filter[0]' AND '$filter[1]'")->result_array();
-		// 		break;
-		// 	case 'kunjungan':
-		// 		$v = $this->db->query("SELECT * FROM t_log_kunjungan AS a JOIN t_user AS b ON a.log_kunjungan_user = b.user_foreignkey WHERE a.log_kunjungan_hapus = 0 AND DATE_FORMAT(a.log_kunjungan_kunjungan, '%m/%d/%Y') BETWEEN '$filter[0]' AND '$filter[1]'")->result_array();
-		// 		break;
-		// 	case 'pelatihan':
-		// 		$v = $this->db->query("SELECT * FROM t_log_pelatihan AS a JOIN t_user AS b ON a.log_pelatihan_user = b.user_foreignkey WHERE a.log_pelatihan_hapus = 0 AND DATE_FORMAT(a.log_pelatihan_tanggal, '%m/%d/%Y') BETWEEN '$filter[0]' AND '$filter[1]'")->result_array();
-		// 		break;
-		// }
-
-		$v = $this->db->query("SELECT umkm_tanggal as tanggal FROM t_umkm WHERE DATE_FORMAT(umkm_tanggal, '%m/%d/%Y') BETWEEN '$filter[0]' AND '$filter[1]'")->result_array();
+		switch (@$_POST['type']) {
+			case 'umkm':
+				$v = $this->db->query("SELECT umkm_tanggal as tanggal FROM t_umkm WHERE DATE_FORMAT(umkm_tanggal, '%m/%d/%Y') BETWEEN '$filter[0]' AND '$filter[1]'")->result_array();
+				break;
+			case 'kunjungan':
+				$v = $this->db->query("SELECT log_kunjungan_kunjungan as tanggal FROM t_log_kunjungan AS a JOIN t_user AS b ON a.log_kunjungan_user = b.user_foreignkey WHERE a.log_kunjungan_hapus = 0 AND DATE_FORMAT(a.log_kunjungan_kunjungan, '%m/%d/%Y') BETWEEN '$filter[0]' AND '$filter[1]'")->result_array();
+				break;
+			case 'pelatihan':
+				$v = $this->db->query("SELECT log_pelatihan_tanggal as tanggal FROM t_log_pelatihan AS a JOIN t_user AS b ON a.log_pelatihan_user = b.user_foreignkey WHERE a.log_pelatihan_hapus = 0 AND DATE_FORMAT(a.log_pelatihan_tanggal, '%m/%d/%Y') BETWEEN '$filter[0]' AND '$filter[1]'")->result_array();
+				break;
+		}
 		
 		echo json_encode($v);
 	}
