@@ -35,14 +35,30 @@
           <form method="post" action="<?php echo base_url('setting/update') ?>" class="form-horizontal" enctype="multipart/form-data">
             <div class="form-group">
               <div class="col-sm-offset-1 col-sm-11">
-                <img src="<?php echo base_url('asset/gambar/setting/').@$data['setting_logo'] ?>" alt="" width="300" class="img-thumbnail">
+                <img src="<?php echo base_url('asset/gambar/setting/').@$data['setting_slide_1'] ?>" alt="" width="300" class="img-thumbnail">
+                <img src="<?php echo base_url('asset/gambar/setting/').@$data['setting_slide_2'] ?>" alt="" width="300" class="img-thumbnail">
+                <img src="<?php echo base_url('asset/gambar/setting/').@$data['setting_slide_3'] ?>" alt="" width="300" class="img-thumbnail">
               </div>
             </div>
 
             <div class="form-group">
-              <label class="col-sm-1 control-label">Logo</label>
+              <label class="col-sm-1 control-label">Slide 1</label>
               <div class="col-sm-11">
-               <input type="file" class="form-control" name="setting_logo" accept="image/*">
+               <input type="file" class="form-control" name="setting_slide_1" accept="image/*">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Slide 2</label>
+              <div class="col-sm-11">
+               <input type="file" class="form-control" name="setting_slide_2" accept="image/*">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Slide 3</label>
+              <div class="col-sm-11">
+               <input type="file" class="form-control" name="setting_slide_3" accept="image/*">
               </div>
             </div>
 

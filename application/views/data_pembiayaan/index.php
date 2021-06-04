@@ -48,6 +48,7 @@
                 <thead>
                 <tr>
                   <!-- <th>Rumah BUMN</th> -->
+                  <th>SKM</th>
                   <th>SKC</th>
                   <th>Cabang</th>
                   <th>Kantor Wilayah</th>
@@ -100,6 +101,7 @@
                                   
                   <tr>
                     <!-- <td><?php echo @$key['rumah_bumn_nama'] ?></td> -->
+                    <td><?php echo @$key['skm_nama'] ?></td>
                     <td><?php echo @$key['skc_nama'] ?></td>
                     <td><?php echo @$key['rumah_bumn_cabang_nama'] ?></td>
                     <td><?php echo @$key['wilayah_baru_nama'] ?></td>

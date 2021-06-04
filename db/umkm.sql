@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2021 at 07:23 AM
+-- Generation Time: Jun 04, 2021 at 07:37 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -207,6 +207,7 @@ CREATE TABLE `t_pembiayaan` (
   `pembiayaan_id` int(11) NOT NULL,
   `pembiayaan_user` int(11) NOT NULL,
   `pembiayaan_rumah` text NOT NULL,
+  `pembiayaan_skm` text NOT NULL,
   `pembiayaan_skc` text NOT NULL,
   `pembiayaan_cabang` text NOT NULL,
   `pembiayaan_wilayah` text NOT NULL,
@@ -259,8 +260,8 @@ CREATE TABLE `t_pembiayaan` (
 -- Dumping data for table `t_pembiayaan`
 --
 
-INSERT INTO `t_pembiayaan` (`pembiayaan_id`, `pembiayaan_user`, `pembiayaan_rumah`, `pembiayaan_skc`, `pembiayaan_cabang`, `pembiayaan_wilayah`, `pembiayaan_brand`, `pembiayaan_usaha`, `pembiayaan_kategori`, `pembiayaan_jenis`, `pembiayaan_jenis_lain`, `pembiayaan_provinsi`, `pembiayaan_provinsi_text`, `pembiayaan_kota`, `pembiayaan_kota_text`, `pembiayaan_kecamatan`, `pembiayaan_kecamatan_text`, `pembiayaan_pos`, `pembiayaan_alamat`, `pembiayaan_pemilik`, `pembiayaan_no`, `pembiayaan_pic`, `pembiayaan_no_pic`, `pembiayaan_ig`, `pembiayaan_fb`, `pembiayaan_email`, `pembiayaan_shopee`, `pembiayaan_tokopedia`, `pembiayaan_lazada`, `pembiayaan_bukalapak`, `pembiayaan_jdid`, `pembiayaan_blibli`, `pembiayaan_padi`, `pembiayaan_website`, `pembiayaan_pameran_dalam`, `pembiayaan_pameran_luar`, `pembiayaan_penghargaan`, `pembiayaan_deskripsi`, `pembiayaan_berdiri`, `pembiayaan_skala`, `pembiayaan_karyawan`, `pembiayaan_omset`, `pembiayaan_jenis_biaya_bni`, `pembiayaan_kredit`, `pembiayaan_produk`, `pembiayaan_logo`, `pembiayaan_bpom`, `pembiayaan_izinusaha`, `pembiayaan_tanggal`) VALUES
-(9, 4, '20', '20', '22', 'W02', 'Nokia', 'Gadget', 'Unggulan', '21', '', '52', 'NUSA TENGGARA BARAT', '5202', 'KABUPATEN LOMBOK TENGAH', '5202011', 'PRAYA BARAT DAYA', '57775', 'Alamat', 'Nisa sabyan', '08555500011122', 'endro', '08666666666', 'intagram', 'facebook', 'google email', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Kredit Kemitraan', '', '[]', '', '', 'null', '2021-05-30');
+INSERT INTO `t_pembiayaan` (`pembiayaan_id`, `pembiayaan_user`, `pembiayaan_rumah`, `pembiayaan_skm`, `pembiayaan_skc`, `pembiayaan_cabang`, `pembiayaan_wilayah`, `pembiayaan_brand`, `pembiayaan_usaha`, `pembiayaan_kategori`, `pembiayaan_jenis`, `pembiayaan_jenis_lain`, `pembiayaan_provinsi`, `pembiayaan_provinsi_text`, `pembiayaan_kota`, `pembiayaan_kota_text`, `pembiayaan_kecamatan`, `pembiayaan_kecamatan_text`, `pembiayaan_pos`, `pembiayaan_alamat`, `pembiayaan_pemilik`, `pembiayaan_no`, `pembiayaan_pic`, `pembiayaan_no_pic`, `pembiayaan_ig`, `pembiayaan_fb`, `pembiayaan_email`, `pembiayaan_shopee`, `pembiayaan_tokopedia`, `pembiayaan_lazada`, `pembiayaan_bukalapak`, `pembiayaan_jdid`, `pembiayaan_blibli`, `pembiayaan_padi`, `pembiayaan_website`, `pembiayaan_pameran_dalam`, `pembiayaan_pameran_luar`, `pembiayaan_penghargaan`, `pembiayaan_deskripsi`, `pembiayaan_berdiri`, `pembiayaan_skala`, `pembiayaan_karyawan`, `pembiayaan_omset`, `pembiayaan_jenis_biaya_bni`, `pembiayaan_kredit`, `pembiayaan_produk`, `pembiayaan_logo`, `pembiayaan_bpom`, `pembiayaan_izinusaha`, `pembiayaan_tanggal`) VALUES
+(9, 4, '20', '20', '20', '22', 'W02', 'Nokia', 'Gadget', 'Unggulan', '21', '', '52', 'NUSA TENGGARA BARAT', '5202', 'KABUPATEN LOMBOK TENGAH', '5202011', 'PRAYA BARAT DAYA', '57775', 'Alamat', 'Nisa sabyan', '08555500011122', 'endro', '08666666666', 'intagram', 'facebook', 'google email', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Kredit Kemitraan', '', '[]', '', '', 'null', '2021-06-04');
 
 -- --------------------------------------------------------
 
@@ -373,7 +374,9 @@ INSERT INTO `t_rumah_bumn_cabang` (`rumah_bumn_cabang_id`, `rumah_bumn_cabang_na
 
 CREATE TABLE `t_setting` (
   `setting_id` int(11) NOT NULL,
-  `setting_logo` text NOT NULL,
+  `setting_slide_1` text NOT NULL,
+  `setting_slide_2` text NOT NULL,
+  `setting_slide_3` text NOT NULL,
   `setting_footer` text NOT NULL,
   `setting_tanggal` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -382,8 +385,8 @@ CREATE TABLE `t_setting` (
 -- Dumping data for table `t_setting`
 --
 
-INSERT INTO `t_setting` (`setting_id`, `setting_logo`, `setting_footer`, `setting_tanggal`) VALUES
-(1, 'umkm.png', 'mitraumkmbni.id', '2021-04-29');
+INSERT INTO `t_setting` (`setting_id`, `setting_slide_1`, `setting_slide_2`, `setting_slide_3`, `setting_footer`, `setting_tanggal`) VALUES
+(1, '5a7f5f822f1eb_thumb900.jpg', 'fruits-1.jpg', 'atas_logo.jpg', 'mitraumkmbni.id', '2021-06-04');
 
 -- --------------------------------------------------------
 
@@ -430,6 +433,56 @@ INSERT INTO `t_skc` (`skc_id`, `skc_nama`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `t_skm`
+--
+
+CREATE TABLE `t_skm` (
+  `skm_id` int(11) NOT NULL,
+  `skm_nama` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `t_skm`
+--
+
+INSERT INTO `t_skm` (`skm_id`, `skm_nama`) VALUES
+(1, 'SKM BANDAR LAMPUNG'),
+(2, 'SKM PADANG'),
+(3, 'SKM PONTIANAK'),
+(4, 'SKM MALANG'),
+(5, 'SKM HR MUHAMMAD'),
+(6, 'SKM KELAPA GADING'),
+(7, 'SKM KELAPA PONDOK INDAH'),
+(8, 'SKM MAKASSAR PERINTIS'),
+(9, 'SKM MEDAN'),
+(10, 'SKM BATAM'),
+(11, 'SKM PEKANBARU'),
+(12, 'SKM PALEMBANG'),
+(13, 'SKM BANDUNG'),
+(14, 'SKM SEMARANG'),
+(15, 'SKM SOLO'),
+(16, 'SKM SIDOARJO'),
+(17, 'SKM GRESIK'),
+(18, 'SKM SURABAYA'),
+(19, 'SKM SURABAYA PEMUDA'),
+(20, 'SKM MAKASSAR'),
+(21, 'SKM DENPASAR'),
+(22, 'SKM BALIKPAPAN'),
+(23, 'SKM BANJARMASIN'),
+(24, 'SKM JAKARTA'),
+(25, 'SKM JAKARTA SUDIRMAN'),
+(26, 'SKM MANADO'),
+(27, 'SKM PETOJO'),
+(28, 'SKM JAKARTA KOTA'),
+(29, 'SKM TANGERANG'),
+(30, 'SKM BEKASI'),
+(31, 'SKM IMM'),
+(32, 'SKM PAPUA'),
+(33, 'SKM TANGERANG CITY');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `t_umkm`
 --
 
@@ -437,6 +490,7 @@ CREATE TABLE `t_umkm` (
   `umkm_id` int(11) NOT NULL,
   `umkm_user` int(11) NOT NULL,
   `umkm_rumah` text NOT NULL,
+  `umkm_skm` text NOT NULL,
   `umkm_skc` text NOT NULL,
   `umkm_cabang` text NOT NULL,
   `umkm_wilayah` text NOT NULL,
@@ -489,8 +543,8 @@ CREATE TABLE `t_umkm` (
 -- Dumping data for table `t_umkm`
 --
 
-INSERT INTO `t_umkm` (`umkm_id`, `umkm_user`, `umkm_rumah`, `umkm_skc`, `umkm_cabang`, `umkm_wilayah`, `umkm_brand`, `umkm_usaha`, `umkm_kategori`, `umkm_jenis`, `umkm_jenis_lain`, `umkm_provinsi`, `umkm_provinsi_text`, `umkm_kota`, `umkm_kota_text`, `umkm_kecamatan`, `umkm_kecamatan_text`, `umkm_pos`, `umkm_alamat`, `umkm_pemilik`, `umkm_no`, `umkm_pic`, `umkm_no_pic`, `umkm_ig`, `umkm_fb`, `umkm_email`, `umkm_shopee`, `umkm_tokopedia`, `umkm_lazada`, `umkm_bukalapak`, `umkm_jdid`, `umkm_blibli`, `umkm_padi`, `umkm_website`, `umkm_pameran_dalam`, `umkm_pameran_luar`, `umkm_penghargaan`, `umkm_deskripsi`, `umkm_berdiri`, `umkm_skala`, `umkm_karyawan`, `umkm_omset`, `umkm_jenis_biaya_bni`, `umkm_kredit`, `umkm_produk`, `umkm_logo`, `umkm_bpom`, `umkm_izinusaha`, `umkm_tanggal`) VALUES
-(4, 4, '12', '7', '4', 'W01', 'Like Video', 'Indah Corporations', 'Unggulan', 'Lain-lain', 'Tiktok', '35', 'JAWA TIMUR', '3505', 'KABUPATEN BLITAR', '3505040', 'WATES', '61661', 'Ds. Desa RT01 RW01', 'Indah Krisna Devi', '081000000000', 'Bagas', '085000000000', 'intagram/indah', 'facebook/indah', 'indah@gmail.com', 'shopee/indah', 'toped/indah', 'lazada/indah', 'BL/indah', 'jd/indah', 'blibli/indah', 'PADI/indah', 'https://indahsekali.com', '[\"dalam 1\",\"dalam 2\"]', '[\"luar 1\",\"luar 2\"]', '[\"penghargaan 1\",\"penghargaan 2\"]', '[\"deskripsi 1\",\"deskripsi 2\"]', '2021', 'Menengah', '200', '1000000', 'Kredit Kemitraan', '22000', '[\"4_dessert_donut.png\",\"4_dessert_eclair.png\"]', 'subscribe_logo_png_1326590.png', 'Ya', '[\"PIRT\",\"SKDP\",\"Sertifikat Halal\"]', '2021-05-25');
+INSERT INTO `t_umkm` (`umkm_id`, `umkm_user`, `umkm_rumah`, `umkm_skm`, `umkm_skc`, `umkm_cabang`, `umkm_wilayah`, `umkm_brand`, `umkm_usaha`, `umkm_kategori`, `umkm_jenis`, `umkm_jenis_lain`, `umkm_provinsi`, `umkm_provinsi_text`, `umkm_kota`, `umkm_kota_text`, `umkm_kecamatan`, `umkm_kecamatan_text`, `umkm_pos`, `umkm_alamat`, `umkm_pemilik`, `umkm_no`, `umkm_pic`, `umkm_no_pic`, `umkm_ig`, `umkm_fb`, `umkm_email`, `umkm_shopee`, `umkm_tokopedia`, `umkm_lazada`, `umkm_bukalapak`, `umkm_jdid`, `umkm_blibli`, `umkm_padi`, `umkm_website`, `umkm_pameran_dalam`, `umkm_pameran_luar`, `umkm_penghargaan`, `umkm_deskripsi`, `umkm_berdiri`, `umkm_skala`, `umkm_karyawan`, `umkm_omset`, `umkm_jenis_biaya_bni`, `umkm_kredit`, `umkm_produk`, `umkm_logo`, `umkm_bpom`, `umkm_izinusaha`, `umkm_tanggal`) VALUES
+(4, 4, '12', '13', '7', '4', 'W01', 'Like Video', 'Indah Corporations', 'Unggulan', 'Lain-lain', 'Tiktok', '35', 'JAWA TIMUR', '3505', 'KABUPATEN BLITAR', '', 'Kecamatan', '61661', 'Ds. Desa RT01 RW01', 'Indah Krisna Devi', '081000000000', 'Bagas', '085000000000', 'intagram/indah', 'facebook/indah', 'indah@gmail.com', 'shopee/indah', 'toped/indah', 'lazada/indah', 'BL/indah', 'jd/indah', 'blibli/indah', 'PADI/indah', 'https://indahsekali.com', '[\"dalam 1\",\"dalam 2\"]', '[\"luar 1\",\"luar 2\"]', '[\"penghargaan 1\",\"penghargaan 2\"]', '[\"deskripsi 1\",\"deskripsi 2\"]', '2021', 'Menengah', '200', '1000000', 'Kredit Kemitraan', '22000', '[\"4_dessert_donut.png\",\"4_dessert_eclair.png\"]', 'subscribe_logo_png_1326590.png', 'Ya', '[\"PIRT\",\"SKDP\",\"Sertifikat Halal\"]', '2021-06-04');
 
 -- --------------------------------------------------------
 
@@ -661,6 +715,12 @@ ALTER TABLE `t_skc`
   ADD PRIMARY KEY (`skc_id`);
 
 --
+-- Indexes for table `t_skm`
+--
+ALTER TABLE `t_skm`
+  ADD PRIMARY KEY (`skm_id`);
+
+--
 -- Indexes for table `t_umkm`
 --
 ALTER TABLE `t_umkm`
@@ -753,6 +813,12 @@ ALTER TABLE `t_setting`
 --
 ALTER TABLE `t_skc`
   MODIFY `skc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `t_skm`
+--
+ALTER TABLE `t_skm`
+  MODIFY `skm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `t_umkm`

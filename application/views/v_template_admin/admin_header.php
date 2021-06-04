@@ -115,11 +115,11 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a class="logo">
+    <a class="logo" style="font-size: 15px;">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>DU</b></span>
+      <span class="logo-mini"><b>MDU</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"> <b>DATA UMKM</b></span>
+      <span class="logo-lg"> <b>MONITORING DATA UMKM</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -227,12 +227,12 @@
         <?php if ($this->session->userdata('level') == 2): ?>
           <li <?php echo @$umkm; ?>>
             <a href="<?php echo base_url() ?>umkm">
-              <i class="fa fa-question-circle"></i> <span>UMKM</span>
+              <i class="fa fa-home"></i> <span>UMKM RUMAH BUMN BNI</span>
             </a>
           </li>
           <li <?php echo @$pembiayaan; ?>>
             <a href="<?php echo base_url() ?>pembiayaan">
-              <i class="fa fa-question-circle"></i> <span>Pembiayaan BNI</span>
+              <i class="fa fa-question-circle"></i> <span>UMKM PEMBIAYAAN BNI</span>
             </a>
           </li>
         <?php endif ?>
@@ -240,7 +240,7 @@
         <?php if ($this->session->userdata('level') == 1): ?>
           <li <?php echo @$bumn; ?>>
             <a href="<?php echo base_url() ?>bumn">
-              <i class="fa fa-question-circle"></i> <span>BUMN</span>
+              <i class="fa fa-home"></i> <span>BUMN</span>
             </a>
           </li>
         <?php endif ?>
@@ -260,8 +260,8 @@
               </span>
             </a>
             <ul class="treeview-menu" style="<?php echo @$tree_umkm; ?>">
-              <li><a href="<?php echo base_url() ?>data_umkm"><i class="fa fa-minus"></i>Data UMKM</a></li>
-              <li><a href="<?php echo base_url() ?>data_pembiayaan"><i class="fa fa-minus"></i> Pembiayaan BNI</a></li>
+              <li><a href="<?php echo base_url() ?>data_umkm"><i class="fa fa-minus"></i>UMKM RUMAH BUMN BNI</a></li>
+              <li><a href="<?php echo base_url() ?>data_pembiayaan"><i class="fa fa-minus"></i> UMKM PEMBIAYAAN BNI</a></li>
             </ul>
           </li>
         <?php endif ?>

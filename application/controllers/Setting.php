@@ -22,61 +22,43 @@ class Setting extends CI_Controller{
 	function update(){
 		$data = $this->input->post();
 
-		if (@$_FILES['setting_logo']['name']) {
-			
-			if($_FILES['setting_logo']['size'] <= 0){
-				$this->session->set_flashdata('gagal','Foto tidak boleh lebih dari 2 MB');
-			}
-			else{
+		// Looping all files
+      	for($i=1; $i <  4; $i++){
 
-				//config uplod foto
-				  $config = array(
-				  'upload_path' 	=> './asset/gambar/setting',
-				  'allowed_types' 	=> "gif|jpg|png|jpeg",
-				  'overwrite' 		=> TRUE,
-				  'max_size' 		=> "2048000",
-				  );
+	         //config uplod foto
+			  $config = array(
+			  'upload_path' 	=> './asset/gambar/setting',
+			  'allowed_types' 	=> "gif|jpg|png|jpeg",
+			  'overwrite' 		=> TRUE,
+			  'max_size' 		=> "2048000",
+			  );
 
-				//upload foto
-				$this->load->library('upload', $config);
+			//upload foto
+			$this->load->library('upload', $config);
 
-				if ($this->upload->do_upload('setting_logo')) {
-					//replace Karakter name foto
-					$name_foto = $_FILES['setting_logo']['name'];
-					$char = array('!', '&', '?', '/', '/\/', ':', ';', '#', '<', '>', '=', '^', '@', '~', '`', '{', '}', ' ');
-			        $foto = str_replace($char, '_', $name_foto);
-			        $char1 = array('[',']');
-			        $foto1 = str_replace($char1, '', $foto);
-
-					$set = array(
-									'setting_footer' => $data['setting_footer'],
-									'setting_tanggal'=> date('Y-m-d'),
-									'setting_logo' => $foto1
-								);
-					$this->db->set($set);
-					$this->db->update('t_setting');
-
-				    $this->session->set_flashdata('success','Data berhasil di perbaharui');
-				} else {
-					$this->session->set_flashdata('gagal','Foto gagal di upload');
-				}
+			if ($this->upload->do_upload('setting_slide_'.$i)) {
 				
+				//replace Karakter name foto
+				$name_foto = $_FILES['setting_slide_'.$i]['name'];
+				$char = array('!', '&', '?', '/', '/\/', ':', ';', '#', '<', '>', '=', '^', '@', '~', '`', '{', '}', ' ');
+		        $foto = str_replace($char, '_', $name_foto);
+		        $char1 = array('[',']');
+		        $foto1 = str_replace($char1, '', $foto);
+
+		        $this->db->set('setting_slide_'.$i, $foto1);
+		        $this->db->update('t_setting');
 			}
+	 
+      	}
 
-		}else{
-			//tanpa foto
+      	$set = array(
+						'setting_footer' => $data['setting_footer'],
+						'setting_tanggal'=> date('Y-m-d'),
+					);
+		$this->db->set($set);
+		$this->db->update('t_setting');
 
-			$set = array(
-								'setting_footer' => $data['setting_footer'],
-								'setting_tanggal'=> date('Y-m-d'),
-							);
-
-			$this->db->set($set);
-			$this->db->update('t_setting');
-
-
-			$this->session->set_flashdata('success','Data berhasil di perbaharui');
-		}
+		$this->session->set_flashdata('success','Data berhasil di perbaharui');
 
 		redirect(base_url('setting'));
 	}

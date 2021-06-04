@@ -23,6 +23,7 @@ class Pembiayaan extends CI_Controller{
 		    $data['skc'] = $this->db->query("SELECT * FROM t_skc")->result_array();
 
 		    $data['wilayah'] = $this->db->query("SELECT * FROM t_wilayah_baru")->result_array();
+		    $data['skm'] = $this->db->query("SELECT * FROM t_skm")->result_array();
 
 
 		    /////////// API ////////////////////////////
@@ -139,6 +140,7 @@ class Pembiayaan extends CI_Controller{
 
 		$set = array(
 						// 'pembiayaan_rumah' => @$_POST['pembiayaan_rumah'],
+						'pembiayaan_skm' => @$_POST['pembiayaan_skm'],
 						'pembiayaan_skc' => @$_POST['pembiayaan_skc'],
 						'pembiayaan_cabang' => @$_POST['pembiayaan_cabang'],
 						'pembiayaan_wilayah' => @$_POST['pembiayaan_wilayah'],

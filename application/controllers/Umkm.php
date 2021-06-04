@@ -24,6 +24,8 @@ class Umkm extends CI_Controller{
 
 		    $data['wilayah'] = $this->db->query("SELECT * FROM t_wilayah_baru")->result_array();
 
+		    $data['skm'] = $this->db->query("SELECT * FROM t_skm")->result_array();
+
 
 		    /////////// API ////////////////////////////
 
@@ -139,6 +141,7 @@ class Umkm extends CI_Controller{
 
 		$set = array(
 						'umkm_rumah' => @$_POST['umkm_rumah'],
+						'umkm_skm' => @$_POST['umkm_skm'],
 						'umkm_skc' => @$_POST['umkm_skc'],
 						'umkm_cabang' => @$_POST['umkm_cabang'],
 						'umkm_wilayah' => @$_POST['umkm_wilayah'],

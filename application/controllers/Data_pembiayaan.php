@@ -19,9 +19,9 @@ class Data_pembiayaan extends CI_Controller{
 		    	case '0':
 		    		
 		    		if (@$_POST['filter']) {
-				    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_pembiayaan AS b ON a.user_foreignkey = b.pembiayaan_user JOIN t_skc as d ON b.pembiayaan_skc = d.skc_id JOIN t_rumah_bumn_cabang as e ON b.pembiayaan_cabang = e.rumah_bumn_cabang_id JOIN t_wilayah_baru as f ON f.wilayah_baru_kode = b.pembiayaan_wilayah WHERE a.user_level = '2' AND a.user_hapus = 0 AND DATE_FORMAT(b.pembiayaan_tanggal, '%m/%d/%Y') BETWEEN '$filter[0]' AND '$filter[1]'")->result_array();
+				    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_pembiayaan AS b ON a.user_foreignkey = b.pembiayaan_user JOIN t_skc as d ON b.pembiayaan_skc = d.skc_id JOIN t_rumah_bumn_cabang as e ON b.pembiayaan_cabang = e.rumah_bumn_cabang_id JOIN t_wilayah_baru as f ON f.wilayah_baru_kode = b.pembiayaan_wilayah JOIN t_skm as g ON b.pembiayaan_skm = g.skm_id WHERE a.user_level = '2' AND a.user_hapus = 0 AND DATE_FORMAT(b.pembiayaan_tanggal, '%m/%d/%Y') BETWEEN '$filter[0]' AND '$filter[1]'")->result_array();
 				    }else{
-				    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_pembiayaan AS b ON a.user_foreignkey = b.pembiayaan_user JOIN t_skc as d ON b.pembiayaan_skc = d.skc_id JOIN t_rumah_bumn_cabang as e ON b.pembiayaan_cabang = e.rumah_bumn_cabang_id JOIN t_wilayah_baru as f ON f.wilayah_baru_kode = b.pembiayaan_wilayah WHERE a.user_level = '2' AND a.user_hapus = 0")->result_array(); 
+				    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_pembiayaan AS b ON a.user_foreignkey = b.pembiayaan_user JOIN t_skc as d ON b.pembiayaan_skc = d.skc_id JOIN t_rumah_bumn_cabang as e ON b.pembiayaan_cabang = e.rumah_bumn_cabang_id JOIN t_wilayah_baru as f ON f.wilayah_baru_kode = b.pembiayaan_wilayah JOIN t_skm as g ON b.pembiayaan_skm = g.skm_id WHERE a.user_level = '2' AND a.user_hapus = 0")->result_array(); 
 				    }
 		    		break;
 		    	
@@ -30,9 +30,9 @@ class Data_pembiayaan extends CI_Controller{
 		    		$rumah_bumn = $get['bumn_rumah'];
 
 		    		if (@$_POST['filter']) {
-				    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_pembiayaan AS b ON a.user_foreignkey = b.pembiayaan_user JOIN t_skc as d ON b.pembiayaan_skc = d.skc_id JOIN t_rumah_bumn_cabang as e ON b.pembiayaan_cabang = e.rumah_bumn_cabang_id JOIN t_wilayah_baru as f ON f.wilayah_baru_kode = b.pembiayaan_wilayah WHERE a.user_level = '2' AND a.user_hapus = 0 b.pembiayaan_rumah = '$rumah_bumn' AND DATE_FORMAT(b.pembiayaan_tanggal, '%m/%d/%Y') BETWEEN '$filter[0]' AND '$filter[1]' ")->result_array();
+				    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_pembiayaan AS b ON a.user_foreignkey = b.pembiayaan_user JOIN t_skc as d ON b.pembiayaan_skc = d.skc_id JOIN t_rumah_bumn_cabang as e ON b.pembiayaan_cabang = e.rumah_bumn_cabang_id JOIN t_wilayah_baru as f ON f.wilayah_baru_kode = b.pembiayaan_wilayah JOIN t_skm as g ON b.pembiayaan_skm = g.skm_id WHERE a.user_level = '2' AND a.user_hapus = 0 b.pembiayaan_rumah = '$rumah_bumn' AND DATE_FORMAT(b.pembiayaan_tanggal, '%m/%d/%Y') BETWEEN '$filter[0]' AND '$filter[1]' ")->result_array();
 				    }else{
-				    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_pembiayaan AS b ON a.user_foreignkey = b.pembiayaan_user JOIN t_skc as d ON b.pembiayaan_skc = d.skc_id JOIN t_rumah_bumn_cabang as e ON b.pembiayaan_cabang = e.rumah_bumn_cabang_id JOIN t_wilayah_baru as f ON f.wilayah_baru_kode = b.pembiayaan_wilayah WHERE a.user_level = '2' AND a.user_hapus = 0 AND b.pembiayaan_rumah = '$rumah_bumn'")->result_array(); 
+				    	$data['data'] = $this->db->query("SELECT * FROM t_user AS a JOIN t_pembiayaan AS b ON a.user_foreignkey = b.pembiayaan_user JOIN t_skc as d ON b.pembiayaan_skc = d.skc_id JOIN t_rumah_bumn_cabang as e ON b.pembiayaan_cabang = e.rumah_bumn_cabang_id JOIN t_wilayah_baru as f ON f.wilayah_baru_kode = b.pembiayaan_wilayah JOIN t_skm as g ON b.pembiayaan_skm = g.skm_id WHERE a.user_level = '2' AND a.user_hapus = 0 AND b.pembiayaan_rumah = '$rumah_bumn'")->result_array(); 
 				    }
 		    		break;
 		    	

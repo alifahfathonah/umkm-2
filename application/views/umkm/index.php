@@ -79,7 +79,9 @@
 		                	<!--DB menyusul-->
 		                    <select id="umkm_skm" name="umkm_skm" class="form-control">
 		                    	<option value="" hidden="">SKM</option>
-		                    	
+		                    	<?php foreach ($skm as $key): ?>
+		                    		<option value="<?php echo $key['skm_id'] ?>"><?php echo $key['skm_nama'] ?></option>
+		                    	<?php endforeach ?>
 		                    </select>
 		                </div>
 		                <div class=" form-group">
@@ -775,6 +777,7 @@ $('#umkm_skala').val('<?php echo @@$data['umkm_skala'] ?>').change();
 $('#umkm_bpom').val('<?php echo @@$data['umkm_bpom'] ?>').change();
 $('#umkm_kategori').val('<?php echo @@$data['umkm_kategori'] ?>').change();
 $('#umkm_wilayah').val('<?php echo @@$data['umkm_wilayah'] ?>').change(); 
+$('#umkm_skm').val('<?php echo @@$data['umkm_skm'] ?>').change(); 
 
 $('#umkm_izinusaha').val(<?php echo @@$data['umkm_izinusaha'] ?>).select();
  

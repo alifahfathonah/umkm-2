@@ -79,7 +79,9 @@
 		                	<!--DB menyusul-->
 		                    <select id="pembiayaan_skm" name="pembiayaan_skm" class="form-control">
 		                    	<option value="" hidden="">SKM</option>
-		                    	
+		                    	<?php foreach ($skm as $key): ?>
+		                    		<option value="<?php echo $key['skm_id'] ?>"><?php echo $key['skm_nama'] ?></option>
+		                    	<?php endforeach ?>
 		                    </select>
 		                </div>
 		                <div class=" form-group">
@@ -774,7 +776,8 @@ $('#pembiayaan_jenis').val('<?php echo @@$data['pembiayaan_jenis'] ?>').change()
 $('#pembiayaan_skala').val('<?php echo @@$data['pembiayaan_skala'] ?>').change();
 $('#pembiayaan_bpom').val('<?php echo @@$data['pembiayaan_bpom'] ?>').change();
 $('#pembiayaan_kategori').val('<?php echo @@$data['pembiayaan_kategori'] ?>').change();
-$('#pembiayaan_wilayah').val('<?php echo @@$data['pembiayaan_wilayah'] ?>').change(); 
+$('#pembiayaan_wilayah').val('<?php echo @@$data['pembiayaan_wilayah'] ?>').change();
+$('#pembiayaan_skm').val('<?php echo @@$data['pembiayaan_skm'] ?>').change();
 
 $('#pembiayaan_izinusaha').val(<?php echo @@$data['pembiayaan_izinusaha'] ?>).select();
  
