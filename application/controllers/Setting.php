@@ -23,7 +23,7 @@ class Setting extends CI_Controller{
 		$data = $this->input->post();
 
 		// Looping all files
-      	for($i=1; $i <  4; $i++){
+      	for($i=1; $i <  6; $i++){
 
 	         //config uplod foto
 			  $config = array(

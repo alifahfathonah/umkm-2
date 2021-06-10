@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2021 at 07:37 PM
+-- Generation Time: Jun 10, 2021 at 09:22 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -377,6 +377,8 @@ CREATE TABLE `t_setting` (
   `setting_slide_1` text NOT NULL,
   `setting_slide_2` text NOT NULL,
   `setting_slide_3` text NOT NULL,
+  `setting_slide_4` text NOT NULL,
+  `setting_slide_5` text NOT NULL,
   `setting_footer` text NOT NULL,
   `setting_tanggal` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -385,8 +387,8 @@ CREATE TABLE `t_setting` (
 -- Dumping data for table `t_setting`
 --
 
-INSERT INTO `t_setting` (`setting_id`, `setting_slide_1`, `setting_slide_2`, `setting_slide_3`, `setting_footer`, `setting_tanggal`) VALUES
-(1, '5a7f5f822f1eb_thumb900.jpg', 'fruits-1.jpg', 'atas_logo.jpg', 'mitraumkmbni.id', '2021-06-04');
+INSERT INTO `t_setting` (`setting_id`, `setting_slide_1`, `setting_slide_2`, `setting_slide_3`, `setting_slide_4`, `setting_slide_5`, `setting_footer`, `setting_tanggal`) VALUES
+(1, 'CJH2LNyVEAAtw6E.png', 'CJH2LNyVEAAtw6E.png', 'CJH2LNyVEAAtw6E.png', 'CJH2LNyVEAAtw6E.png', 'CJH2LNyVEAAtw6E.png', 'mitraumkmbni.id', '2021-06-05');
 
 -- --------------------------------------------------------
 

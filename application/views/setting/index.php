@@ -35,9 +35,11 @@
           <form method="post" action="<?php echo base_url('setting/update') ?>" class="form-horizontal" enctype="multipart/form-data">
             <div class="form-group">
               <div class="col-sm-offset-1 col-sm-11">
-                <img src="<?php echo base_url('asset/gambar/setting/').@$data['setting_slide_1'] ?>" alt="" width="300" class="img-thumbnail">
-                <img src="<?php echo base_url('asset/gambar/setting/').@$data['setting_slide_2'] ?>" alt="" width="300" class="img-thumbnail">
-                <img src="<?php echo base_url('asset/gambar/setting/').@$data['setting_slide_3'] ?>" alt="" width="300" class="img-thumbnail">
+                <img src="<?php echo base_url('asset/gambar/setting/').@$data['setting_slide_1'] ?>" alt="" width="150" class="img-thumbnail">
+                <img src="<?php echo base_url('asset/gambar/setting/').@$data['setting_slide_2'] ?>" alt="" width="150" class="img-thumbnail">
+                <img src="<?php echo base_url('asset/gambar/setting/').@$data['setting_slide_3'] ?>" alt="" width="150" class="img-thumbnail">
+                <img src="<?php echo base_url('asset/gambar/setting/').@$data['setting_slide_4'] ?>" alt="" width="150" class="img-thumbnail">
+                <img src="<?php echo base_url('asset/gambar/setting/').@$data['setting_slide_5'] ?>" alt="" width="150" class="img-thumbnail">
               </div>
             </div>
 
@@ -59,6 +61,20 @@
               <label class="col-sm-1 control-label">Slide 3</label>
               <div class="col-sm-11">
                <input type="file" class="form-control" name="setting_slide_3" accept="image/*">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Slide 4</label>
+              <div class="col-sm-11">
+               <input type="file" class="form-control" name="setting_slide_4" accept="image/*">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-1 control-label">Slide 5</label>
+              <div class="col-sm-11">
+               <input type="file" class="form-control" name="setting_slide_5" accept="image/*">
               </div>
             </div>
 

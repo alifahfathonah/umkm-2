@@ -114,13 +114,29 @@
 <div class="wrapper">
 
   <header class="main-header">
-    <!-- Logo -->
-    <a class="logo" style="font-size: 15px;">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>MDU</b></span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"> <b>MONITORING DATA UMKM</b></span>
-    </a>
+
+    <?php if ($this->session->userdata('level') == 3): ?>
+
+      <!-- Logo -->
+      <a class="logo" style="font-size: 15px;">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>MDU</b></span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"> <b>MONITORING DATA UMKM</b></span>
+      </a>
+
+    <?php else: ?>
+
+      <!-- Logo -->
+      <a class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>DU</b></span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"> <b>DATA UMKM</b></span>
+      </a>
+
+    <?php endif ?>
+    
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
@@ -232,7 +248,7 @@
           </li>
           <li <?php echo @$pembiayaan; ?>>
             <a href="<?php echo base_url() ?>pembiayaan">
-              <i class="fa fa-question-circle"></i> <span>UMKM PEMBIAYAAN BNI</span>
+              <i class="fa fa-money"></i> <span>UMKM PEMBIAYAAN BNI</span>
             </a>
           </li>
         <?php endif ?>
