@@ -115,18 +115,30 @@
 
   <header class="main-header">
 
-    <?php if ($this->session->userdata('level') == 3): ?>
-
+    <?php if ($this->session->userdata('level') == 0): ?>
       <!-- Logo -->
       <a class="logo" style="font-size: 15px;">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>MDU</b></span>
+        <span class="logo-mini"><b>PAP</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"> <b>MONITORING DATA UMKM</b></span>
+        <span class="logo-lg"> <b>PANEL ADMIN PUSAT</b></span>
       </a>
 
-    <?php else: ?>
+    <?php endif ?>
 
+    <?php if ($this->session->userdata('level') == 1): ?>
+
+      <!-- Logo -->
+      <a class="logo" style="font-size: 12px;">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>MRB</b></span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"> <b>MONITORING RUMAH BUMN</b></span>
+      </a>
+
+    <?php endif ?>
+
+    <?php if ($this->session->userdata('level') == 2): ?>
       <!-- Logo -->
       <a class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -258,7 +270,7 @@
             <a href="<?php echo base_url() ?>bumn">
               <i class="fa fa-home"></i> <span>BUMN</span>
             </a>
-          </li>
+          </li> 
         <?php endif ?>
 
         <?php if ($this->session->userdata('level') < 2): ?>
