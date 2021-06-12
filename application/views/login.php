@@ -31,7 +31,7 @@
         <div class="form-holder has-shadow" style="box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2), 0 3px 17px 0 rgba(0, 0, 0, 0.19);">
           <div class="row">
             <!-- Logo & Information Panel-->
-            <div class="col-lg-6" style="background-color: #eee;">
+            <div class="col-lg-6" style="background-color: #fff;">
              <!--  <div class="info align-items-center">
                 <div class="content" align="center">
                   <div class="logo"> -->
@@ -65,7 +65,7 @@
                         <span class="sr-only">Next</span>
                       </a>
                     </div>
-
+ 
                  <!--  </div>
                 </div>
               </div> -->

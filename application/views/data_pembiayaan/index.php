@@ -148,16 +148,51 @@
                     <td><?php echo @$key['pembiayaan_jenis_biaya_bni'] ?></td>
                     <td><?php echo @$key['pembiayaan_kredit'] ?></td>
                     
-                    <td>
-                        
-                        <?php if (@$key['pembiayaan_produk']): ?>
-                           <?php foreach (json_decode(@$key['pembiayaan_produk'],true) as $i): ?>
-                            <a href="<?php echo base_url('asset/gambar/pembiayaan/'.$i) ?>" target="_BLANK"><img src="<?php echo base_url('asset/gambar/pembiayaan/'.$i) ?>" alt="" class="img-thumbnail" width="100"></a>
-                           <?php endforeach ?>
-                        <?php endif ?>
+                    <td><button data-toggle="modal" data-target="#view<?php echo $key['pembiayaan_id'] ?>" class="btn btn-xs btn-primary" type="button">view <i class="fa fa-photo"></i></button></td>
 
-                    </td>
-                    <td><a href="<?php echo base_url('asset/gambar/pembiayaan/'.@$key['pembiayaan_logo']) ?>" target="_BLANK"><img src="<?php echo base_url('asset/gambar/pembiayaan/'.@$key['pembiayaan_logo']) ?>" alt="" class="img-thumbnail" width="100"></a></td>
+                    <div class="modal fade" id="view<?php echo $key['pembiayaan_id'] ?>">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span></button>
+                            <h4>Click to download <i class="fa fa-download"></i></h4>
+                          </div>
+                          <div class="modal-body">
+                            
+                            <?php if (@$key['pembiayaan_produk']): ?>
+                               <?php foreach (json_decode($key['pembiayaan_produk'],true) as $i): ?>
+
+                                <a download="" href="<?php echo base_url('asset/gambar/pembiayaan/'.$i) ?>"><img class="img-thumbnail" src="<?php echo base_url('asset/gambar/pembiayaan/'.$i) ?>" alt="" width="200"></a>
+
+                               <?php endforeach ?>
+                            <?php endif ?>
+
+                          </div>
+                        </div>
+                      </div>
+                     </div> 
+
+                     <td><button data-toggle="modal" data-target="#logo<?php echo $key['pembiayaan_id'] ?>" class="btn btn-xs btn-primary" type="button">view <i class="fa fa-photo"></i></button></td>
+
+                    <div class="modal fade" id="logo<?php echo $key['pembiayaan_id'] ?>">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span></button>
+                            <h4>Click to download <i class="fa fa-download"></i></h4>
+                          </div>
+                          <div class="modal-body">
+                            
+                            <?php if (@$key['pembiayaan_logo']): ?>
+                               <a download="" href="<?php echo base_url('asset/gambar/pembiayaan/'.$key['pembiayaan_logo']) ?>"><img class="img-thumbnail" src="<?php echo base_url('asset/gambar/pembiayaan/'.$key['pembiayaan_logo']) ?>" alt="" width="200"></a>
+                            <?php endif ?>
+
+                          </div>
+                        </div>
+                      </div>
+                     </div> 
 
                     <td><?php echo @$key['pembiayaan_bpom'] ?></td>
                     <td><?php echo @implode(', ', json_decode(@$key['pembiayaan_izinusaha'],true)); ?></td>

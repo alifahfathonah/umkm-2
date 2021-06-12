@@ -72,11 +72,31 @@
                     <td><?= ( $key['bumn_status'] == 'milik dinas')? $key['bumn_status'].' ( '.$key['bumn_status_dinas'].' )' : $key['bumn_status'] ?></td>
                     <td>
                       
-                      <?php if (@$key['bumn_foto']): ?>
-                         <?php foreach (json_decode($key['bumn_foto'],true) as $i): ?>
-                          <a href="<?php echo base_url('asset/gambar/bumn/'.$i) ?>" target="_BLANK"><img src="<?php echo base_url('asset/gambar/bumn/'.$i) ?>" alt="" class="img-thumbnail" width="40"></a>
-                         <?php endforeach ?>
-                      <?php endif ?>
+                      <button data-toggle="modal" data-target="#view<?php echo $key['rumah_bumn_nama'] ?>" class="btn btn-xs btn-primary" type="button">view <i class="fa fa-photo"></i></button>
+
+                      <!--modal hapus-->
+                        <div class="modal fade" id="view<?php echo $key['rumah_bumn_nama'] ?>">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span></button>
+                                <h4>Click to download <i class="fa fa-download"></i></h4>
+                              </div>
+                              <div class="modal-body">
+                                
+                                <?php if (@$key['bumn_foto']): ?>
+                                   <?php foreach (json_decode($key['bumn_foto'],true) as $i): ?>
+
+                                    <a download="" href="<?php echo base_url('asset/gambar/bumn/'.$i) ?>"><img class="img-thumbnail" src="<?php echo base_url('asset/gambar/bumn/'.$i) ?>" alt="" width="200"></a>
+
+                                   <?php endforeach ?>
+                                <?php endif ?>
+
+                              </div>
+                            </div>
+                          </div>
+                         </div> 
 
                     </td>
                     <td><?php echo @implode(', ', json_decode($key['bumn_pengelola'],true)); ?></td>

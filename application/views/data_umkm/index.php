@@ -57,8 +57,8 @@
                   <th>Kategori</th>
                   <th>Jenis Usaha</th>
                   <th>Jenis Lain-lain</th>
-                  <th>Provinsi</th>
                   <th>Delete</th>
+                  <th>Provinsi</th>
                   <th>Kab/Kota</th>
                   <th>Kecamatan</th>
                   <th>Kode Pos</th>
@@ -110,7 +110,6 @@
                     <td><?php echo $key['umkm_kategori'] ?></td>
                     <td><?php echo $key['umkm_jenis'] ?></td>
                     <td><?php echo $key['umkm_jenis_lain'] ?></td>
-                    <td><?php echo $key['umkm_provinsi_text'] ?></td>
                     <td style="width: 50px;">
                       <div>
 
@@ -118,6 +117,7 @@
 
                       </div>
                     </td>
+                    <td><?php echo $key['umkm_provinsi_text'] ?></td>
                     <td><?php echo $key['umkm_kota_text'] ?></td>
                     <td><?php echo $key['umkm_kecamatan_text'] ?></td>
                     <td><?php echo $key['umkm_pos'] ?></td>
@@ -148,16 +148,51 @@
                     <td><?php echo $key['umkm_jenis_biaya_bni'] ?></td>
                     <td><?php echo $key['umkm_kredit'] ?></td>
                     
-                    <td>
-                        
-                        <?php if (@$key['umkm_produk']): ?>
-                           <?php foreach (json_decode($key['umkm_produk'],true) as $i): ?>
-                            <a href="<?php echo base_url('asset/gambar/umkm/'.$i) ?>" target="_BLANK"><img src="<?php echo base_url('asset/gambar/umkm/'.$i) ?>" alt="" class="img-thumbnail" width="100"></a>
-                           <?php endforeach ?>
-                        <?php endif ?>
+                    <td><button data-toggle="modal" data-target="#view<?php echo $key['umkm_id'] ?>" class="btn btn-xs btn-primary" type="button">view <i class="fa fa-photo"></i></button></td>
 
-                    </td>
-                    <td><a href="<?php echo base_url('asset/gambar/umkm/'.$key['umkm_logo']) ?>" target="_BLANK"><img src="<?php echo base_url('asset/gambar/umkm/'.$key['umkm_logo']) ?>" alt="" class="img-thumbnail" width="100"></a></td>
+                    <div class="modal fade" id="view<?php echo $key['umkm_id'] ?>">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span></button>
+                            <h4>Click to download <i class="fa fa-download"></i></h4>
+                          </div>
+                          <div class="modal-body">
+                            
+                            <?php if (@$key['umkm_produk']): ?>
+                               <?php foreach (json_decode($key['umkm_produk'],true) as $i): ?>
+
+                                <a download="" href="<?php echo base_url('asset/gambar/umkm/'.$i) ?>"><img class="img-thumbnail" src="<?php echo base_url('asset/gambar/umkm/'.$i) ?>" alt="" width="200"></a>
+
+                               <?php endforeach ?>
+                            <?php endif ?>
+
+                          </div>
+                        </div>
+                      </div>
+                     </div> 
+
+                     <td><button data-toggle="modal" data-target="#logo<?php echo $key['umkm_id'] ?>" class="btn btn-xs btn-primary" type="button">view <i class="fa fa-photo"></i></button></td>
+
+                    <div class="modal fade" id="logo<?php echo $key['umkm_id'] ?>">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span></button>
+                            <h4>Click to download <i class="fa fa-download"></i></h4>
+                          </div>
+                          <div class="modal-body">
+                            
+                            <?php if (@$key['umkm_logo']): ?>
+                               <a download="" href="<?php echo base_url('asset/gambar/umkm/'.$key['umkm_logo']) ?>"><img class="img-thumbnail" src="<?php echo base_url('asset/gambar/umkm/'.$key['umkm_logo']) ?>" alt="" width="200"></a>
+                            <?php endif ?>
+
+                          </div>
+                        </div>
+                      </div>
+                     </div> 
 
                     <td><?php echo $key['umkm_bpom'] ?></td>
                     <td><?php echo @implode(', ', json_decode($key['umkm_izinusaha'],true)); ?></td>
@@ -180,8 +215,6 @@
                           </div>
                         </div>
                        </div> 
-
-
                   
                 <?php endforeach ?>
 

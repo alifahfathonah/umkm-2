@@ -11,17 +11,16 @@ class Login extends CI_Controller{
     $this->load->view('login.php',$data); 
   }   
   function auth(){  
-    $email = $this->input->post('email'); 
+    $email = $this->input->post('email');  
     $pass = md5($this->input->post('password'));
 
     $cek = $this->db->query("SELECT * FROM t_user WHERE user_email = '$email' AND user_password = '$pass' AND user_status = 1")->result_array();
    
-        if (count($cek[0]['user_email']) > 0) {
+        if (@$cek[0]['user_email']) {
 
               $setting = $this->db->query("SELECT * FROM t_setting")->row_array();
           
               //ciptakan sesi
-              $this->session->set_userdata('name',$cek[0]['user_name']);
               $this->session->set_userdata('pass',$cek[0]['user_password']);
               $this->session->set_userdata('foto',$cek[0]['user_foto']);
 
@@ -34,12 +33,21 @@ class Login extends CI_Controller{
 
               switch ($cek[0]['user_level']) {
                 case '0':
+                  $this->session->set_userdata('name',$cek[0]['user_name']);
                   redirect(base_url('dashboard'));
                   break;
                 case '1':
+
+                  $idfor = $cek[0]['user_foreignkey'];
+                  $xx = $this->db->query("SELECT * FROM t_bumn AS a JOIN t_rumah_bumn AS b ON a.bumn_rumah = b.rumah_bumn_id WHERE a.bumn_user = '$idfor'")->row_array();
+
+                  $this->session->set_userdata('name','RUMAH BUMN '.strtoupper($xx['rumah_bumn_nama']));
+
                   redirect(base_url('bumn'));
                   break;
                 case '2':
+
+                  $this->session->set_userdata('name',$cek[0]['user_name']);
                   redirect(base_url('umkm'));
                   break;
               }
