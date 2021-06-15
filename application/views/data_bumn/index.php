@@ -1,6 +1,6 @@
 
     <!-- Main content --> 
-    <section class="content"> 
+    <section class="content">  
 
     <?php if ($this->session->flashdata('gagal')): ?>
       <div class="alert alert-danger alert-dismissible">
@@ -74,7 +74,7 @@
                       
                       <button data-toggle="modal" data-target="#view<?php echo $key['rumah_bumn_nama'] ?>" class="btn btn-xs btn-primary" type="button">view <i class="fa fa-photo"></i></button>
 
-                      <!--modal hapus-->
+                      <!--modal view-->
                         <div class="modal fade" id="view<?php echo $key['rumah_bumn_nama'] ?>">
                           <div class="modal-dialog">
                             <div class="modal-content">
@@ -88,7 +88,7 @@
                                 <?php if (@$key['bumn_foto']): ?>
                                    <?php foreach (json_decode($key['bumn_foto'],true) as $i): ?>
 
-                                    <a download="" href="<?php echo base_url('asset/gambar/bumn/'.$i) ?>"><img class="img-thumbnail" src="<?php echo base_url('asset/gambar/bumn/'.$i) ?>" alt="" width="200"></a>
+                                    <a download="" href="<?php echo base_url('asset/gambar/bumn/'.$i) ?>"><img class="img-thumbnail" src="<?php echo base_url('asset/gambar/bumn/'.$i) ?>" alt="" width="180"></a>
 
                                    <?php endforeach ?>
                                 <?php endif ?>

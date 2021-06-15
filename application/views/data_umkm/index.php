@@ -186,7 +186,7 @@
                           <div class="modal-body">
                             
                             <?php if (@$key['umkm_logo']): ?>
-                               <a download="" href="<?php echo base_url('asset/gambar/umkm/'.$key['umkm_logo']) ?>"><img class="img-thumbnail" src="<?php echo base_url('asset/gambar/umkm/'.$key['umkm_logo']) ?>" alt="" width="200"></a>
+                               <a download="" href="<?php echo base_url('asset/gambar/umkm/'.$key['umkm_logo']) ?>"><img class="img-thumbnail" src="<?php echo base_url('asset/gambar/umkm/'.$key['umkm_logo']) ?>" alt="" width="180"></a>
                             <?php endif ?>
 
                           </div>

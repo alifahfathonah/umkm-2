@@ -71,7 +71,32 @@
                     <td><?php echo $key['log_pameran_peserta'] ?></td>
                     <td><?php echo implode(', ', json_decode($key['log_pameran_produk'], true)) ?></td>
                     <td>
-                      <button data-toggle="modal" data-target="#view_image<?php echo $key['log_pameran_id'] ?>">View Image</button>
+                      <button data-toggle="modal" data-target="#view<?php echo $key['log_pameran_id'] ?>" class="btn btn-xs btn-primary" type="button">view <i class="fa fa-photo"></i></button>
+
+                      <!--modal view-->
+                        <div class="modal fade" id="view<?php echo $key['log_pameran_id'] ?>">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span></button>
+                                <h4>Click to download <i class="fa fa-download"></i></h4>
+                              </div>
+                              <div class="modal-body">
+                                
+                                <?php if (@$key['log_pameran_dokumentasi']): ?>
+                                   <?php foreach (json_decode($key['log_pameran_dokumentasi'],true) as $i): ?>
+
+                                    <a download="" href="<?php echo base_url('asset/gambar/bumn/pameran/'.$i) ?>"><img class="img-thumbnail" src="<?php echo base_url('asset/gambar/bumn/pameran/'.$i) ?>" alt="" width="180"></a>
+
+                                   <?php endforeach ?>
+                                <?php endif ?>
+
+                              </div>
+                            </div>
+                          </div>
+                         </div> 
+
                     </td>
                     <td width="1">
                       <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modalHapus<?php echo $key['log_pameran_id'] ?>"><i class="fa fa-trash"></i></button>
@@ -90,30 +115,6 @@
                           <div class="modal-body" align="center">
                              <a href="<?php echo base_url() ?>data_log/delete_pameran/<?php echo $key['log_pameran_id'] ?>"><button class="btn btn-success" style="width: 49%;">Yes</button></a>
                              <button class="btn btn-danger" data-dismiss="modal" style="width: 49%;">No</button>
-                          </div>
-                        </div>
-                      </div>
-                     </div> 
-
-
-                     <!--view image-->
-                    <div class="modal fade" id="view_image<?php echo $key['log_pameran_id'] ?>">
-                      <div class="modal-dialog" align="center">
-                        <div class="modal-content">
-                          <div class="modal-body" align="center">
-                             
-                            <div class="row">
-                              <?php if (@$key['log_pameran_dokumentasi']): ?>
-                                <?php foreach (json_decode($key['log_pameran_dokumentasi']) as $i): ?>
-
-                                  <div class="col-md-3 col-xs-6" style="margin-top: 1%;">
-                                    <a href="<?php echo base_url('asset/gambar/bumn/pameran/'.$i) ?>" target="_BLANK"><img src="<?php echo base_url('asset/gambar/bumn/pameran/'.$i) ?>" alt="" class="img-thumbnail" width="200"></a>
-                                  </div>
-
-                                <?php endforeach ?>
-                              <?php endif ?>
-                            </div>
-
                           </div>
                         </div>
                       </div>

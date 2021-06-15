@@ -1,6 +1,6 @@
 
     <!-- Main content --> 
-    <section class="content"> 
+    <section class="content">  
 
     <?php if ($this->session->flashdata('gagal')): ?>
       <div class="alert alert-danger alert-dismissible">
@@ -69,7 +69,33 @@
                     <td><?php echo $key['log_kunjungan_lokasi'] ?></td>
                     <td><?php echo $key['log_kunjungan_laporan'] ?></td>
                     <td>
-                      <button data-toggle="modal" data-target="#view_image<?php echo $key['log_kunjungan_id'] ?>">View Image</button>
+
+                      <button data-toggle="modal" data-target="#view<?php echo $key['log_kunjungan_id'] ?>" class="btn btn-xs btn-primary" type="button">view <i class="fa fa-photo"></i></button>
+
+                      <!--modal view-->
+                        <div class="modal fade" id="view<?php echo $key['log_kunjungan_id'] ?>">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span></button>
+                                <h4>Click to download <i class="fa fa-download"></i></h4>
+                              </div>
+                              <div class="modal-body">
+                                
+                                <?php if (@$key['log_kunjungan_dokumentasi']): ?>
+                                   <?php foreach (json_decode($key['log_kunjungan_dokumentasi'],true) as $i): ?>
+
+                                    <a download="" href="<?php echo base_url('asset/gambar/bumn/kunjungan/'.$i) ?>"><img class="img-thumbnail" src="<?php echo base_url('asset/gambar/bumn/kunjungan/'.$i) ?>" alt="" width="180"></a>
+
+                                   <?php endforeach ?>
+                                <?php endif ?>
+
+                              </div>
+                            </div>
+                          </div>
+                         </div> 
+
                     </td>
                     <td width="1">
                       <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modalHapus<?php echo $key['log_kunjungan_id'] ?>"><i class="fa fa-trash"></i></button>
@@ -92,31 +118,7 @@
                         </div>
                       </div>
                      </div> 
-
-
-                     <!--view image-->
-                    <div class="modal fade" id="view_image<?php echo $key['log_kunjungan_id'] ?>">
-                      <div class="modal-dialog" align="center">
-                        <div class="modal-content">
-                          <div class="modal-body" align="center">
-                             
-                            <div class="row">
-                              <?php if (@$key['log_kunjungan_dokumentasi']): ?>
-                                <?php foreach (json_decode($key['log_kunjungan_dokumentasi']) as $i): ?>
-
-                                  <div class="col-md-3 col-xs-6" style="margin-top: 1%;">
-                                    <a href="<?php echo base_url('asset/gambar/bumn/kunjungan/'.$i) ?>" target="_BLANK"><img src="<?php echo base_url('asset/gambar/bumn/kunjungan/'.$i) ?>" alt="" class="img-thumbnail" width="200"></a>
-                                  </div>
-
-                                <?php endforeach ?>
-                              <?php endif ?>
-                            </div>
-
-                          </div>
-                        </div>
-                      </div>
-                     </div> 
-
+                     
                   <?php endforeach ?>
                 </tfoot>
               </table>
