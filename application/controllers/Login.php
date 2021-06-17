@@ -97,34 +97,33 @@ class Login extends CI_Controller{
 
             //cek email
             if ($cek == 0) {
-              
-              // save user
-              $x = $this->db->query("SELECT * FROM t_user order by user_id desc limit 1")->row_array();
-              $count = $x['user_foreignkey']+1;
-
-              $set = array(
-                            'user_foreignkey' => $count,
-                            'user_name' => $name, 
-                            'user_email' => $email, 
-                            'user_password' => md5($pass), 
-                            'user_level' => $level, 
-                            'user_tanggal' => date('Y-m-d'), 
-                          );
-
-              $this->db->set($set);
-              $this->db->insert('t_user');
-
-              //save detail
-              $detail = array(
-                          'detail_id_user' => $count, 
-                        );
-
-              $this->db->set($detail);
-              $this->db->insert('t_detail_user');
 
               //save sesuai level
               if ($level == 1) {
                 //BUMN
+
+                $x = $this->db->query("SELECT * FROM t_user order by user_id desc limit 1")->row_array();
+                $count = $x['user_foreignkey']+1;
+
+                $set = array(
+                              'user_foreignkey' => $count,
+                              'user_name' => $name, 
+                              'user_email' => $email, 
+                              'user_password' => md5($pass), 
+                              'user_level' => $level, 
+                              'user_tanggal' => date('Y-m-d'), 
+                            );
+
+                $this->db->set($set);
+                $this->db->insert('t_user');
+
+                //save detail
+                $detail = array(
+                            'detail_id_user' => $count, 
+                          );
+
+                $this->db->set($detail);
+                $this->db->insert('t_detail_user');
 
                 $a = array(
                             'bumn_user' => $count,
@@ -140,6 +139,30 @@ class Login extends CI_Controller{
               } else {
                 //UMKM
 
+                $x = $this->db->query("SELECT * FROM t_user order by user_id desc limit 1")->row_array();
+                $count = $x['user_foreignkey']+1;
+
+                $set = array(
+                              'user_foreignkey' => $count,
+                              'user_name' => $name, 
+                              'user_email' => $email, 
+                              'user_password' => md5($pass), 
+                              'user_level' => $level, 
+                              'user_status' => 1,
+                              'user_tanggal' => date('Y-m-d'), 
+                            );
+
+                $this->db->set($set);
+                $this->db->insert('t_user');
+
+                //save detail
+                $detail = array(
+                            'detail_id_user' => $count, 
+                          );
+
+                $this->db->set($detail);
+                $this->db->insert('t_detail_user')
+                ;
                 $b = array(
                             'umkm_user' => $count,
                             'umkm_tanggal' => date('Y-m-d'), 
@@ -156,7 +179,7 @@ class Login extends CI_Controller{
                 $this->db->set($c);
                 $this->db->insert('t_pembiayaan');
 
-                $this->session->set_flashdata('sukses','registrasi berhasil, tunggu akun anda di validasi admin');
+                $this->session->set_flashdata('sukses','registrasi berhasil, silahkan login kembali');
                 redirect(base_url('login'));
 
               }
