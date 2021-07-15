@@ -296,6 +296,11 @@
 							</div>
 
 		                </div>
+
+		                <div class="form-group">
+		                    <label class="control-label">Alamat Lengkap Rumah BUMN</label>
+		                    <textarea name="bumn_alamat" class="form-control"><?php echo @$data['bumn_alamat'] ?></textarea>
+		                </div>
 		                
 		                <button class="btn btn-primary pull-right" type="submit">Finish!</button>
 		            </div>

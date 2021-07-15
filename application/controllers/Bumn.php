@@ -6,7 +6,7 @@ class Bumn extends CI_Controller{
 	} 
 	function index(){ 
 		if ( $this->session->userdata('login') == 1) {
-
+ 
 			$data['bumn'] = 'class="active"';
 		    $data['title'] = 'BUMN';
 
@@ -90,6 +90,7 @@ class Bumn extends CI_Controller{
 						'bumn_pengelola' => str_replace('[]', '', json_encode(array_filter(@$_POST['bumn_pengelola'], 'strlen'))),
 						'bumn_no' => str_replace('[]', '', json_encode(array_filter(@$_POST['bumn_no'], 'strlen'))),
 						'bumn_pic' => str_replace('[]', '', json_encode(array_filter(@$_POST['bumn_pic'], 'strlen'))),
+						'bumn_alamat' => @$_POST['bumn_alamat'],
 						'bumn_tanggal' => date('Y-m-d'), 
 					);
 		$this->db->set($set);

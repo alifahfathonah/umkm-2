@@ -57,6 +57,7 @@
                   <th>No Telepon/HP</th>
                   <th>Nama PIC Kantor Cabang</th>
                   <th>Delete</th>
+                  <th>Alamat Lengkap Rumah BUMN</th>
                   <th>Tanggal Input</th>
                 </tr>
                 </thead>
@@ -102,13 +103,14 @@
                     <td><?php echo @implode(', ', json_decode($key['bumn_pengelola'],true)); ?></td>
                     <td><?php echo @implode(', ', json_decode($key['bumn_no'],true)); ?></td>
                     <td><?php echo @implode(', ', json_decode($key['bumn_pic'],true)); ?></td>
-                    <td style="width: 50px;">
+                     <td style="width: 50px;">
                       <div>
 
                       <button class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modalHapus<?php echo $key['user_id'] ?>"><i class="fa fa-trash"></i></button>
 
                       </div>
                     </td>
+                    <td><?php echo @$key['bumn_alamat'] ?></td>
                     <td><?php echo $key['bumn_tanggal'] ?></td>
                   </tr>
 
