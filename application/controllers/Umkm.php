@@ -8,7 +8,7 @@ class Umkm extends CI_Controller{
 		if ( $this->session->userdata('login') == 1) {
 
 			$data['umkm'] = 'class="active"'; 
-		    $data['title'] = 'UMKM';
+		    $data['title'] = 'UMKM'; 
  
 		    $user = $this->session->userdata('foreign');
 
@@ -40,7 +40,7 @@ class Umkm extends CI_Controller{
 			@$api_provinsi = file_get_contents($this->api_kota->provinsi_all(), false, stream_context_create($arrContextOptions));
 
 			$json_provinsi = json_decode($api_provinsi,true);
-			if (count($json_provinsi) > 0) {
+			if (@$json_provinsi) {
 				$data['provinsi'] = $json_provinsi;
 			} else {
 				$data['provinsi'] = '';

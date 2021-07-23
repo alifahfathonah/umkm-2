@@ -59,7 +59,7 @@
    margin: -10px; 
  }
 
- /*form step wizard*/
+/*form step wizard*/
  .stepwizard-step p {
     margin-top: 10px;
 }
